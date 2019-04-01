@@ -52,3 +52,4 @@ Publish Build Artifacts task [docs.microsoft.com](https://docs.microsoft.com/en-
 ### Bugfixes
 
 No package found with specified pattern [stackoverflow](https://stackoverflow.com/questions/51790735/no-package-found-with-specified-pattern-d-a-r1-a-zip/52746997)
+
