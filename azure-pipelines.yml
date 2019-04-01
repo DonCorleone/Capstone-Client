@@ -1,0 +1,27 @@
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: install
+
+- task: Npm@1
+  displayName: 'Build Angular'
+  inputs:
+    command: custom
+    customCommand: run build -- --prod
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'angular'
+    targetPath: 'dist'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/Capstone-Client/'
+    includeRootFolder: false
+
+- task: PublishBuildArtifacts@1
