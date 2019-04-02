@@ -2,23 +2,34 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ShoppingPageComponent } from './components/shopping-page/shopping-page.component';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 const appRoutes: Routes = [
   {
     path: 'home',
     component: HomePageComponent,
-    data: { title: 'Homepage' }
+    data: { title: 'Home Page' }
   },
-  { path: '',
+  {
+    path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
-  // { path: 'search',
-  //   component: GitSearchComponent,
-  //   data: {
-  //     title: 'Git Search'
-  //   }
-  // },
+  {
+    path: 'shopping',
+    component: ShoppingPageComponent,
+    data: {
+      title: 'Shopping Page'
+    }
+  },
+  {
+    path: 'cart',
+    component: CartPageComponent,
+    data: {
+      title: 'Cart Page'
+    }
+  },
   { path: '**', component: NotFoundComponent }
 ];
 

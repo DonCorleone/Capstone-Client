@@ -39,7 +39,9 @@ Terminal 2: `lite-server --baseDir="dist"`
 
 ### Implementation
 
-[Global Header and Footer](https://scotch.io/courses/build-your-first-angular-website/creating-an-angular-header-and-footer)
+Global Header and Footer [scotch.io/courses/](https://scotch.io/courses/build-your-first-angular-website/creating-an-angular-header-and-footer)
+
+Angular and Bootstrap [medium.com/codingthesmartway-com-blog/](https://medium.com/codingthesmartway-com-blog/using-bootstrap-with-angular-c83c3cee3f4a)
 
 ### Deployment
 
