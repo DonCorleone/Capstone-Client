@@ -5,16 +5,18 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse" [ngClass]='{"show": isExpanded}'>
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-      <a class="nav-link" [routerLink]='["/"]'>Home</a>
-    </li>
-    <li class="nav-item" [routerLinkActive]='["link-active"]'>
-      <a class="nav-link" [routerLink]='["/shopping"]'>Shopping</a>
-    </li>
-    <li class="nav-item" [routerLinkActive]='["link-active"]'>
-        <a class="nav-link" [routerLink]='["/cart"]'>Cart</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+        <a class="nav-link" [routerLink]='["/"]'>Home</a>
       </li>
-  </ul>
+      <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <a class="nav-link" [routerLink]='["/shopping"]'>Shopping</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <a class="nav-link right" [routerLink]='["/cart"]'>Cart</a>
+      </li>
+    </ul>
   </div>
 </nav>
