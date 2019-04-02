@@ -37,6 +37,10 @@ Bootstrap 4 [codeburst](https://codeburst.io/getting-started-with-angular-7-and-
 Terminal 1: `ng build --watch`
 Terminal 2: `lite-server --baseDir="dist"`
 
+### Implementation
+
+[Global Header and Footer](https://scotch.io/courses/build-your-first-angular-website/creating-an-angular-header-and-footer)
+
 ### Deployment
 
 Deploy a web app [docs.microsoft.com](https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/javascript?view=azure-devops&tabs=yaml)
