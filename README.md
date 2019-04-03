@@ -43,6 +43,8 @@ Global Header and Footer [scotch.io/courses/](https://scotch.io/courses/build-yo
 
 Angular and Bootstrap [medium.com/codingthesmartway-com-blog/](https://medium.com/codingthesmartway-com-blog/using-bootstrap-with-angular-c83c3cee3f4a)
 
+Angular Routing [Angular.io](https://angular.io/guide/router)
+
 ### Deployment
 
 Deploy a web app [docs.microsoft.com](https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/javascript?view=azure-devops&tabs=yaml)

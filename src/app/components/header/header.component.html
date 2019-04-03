@@ -1,20 +1,21 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">Fixed navbar</a>
+  <a class="navbar-brand" href="#">Grocery Cloud</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse" [ngClass]='{"show": isExpanded}'>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+      <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'
+        data-target="#navbarCollapse" data-toggle="collapse">
         <a class="nav-link" [routerLink]='["/"]'>Home</a>
       </li>
-      <li class="nav-item" [routerLinkActive]='["link-active"]'>
+      <li class="nav-item" [routerLinkActive]='["link-active"]' data-target="#navbarCollapse" data-toggle="collapse">
         <a class="nav-link" [routerLink]='["/shopping"]'>Shopping</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item" [routerLinkActive]='["link-active"]'>
+      <li class="nav-item" [routerLinkActive]='["link-active"]' data-target="#navbarCollapse" data-toggle="collapse">
         <a class="nav-link right" [routerLink]='["/cart"]'>Cart</a>
       </li>
     </ul>
