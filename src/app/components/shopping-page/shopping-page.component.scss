@@ -5,12 +5,6 @@
 @import '~bootstrap/scss/_variables.scss';
 @import '~bootstrap/scss/mixins/_breakpoints.scss';
 
-.tempBorder {
-  border-color: rebeccapurple;
-  border-style: solid;
-  border-width: 1px;
-}
-
 .card-columns {
   @include media-breakpoint-up(xs) {
      column-count: 1;
