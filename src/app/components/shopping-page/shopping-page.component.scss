@@ -1,0 +1,27 @@
+// avoid importing entire .scss as it might cause duplicate css styles
+// @import '~bootstrap/scss/bootstrap.scss'
+// safer to import variables and mixins only to avoid duplicate css styles
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+.tempBorder {
+  border-color: rebeccapurple;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.card-columns {
+  @include media-breakpoint-up(xs) {
+     column-count: 1;
+  }
+  @include media-breakpoint-up(md) {
+     column-count: 2;
+  }
+  @include media-breakpoint-up(lg) {
+     column-count: 3;
+  }
+  @include media-breakpoint-up(xl) {
+     column-count: 4;
+  }
+}
