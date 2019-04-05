@@ -10,15 +10,15 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'
         data-target="#navbarCollapse" data-toggle="collapse">
-        <a class="nav-link" [routerLink]='["/"]'>Home</a>
+        <a class="nav-link" [routerLink]='["/"]'>Home <fa name="home"></fa></a>
       </li>
       <li class="nav-item" [routerLinkActive]='["link-active"]' data-target="#navbarCollapse" data-toggle="collapse">
-        <a class="nav-link" [routerLink]='["/shopping"]'>Shopping</a>
+        <a class="nav-link" [routerLink]='["/shopping"]'>Shopping <fa name="tag"></fa></a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item" [routerLinkActive]='["link-active"]' data-target="#navbarCollapse" data-toggle="collapse">
-        <a class="nav-link right" [routerLink]='["/cart"]'>Cart</a>
+        <a class="nav-link right" [routerLink]='["/cart"]'>Cart <fa name="shopping-cart"></fa></a>
       </li>
     </ul>
   </div>
