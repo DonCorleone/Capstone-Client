@@ -30,6 +30,8 @@ Two separated projects [CodeProject](https://www.codeproject.com/Articles/127451
 
 Bootstrap 4 [codeburst](https://codeburst.io/getting-started-with-angular-7-and-bootstrap-4-styling-6011b206080)
 
+Icons [Angular Bootstrap Font Awesome](https://www.npmjs.com/package/angular-font-awesome)
+
 ### Run
 
 #### Build watch
