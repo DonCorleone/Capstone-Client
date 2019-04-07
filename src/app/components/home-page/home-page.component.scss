@@ -12,3 +12,7 @@
 .img-fluid {
     height: 90%;
 }
+
+.carousel-control-next,  .carousel-control-prev{
+  filter: invert(100%);
+}
