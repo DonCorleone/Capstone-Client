@@ -72,3 +72,5 @@ JSON > TypeScript Interface Generator [json2ts](http://json2ts.com/)
 No package found with specified pattern [stackoverflow](https://stackoverflow.com/questions/51790735/no-package-found-with-specified-pattern-d-a-r1-a-zip/52746997)
 
 HttpClient mapping to typescript types not working [github.com/angular](https://github.com/angular/angular/issues/20770)
+
+Angular 2 Data Attributes [stackoverflow](https://stackoverflow.com/questions/34542619/angular-2-data-attributes)
