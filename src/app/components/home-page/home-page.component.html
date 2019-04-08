@@ -1,13 +1,13 @@
 <div class=" p-2">
   <div id="featuredProductsCarousel" class="carousel slide carousel-fade d-inline-block" data-ride="carousel">
     <ol class="carousel-indicators">
-      <li *ngFor="let item of items; index as i" data-target="#featuredProductsCarousel"
+      <li *ngFor="let item of featuringItems; index as i" data-target="#featuredProductsCarousel"
         [attr.data-slide-to]="i"
         [class.active]="i==0">
       </li>
     </ol>
     <div class="carousel-inner">
-      <div *ngFor="let item of items; index as i" class="carousel-item" [class.active]="i==0">
+      <div *ngFor="let item of featuringItems; index as i" class="carousel-item" [class.active]="i==0">
         <img src="{{item.imagelink}}" class="d-block mx-auto img-fluid " alt="...">
       </div>
     </div>

@@ -15,20 +15,19 @@ export class HomePageComponent implements OnInit {
 
   categories: ICategory[] = [];
   subcategories: ISubcategory[] = [];
-
-  @Input()
   items: IItem[] = [];
+  featuringItems: IItem[] = [];
 
   ngOnInit() {
 
-    this.showItems();
+    this.loadItems();
   }
 
-  showItems() {
+  loadItems() {
+
     this.itemsService.getItems()
-      // resp is of type `HttpResponse<Config>`
       .subscribe(resp => {
-        // access the body directly, which is typed as `Config`.
+
         this.categories = resp;
         const subcategoriesLoop: Subcategory[] = [];
         const itemsLoop: Item[] = [];
@@ -46,6 +45,14 @@ export class HomePageComponent implements OnInit {
         });
         this.subcategories = subcategoriesLoop;
         this.items = itemsLoop;
+        this.pickFeaturedItems();
       });
   }
+
+  pickFeaturedItems() {
+    this.featuringItems = this.items.filter(isFeatured);
+  }
+}
+function isFeatured(filterItems, index, array) {
+  return (filterItems !== null && (parseInt(filterItems.rating, 10) > 4));
 }

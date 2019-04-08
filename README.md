@@ -74,3 +74,5 @@ No package found with specified pattern [stackoverflow](https://stackoverflow.co
 HttpClient mapping to typescript types not working [github.com/angular](https://github.com/angular/angular/issues/20770)
 
 Angular 2 Data Attributes [stackoverflow](https://stackoverflow.com/questions/34542619/angular-2-data-attributes)
+
+TypeScript cast of string to number [patrickdesjardins](https://patrickdesjardins.com/blog/typescript-cast-of-string-to-number)
