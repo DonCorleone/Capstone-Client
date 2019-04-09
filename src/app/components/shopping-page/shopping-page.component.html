@@ -59,7 +59,7 @@
             <div class="card-body">
               <h4 class="card-title">{{item.name}}</h4>
               <div class="card-text">{{item.description}}</div>
-              <img class="card-img-bottom" src="../../../assets/images/fallbackImage.png" alt="product name"
+              <img class="card-img-bottom" src={{item.imagelink}} alt="product name"
                 *ngIf="!isImageLoading; else noImageFound">
               <ng-template #noImageFound>
                 <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
@@ -67,7 +67,7 @@
             </div>
             <div class="card-footer">
               <button type="button" class="btn btn-outline-dark mb-5"
-                (click)="onSelect(item)" [class.selected]="item === selectedItem" routerLink="/product/{:Id}"
+                [class.selected]="item === selectedItem" [routerLink]="['/product', item.name]"
                 routerLinkActive>Shopping
                 <fa name="tag"></fa>
               </button>

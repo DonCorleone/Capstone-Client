@@ -35,38 +35,39 @@ export class ItemsService {
       map(response => response.map((category: ICategory) => new Category().deserialize(category))));
   }
 
-  getItem(id: string): Observable<IItem> {
+  getItem(id: string) {
 
-    // ToDo Interactive URL
-    // return this.http.get<ICategory[]>('https://webmppcapstone.blob.core.windows.net/data/itemsdata.json').pipe(
-    //   map(response => response.map((category: ICategory) => new Category().deserialize(category))));
+    return this.getItems().pipe(
+      // (+) before `id` turns the string into a number
+      map((categories: ICategory[]) =>
+        categories.forEach((category: ICategory) =>
+          category.subcategories.forEach((subcategory: ISubcategory) =>
+            subcategory.items.find((item: IItem) => item.name === id))
+      )));
 
-    this.getItems()
-    // resp is of type `HttpResponse<Config>`
-    .subscribe(resp => {
-      // access the body directly, which is typed as `Config`.
-      this.categories = resp;
-      const subcategoriesLoop: ISubcategory[] = [];
-      const itemsLoop: IItem[] = [];
 
-      this.categories.forEach(category => {
+    //   this.categories = resp;
+    //   const subcategoriesLoop: ISubcategory[] = [];
+    //   const itemsLoop: IItem[] = [];
 
-        category.subcategories.forEach(subcategory => {
+    //   this.categories.forEach(category => {
 
-          subcategoriesLoop.push(subcategory);
-          subcategory.items.forEach(item => {
+    //     category.subcategories.forEach(subcategory => {
 
-            itemsLoop.push(item);
-          });
-        });
-      });
-      this.subcategories = subcategoriesLoop;
-      this.items = itemsLoop;
-      return this.items.filter(item => item.name === id);
-    });
+    //       subcategoriesLoop.push(subcategory);
+    //       subcategory.items.forEach(item => {
 
-    // case else
-    return new Observable<Item>();
+    //         itemsLoop.push(item);
+    //       });
+    //     });
+    //   });
+    //   this.subcategories = subcategoriesLoop;
+    //   this.items = itemsLoop;
+    //   // return this.items.filter(item => item.name === id);
+    // });
+
+    //   // case else
+    //   return new Observable<Item>();
   }
 
 
