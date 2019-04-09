@@ -8,7 +8,9 @@
     </ol>
     <div class="carousel-inner">
       <div *ngFor="let item of featuringItems; index as i" class="carousel-item" [class.active]="i==0">
-        <img src="{{item.imagelink}}" class="d-block mx-auto img-fluid " alt="...">
+        <!-- ToDo imageLink-->
+        <!-- img src="{{item.imagelink}}" class="d-block mx-auto img-fluid " alt="..." -->
+        <img src="../../../assets/images/fallbackImage.png" class="d-block mx-auto img-fluid " alt="...">
       </div>
     </div>
     <a class="carousel-control-prev" href="#featuredProductsCarousel" role="button" data-slide="prev">

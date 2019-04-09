@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     }
   },
   {
-    path: 'product',
+    path: 'product/:id',
     component: ProductPageComponent,
     data: {
       title: 'Product Page'

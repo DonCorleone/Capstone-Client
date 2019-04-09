@@ -29,67 +29,23 @@
   <div class="row tempBorder">
 
     <div class="col-auto tempBorder p-0">
-      <div class="accordion" id="accordionExample">
-        <div class="card">
-          <div class="card-header" id="headingOne">
+      <div class="accordion" id="categoriesAccordion">
+        <div *ngFor="let category of categories; index as i" class="card">
+          <div class="card-header" [attr.id]="'heading' +i">
             <h2 class="mb-0">
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                aria-expanded="true" aria-controls="collapseOne">
-                Category 1
+              <button class="btn btn-link" type="button" data-toggle="collapse" [attr.data-target]="'#collapse' +i"
+                aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+                {{category.category}}
               </button>
             </h2>
           </div>
 
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div [attr.id]="'collapse' +i" class="collapse show" [attr.aria-labelledby]="'heading' +i"
+            data-parent="#categoriesAccordion">
             <div class="card-body p-0">
               <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h2 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                aria-expanded="false" aria-controls="collapseTwo">
-                Category 2
-              </button>
-            </h2>
-          </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div class="card-body p-0">
-              <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingThree">
-            <h2 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
-                aria-expanded="false" aria-controls="collapseThree">
-                Category 3
-              </button>
-            </h2>
-          </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-            <div class="card-body p-0">
-              <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li *ngFor="let subcategory of category.subcategories; index as j" class="list-group-item">
+                  {{subcategory.name}}</li>
               </ul>
             </div>
           </div>
@@ -99,11 +55,10 @@
     <div class="col tempBorder">
       <div class="row">
         <div class="card-columns">
-          <!--div class="ngLoop" *ngFor="let link of links; index as linkIndex;"-->
-          <div class="card">
+          <div *ngFor="let item of items; index as i" class="card">
             <div class="card-body">
-              <h4 class="card-title">xxx</h4>
-              <div class="card-text" [innerHTML]="yyy"></div>
+              <h4 class="card-title">{{item.name}}</h4>
+              <div class="card-text">{{item.description}}</div>
               <img class="card-img-bottom" src="../../../assets/images/fallbackImage.png" alt="product name"
                 *ngIf="!isImageLoading; else noImageFound">
               <ng-template #noImageFound>
@@ -111,63 +66,11 @@
               </ng-template>
             </div>
             <div class="card-footer">
-              <a href="http://xxx" target="_blank">ccc</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">xxx</h4>
-              <div class="card-text" [innerHTML]="yyy"></div>
-              <img class="card-img-bottom" src="../../../assets/images/fallbackImage.png" alt="product name"
-                *ngIf="!isImageLoading; else noImageFound">
-              <ng-template #noImageFound>
-                <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
-              </ng-template>
-            </div>
-            <div class="card-footer">
-              <a href="http://xxx" target="_blank">ccc</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">xxx</h4>
-              <div class="card-text" [innerHTML]="yyy"></div>
-              <img class="card-img-bottom" src="../../../assets/images/fallbackImage.png" alt="product name"
-                *ngIf="!isImageLoading; else noImageFound">
-              <ng-template #noImageFound>
-                <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
-              </ng-template>
-            </div>
-            <div class="card-footer">
-              <a href="http://xxx" target="_blank">ccc</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">xxx</h4>
-              <div class="card-text" [innerHTML]="yyy"></div>
-              <img class="card-img-bottom" src="../../../assets/images/fallbackImage.png" alt="product name"
-                *ngIf="!isImageLoading; else noImageFound">
-              <ng-template #noImageFound>
-                <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
-              </ng-template>
-            </div>
-            <div class="card-footer">
-              <a href="http://xxx" target="_blank">ccc</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">xxx</h4>
-              <div class="card-text" [innerHTML]="yyy"></div>
-              <img class="card-img-bottom" src="../../../assets/images/fallbackImage.png" alt="product name"
-                *ngIf="!isImageLoading; else noImageFound">
-              <ng-template #noImageFound>
-                <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
-              </ng-template>
-            </div>
-            <div class="card-footer">
-              <a href="http://xxx" target="_blank">ccc</a>
+              <button type="button" class="btn btn-outline-dark mb-5"
+                (click)="onSelect(item)" [class.selected]="item === selectedItem" routerLink="/product/{:Id}"
+                routerLinkActive>Shopping
+                <fa name="tag"></fa>
+              </button>
             </div>
           </div>
         </div>

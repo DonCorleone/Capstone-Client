@@ -13,37 +13,20 @@ export class ProductPageComponent implements OnInit {
 
   constructor(private itemsService: ItemsService) { }
 
-  categories: ICategory[] = [];
-  subcategories: ISubcategory[] = [];
-  items: IItem[] = [];
+  item: IItem;
+  errors: string;
 
   ngOnInit() {
-
-    this.loadItems();
+    this.errors = '';
+    this.loadItem();
   }
 
-  loadItems() {
+  loadItem() {
 
-    this.itemsService.getItems()
+    this.itemsService.getItem('xxx')
       .subscribe(resp => {
 
-        this.categories = resp;
-        const subcategoriesLoop: ISubcategory[] = [];
-        const itemsLoop: IItem[] = [];
-
-        this.categories.forEach(category => {
-
-          category.subcategories.forEach(subcategory => {
-
-            subcategoriesLoop.push(subcategory);
-            subcategory.items.forEach(item => {
-
-              itemsLoop.push(item);
-            });
-          });
-        });
-        this.subcategories = subcategoriesLoop;
-        this.items = itemsLoop;
+        this.item = resp;
       });
   }
 }
