@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Category, ICategory } from '../models/category';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -35,6 +35,21 @@ export class ItemsService {
       map(response => response.map((category: ICategory) => new Category().deserialize(category))));
   }
 
+  getItem2(id: string): Observable<IItem> {
+
+    return of(new Item({
+      name: 'Toilette Paper',
+      description: '6 2-Pack, Regular Roll Toilette Paper',
+      price: 7.25,
+      imagelink: 'https://webmppcapstone.blob.core.windows.net/house-royaltyfree/toiletpaper.png',
+      rating: '2',
+      stock: '0',
+      category: 'Household and Beauty',
+      subcategory: 'Household Supplies'
+    })).pipe();
+
+  }
+
   getItem(id: string) {
 
     return this.getItems().pipe(
@@ -43,7 +58,7 @@ export class ItemsService {
         categories.forEach((category: ICategory) =>
           category.subcategories.forEach((subcategory: ISubcategory) =>
             subcategory.items.find((item: IItem) => item.name === id))
-      )));
+        )));
 
 
     //   this.categories = resp;

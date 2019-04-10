@@ -22,6 +22,10 @@ export class Item implements IItem, Deserializable<Item> {
   category: string;
   subcategory: string;
 
+  public constructor(init?: Partial<Item>) {
+    Object.assign(this, init);
+  }
+
   deserialize(input: any): this {
     Object.assign(this, input);
     return this;

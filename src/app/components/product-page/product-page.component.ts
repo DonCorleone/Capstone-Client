@@ -25,12 +25,13 @@ export class ProductPageComponent implements OnInit {
   ngOnInit() {
     this.errors = '';
 
-    // this.route.paramMap.pipe(
-    //   switchMap((params: ParamMap) => {
-    this.item$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getItem(params.get('id')))
-    );
+
+    this.item$ = this.service.getItem2('id');
+
+    // this.item$ = this.route.paramMap.pipe(
+    //   switchMap((params: ParamMap) =>
+    //     this.service.getItem(params.get('id')))
+    // );
   }
 
   // private getTheShit() {
