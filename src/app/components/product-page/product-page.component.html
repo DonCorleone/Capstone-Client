@@ -33,8 +33,21 @@
                   </div>
             </div>
         </div>
-        <div class="card-footer text-muted">
+        <div class="card-footer text-muted bg-dark">
           {{item.rating}}
+          <ul class="list-inline">
+
+              <li class="list-inline-item" *ngIf="item.rating > 0"><fa name="star" inverse = "true"></fa></li>
+              <li class="list-inline-item" *ngIf="item.rating < 1"><fa name="star"></fa></li>
+              <li class="list-inline-item" *ngIf="item.rating > 1"><fa name="star" inverse = "true"></fa></li>
+              <li class="list-inline-item" *ngIf="item.rating < 2"><fa name="star"></fa></li>
+              <li class="list-inline-item" *ngIf="item.rating > 2"><fa name="star" inverse = "true"></fa></li>
+              <li class="list-inline-item" *ngIf="item.rating < 3"><fa name="star"></fa></li>
+              <li class="list-inline-item" *ngIf="item.rating > 3"><fa name="star" inverse = "true"></fa></li>
+              <li class="list-inline-item" *ngIf="item.rating < 4"><fa name="star"></fa></li>
+              <li class="list-inline-item" *ngIf="item.rating > 4"><fa name="star" inverse = "true"></fa></li>
+              <li class="list-inline-item" *ngIf="item.rating < 5"><fa name="star"></fa></li>
+          </ul>
         </div>
       </div>
     </div>

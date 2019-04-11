@@ -18,7 +18,7 @@ export class ProductPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private service: ItemsService
   ) { }
 
-  item$: any;
+  item$: Observable<IItem>;
   errors: string;
   itemId$: string;
 
@@ -26,12 +26,12 @@ export class ProductPageComponent implements OnInit {
     this.errors = '';
 
 
-    this.item$ = this.service.getItem2('id');
+    // this.item$ = this.service.getItem('id');
 
-    // this.item$ = this.route.paramMap.pipe(
-    //   switchMap((params: ParamMap) =>
-    //     this.service.getItem(params.get('id')))
-    // );
+    this.item$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.service.getItemMock(params.get('id')))
+    );
   }
 
   // private getTheShit() {

@@ -40,6 +40,7 @@ Terminal 1: `ng build --watch`
 Terminal 2: `lite-server --baseDir="dist"`
 
 #### Debug
+
 Using Angular in Visual Studio Code [code.visualstudio.com](https://code.visualstudio.com/docs/nodejs/angular-tutorial)
 
 Microsoft/vscode-recipes [GitHub](https://github.com/Microsoft/vscode-recipes/tree/master/Angular-CLI)
@@ -65,6 +66,7 @@ Azure App Service Deploy task [docs.microsoft.com](https://docs.microsoft.com/en
 Publish Build Artifacts task [docs.microsoft.com](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/publish-build-artifacts?view=azure-devops)
 
 ### Tools
+
 JSON > TypeScript Interface Generator [json2ts](http://json2ts.com/)
 
 ### Bugfixes
