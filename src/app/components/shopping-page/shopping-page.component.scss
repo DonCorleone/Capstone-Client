@@ -21,7 +21,25 @@
 }
 
 .list-group-item:hover {
-  background-color: rgb(116, 114, 114);
+  background-color: lightsalmon;
     cursor: pointer;
 }
+.list-group-item.active {
+  background-color: salmon;
+}
 
+.card-header{
+  background-color: goldenrod
+}
+
+.card-header.collapsed:hover{
+  background-color: darkgoldenrod;
+  cursor: pointer;
+}
+.card-header.collapsed{
+  background-color: lightgoldenrodyellow;
+  cursor: pointer;
+}
+.card.shadow.hover{
+  box-shadow: 0.5rem
+}

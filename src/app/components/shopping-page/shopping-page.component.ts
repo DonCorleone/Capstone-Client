@@ -10,10 +10,14 @@ import { IItem } from 'src/app/models/item';
   styleUrls: ['./shopping-page.component.scss']
 })
 export class ShoppingPageComponent implements OnInit {
+
   categories: ICategory[];
   subcategories: ISubcategory[];
-  items: IItem[];
+  filteredItems: IItem[];
   itemsStock: IItem[];
+
+  selectedCategory: ICategory;
+  selectedSubcategory: ISubcategory;
   selectedItem: IItem;
 
   constructor(private itemsService: ItemsService) { }
@@ -28,32 +32,50 @@ export class ShoppingPageComponent implements OnInit {
     this.itemsService.getItems()
       .subscribe(resp => {
 
-        this.categories = resp;
         const subcategoriesLoop: ISubcategory[] = [];
-
-
         const itemsLoop: IItem[] = [];
-        this.categories.forEach(category => {
 
+        resp.forEach(category => {
           category.subcategories.forEach(subcategory => {
-
+            // grab each categories' subcategories
             subcategoriesLoop.push(subcategory);
             subcategory.items.forEach(item => {
-              // Fill Items of first Subcategory
+              // grab items of each subcategory
               itemsLoop.push(item);
             });
           });
         });
+
+        // save member
+        this.categories = resp;
         this.subcategories = subcategoriesLoop;
         this.itemsStock = itemsLoop;
-        // Show first subcategories Items
-        const filteredItems: IItem[] = [];
-        this.items = itemsLoop.filter(itemInStock => itemInStock.subcategory.toLowerCase() === subcategoriesLoop[0].name.toLowerCase());
+
+        this.selectedCategory = resp[0];
+
+        // Show first categories Items
+        this.filteredItems = itemsLoop.filter(itemInStock =>
+          itemInStock.category.toLowerCase() === resp[0].category.toLowerCase());
       });
   }
 
-  onClickSubcategory(subcategoryName: string) {
+  onClickCategory(category: ICategory) {
+    this.selectedCategory = category;
+    this.selectedSubcategory = null;
+    this.selectedItem = null;
 
-    this.items = this.itemsStock.filter(itemInStock => itemInStock.subcategory.toLowerCase() === subcategoryName.toLowerCase());
+    const categoryName = category !== null ? category.category.toLowerCase : '';
+    this.filteredItems = this.itemsStock.filter(itemInStock =>
+      itemInStock.category.toLowerCase() === categoryName);
+  }
+
+  onClickSubcategory(subcategory: ISubcategory) {
+
+    this.selectedSubcategory = subcategory;
+    this.selectedItem = null;
+
+    const subcategoryName = subcategory != null ? subcategory.name.toLowerCase() : '';
+    this.filteredItems = this.itemsStock.filter(itemInStock =>
+      itemInStock.subcategory.toLowerCase() === subcategoryName);
   }
 }

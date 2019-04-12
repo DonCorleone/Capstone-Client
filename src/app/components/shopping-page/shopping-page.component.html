@@ -26,54 +26,66 @@
   </div>
 
 
+  <!-- Row -->
   <div class="row tempBorder">
+    <!-- Column -->
+    <div class="col-auto tempBorder py-0">
 
-    <div class="col-auto tempBorder p-0">
+      <!-- Accordion -->
       <div class="accordion" id="categoriesAccordion">
+
+        <!-- Loop through Categories -->
         <div *ngFor="let category of categories; index as i">
           <div class="card rounded-0">
-            <a class="card-header" [attr.id]="'heading' +i" data-toggle="collapse" role="button"
-              [attr.data-target]="'#collapse' +i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+
+            <!-- Category Header -->
+            <a class="card-header" [attr.id]="'heading' +i" data-toggle="collapse" role="button" [class.collapsed] = "i>0"
+              [attr.data-target]="'#collapse' +i" aria-expanded="true" [attr.aria-controls]="'collapse'+i"
+              (click)="onClickCategory(category)">
               {{category.category}}
-          </a>
+            </a>
           </div>
-        <div [attr.id]="'collapse' +i" class="collapse" [class.show]="i==0" [attr.aria-labelledby]="'heading' +i"
-          data-parent="#categoriesAccordion">
-          <div class="card-body p-0">
+
+          <!-- Category Body -->
+          <div [attr.id]="'collapse' +i" class="collapse" [class.show]="i==0" [attr.aria-labelledby]="'heading' +i"
+            data-parent="#categoriesAccordion">
+            <div class="card-body p-0">
               <div class="list-group list-group-flush" id="subcategories" role="tablist">
-              <a *ngFor="let subcategory of category.subcategories; index as j" class="list-group-item list-group-item-action " [class.active]="j==0"
-                 [attr.id]="'listItem' +j" data-toggle="list"
+
+                <!-- Loop through Subcategories -->
+                <a *ngFor="let subcategory of category.subcategories; index as j"
+                  class="list-group-item list-group-item-action " [attr.id]="'listItem' +j" data-toggle="list"
                   [attr.data-target]="'#active' +j" aria-expanded="true" [attr.aria-controls]="'active'+j"
-                  (click)="onClickSubcategory(subcategory.name)">
+                  (click)="onClickSubcategory(subcategory)">
                   {{subcategory.name}}
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col tempBorder">
+      <div class="row">
+        <div class="card-columns">
+          <div *ngFor="let item of filteredItems; index as i" class="card shadow">
+            <div class="card-body">
+              <h4 class="card-title">{{item.name}}</h4>
+              <div class="card-text">{{item.description}}</div>
+              <img class="card-img-bottom img-thumbnail" src={{item.imagelink}} alt="product name"
+                *ngIf="!isImageLoading; else noImageFound">
+              <ng-template #noImageFound>
+                <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
+              </ng-template>
+            </div>
+            <div class="card-footer">
+              <button type="button" class="btn btn-outline-dark" [class.selected]="item === selectedItem"
+                [routerLink]="['/product', item.name]" routerLinkActive>Details <fa name="tag"></fa>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col tempBorder">
-    <div class="row">
-      <div class="card-columns">
-        <div *ngFor="let item of items; index as i" class="card">
-          <div class="card-body">
-            <h4 class="card-title">{{item.name}}</h4>
-            <div class="card-text">{{item.description}}</div>
-            <img class="card-img-bottom img-thumbnail" src={{item.imagelink}} alt="product name"
-              *ngIf="!isImageLoading; else noImageFound">
-            <ng-template #noImageFound>
-              <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
-            </ng-template>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-outline-dark mb-5" [class.selected]="item === selectedItem"
-              [routerLink]="['/product', item.name]" routerLinkActive>Details <fa name="tag"></fa>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
