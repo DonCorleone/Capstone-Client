@@ -13,6 +13,7 @@ export class ShoppingPageComponent implements OnInit {
   categories: ICategory[];
   subcategories: ISubcategory[];
   items: IItem[];
+  itemsStock: IItem[];
   selectedItem: IItem;
 
   constructor(private itemsService: ItemsService) { }
@@ -29,21 +30,30 @@ export class ShoppingPageComponent implements OnInit {
 
         this.categories = resp;
         const subcategoriesLoop: ISubcategory[] = [];
-        const itemsLoop: IItem[] = [];
 
+
+        const itemsLoop: IItem[] = [];
         this.categories.forEach(category => {
 
           category.subcategories.forEach(subcategory => {
 
             subcategoriesLoop.push(subcategory);
             subcategory.items.forEach(item => {
-
+              // Fill Items of first Subcategory
               itemsLoop.push(item);
             });
           });
         });
         this.subcategories = subcategoriesLoop;
-        this.items = itemsLoop;
+        this.itemsStock = itemsLoop;
+        // Show first subcategories Items
+        const filteredItems: IItem[] = [];
+        this.items = itemsLoop.filter(itemInStock => itemInStock.subcategory.toLowerCase() === subcategoriesLoop[0].name.toLowerCase());
       });
+  }
+
+  onClickSubcategory(subcategoryName: string) {
+
+    this.items = this.itemsStock.filter(itemInStock => itemInStock.subcategory.toLowerCase() === subcategoryName.toLowerCase());
   }
 }
