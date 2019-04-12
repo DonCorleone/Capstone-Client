@@ -2,13 +2,13 @@
 
   <div class="row tempBorder">
     <div class="col-auto">
-      Category 1
+      {{selectedCategory ? selectedCategory.category : '' }} {{selectedSubcategory && selectedCategory ? ' : ' : ''}} {{selectedSubcategory ? selectedSubcategory.name : ''}}
     </div>
     <div class="col">
 
     </div>
     <div class="col-auto">
-      <div class="dropdown">Cat1
+      <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Dropdown button
@@ -72,11 +72,12 @@
             <div class="card-body">
               <h4 class="card-title">{{item.name}}</h4>
               <div class="card-text">{{item.description}}</div>
-              <img class="card-img-bottom img-thumbnail" src={{item.imagelink}} alt="product name"
-                *ngIf="!isImageLoading; else noImageFound">
-              <ng-template #noImageFound>
-                <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
-              </ng-template>
+              <a class="nav-link" [routerLink]="['/product', item.name]">
+                  <img *ngIf="!isImageLoading; else noImageFound" class="card-img-bottom img-thumbnail" src={{item.imagelink}} alt="product name">
+                  <ng-template #noImageFound>
+                    <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
+                  </ng-template>
+                </a>
             </div>
             <div class="card-footer">
               <button type="button" class="btn btn-outline-dark" [class.selected]="item === selectedItem"
