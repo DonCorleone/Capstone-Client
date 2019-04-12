@@ -5,7 +5,7 @@ import { ISubcategory, Subcategory } from 'src/app/models/subcategory';
 import { IItem, Item } from 'src/app/models/item';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, observable, of } from 'rxjs';
 import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
@@ -21,31 +21,28 @@ export class ProductPageComponent implements OnInit {
   item$: Observable<IItem>;
   errors: string;
   itemId$: string;
+  items: IItem[] = [];
+  itemName = '';
 
   ngOnInit() {
     this.errors = '';
 
-
-    // this.item$ = this.service.getItem('id');
-
-    this.item$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.itemsService.getItemMock(params.get('id')))
+    this.route.paramMap.subscribe(
+      params =>
+        this.loadItems(params.get('id'))
     );
-
-    this.loadItems();
   }
 
-  loadItems() {
+  loadItems(id: string) {
 
     this.itemsService.getItems()
       .subscribe(resp => {
 
-        this.categories = resp;
+        //  this.categories = resp;
         const subcategoriesLoop: Subcategory[] = [];
         const itemsLoop: Item[] = [];
 
-        this.categories.forEach(category => {
+        resp.forEach(category => {
 
           category.subcategories.forEach(subcategory => {
 
@@ -56,9 +53,9 @@ export class ProductPageComponent implements OnInit {
             });
           });
         });
-        this.subcategories = subcategoriesLoop;
+        //  this.subcategories = subcategoriesLoop;
         this.items = itemsLoop;
-        this.pickFeaturedItems();
+        return this.pickItem(id);
         // const fg: FeaturingItems[] = [];
         // const itemsFeatured = this.items.filter(isFeatured);
         // for (let ix = 0; ix < itemsFeatured.length;) {
@@ -74,23 +71,15 @@ export class ProductPageComponent implements OnInit {
         // this.featuringItemGroup = fg;
       });
   }
-  pickFeaturedItems() {
-    this.featuringItems = this.items.filter(isFeatured);
-    const fg: FeaturingItems[] = [];
-    const itemsFeatured = this.items.filter(isFeatured);
-    for (let ix = 0; ix < itemsFeatured.length;) {
-      const amountInGroup = 3; // ToDo = random(1,4);
-      const featuringItems = new FeaturingItems();
-      for (let ixInner = 0; ixInner < amountInGroup; ixInner++) {
-
-        featuringItems.items.push(itemsFeatured[ix]);
-        ix++;
-      }
-      fg.push(featuringItems);
-    }
-    this.featuringItemGroup = fg;
+  pickItem(id: string) {
+    // this.featuringItems = this.items.filter(isFeatured);
+    //  const fg: FeaturingItems[] = [];
+    const stringArray: string[] = [];
+    stringArray.push(id);
+    const itemsFeatured = this.items.filter(item => item.name === id);
+    this.item$ = of(itemsFeatured.length > 0 ? itemsFeatured[0] : null);
   }
 }
-function isFeatured(filterItems, index, array) {
-  return (filterItems !== null && (parseInt(filterItems.rating, 10) > 4));
+function isFeatured(filterItems, args) {
+  return (filterItems !== null && filterItems.name === this.itemName);
 }

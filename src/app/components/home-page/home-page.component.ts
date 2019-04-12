@@ -67,16 +67,15 @@ export class HomePageComponent implements OnInit {
   pickFeaturedItems() {
     this.featuringItems = this.items.filter(isFeatured);
     const fg: FeaturingItems[] = [];
-    const itemsFeatured = this.items.filter(isFeatured);
-    for (let ix = 0; ix < itemsFeatured.length;) {
+    for (let ix = 0; ix < this.featuringItems.length;) {
       const amountInGroup = 3; // ToDo = random(1,4);
-      const featuringItems = new FeaturingItems();
+      const featuringItemsNew = new FeaturingItems();
       for (let ixInner = 0; ixInner < amountInGroup; ixInner++) {
 
-        featuringItems.items.push(itemsFeatured[ix]);
+        featuringItemsNew.items.push(this.featuringItems[ix]);
         ix++;
       }
-      fg.push(featuringItems);
+      fg.push(featuringItemsNew);
     }
     this.featuringItemGroup = fg;
   }
