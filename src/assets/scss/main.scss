@@ -7,6 +7,7 @@
 // Custom.scss
 // Option B: Include parts of Bootstrap
 
+$enable-gradients: true;
 // Required
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
@@ -19,4 +20,3 @@
 @import "node_modules/bootstrap/scss/code";
 @import "node_modules/bootstrap/scss/grid";
 
-$enable-gradients: true;

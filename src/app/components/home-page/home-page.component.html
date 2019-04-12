@@ -11,7 +11,7 @@
           <div class="card-columns">
             <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card">
               <a class="nav-link" [routerLink]="['/product', item.name]">
-                <img class="card-img-top" src="{{item.imagelink}}" alt="Image of">
+                <img class="card-img-top img-thumbnail" src="{{item.imagelink}}" alt="Image of">
                 <ng-template #noImageFound>
                   <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
 

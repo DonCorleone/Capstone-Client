@@ -49,19 +49,6 @@ export class HomePageComponent implements OnInit {
         this.subcategories = subcategoriesLoop;
         this.items = itemsLoop;
         this.pickFeaturedItems();
-        // const fg: FeaturingItems[] = [];
-        // const itemsFeatured = this.items.filter(isFeatured);
-        // for (let ix = 0; ix < itemsFeatured.length;) {
-        //   const amountInGroup = 3; // ToDo = random(1,4);
-        //   const featuringItems = new FeaturingItems();
-        //   for (let ixInner = 0; ixInner < amountInGroup; ixInner++) {
-
-        //     featuringItems.items.push(itemsFeatured[ix]);
-        //     ix++;
-        //   }
-        //   fg.push(featuringItems);
-        // }
-        // this.featuringItemGroup = fg;
       });
   }
   pickFeaturedItems() {

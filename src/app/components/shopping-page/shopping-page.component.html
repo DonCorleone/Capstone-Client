@@ -40,11 +40,12 @@
             </h2>
           </div>
 
-          <div [attr.id]="'collapse' +i" class="collapse show" [attr.aria-labelledby]="'heading' +i"
+          <div [attr.id]="'collapse' +i" class="collapse" [class.show]="i==0" [attr.aria-labelledby]="'heading' +i"
             data-parent="#categoriesAccordion">
             <div class="card-body p-0">
               <ul class="list-group">
-                <li *ngFor="let subcategory of category.subcategories; index as j" class="list-group-item">
+                <li *ngFor="let subcategory of category.subcategories; index as j" class="list-group-item"
+                  [class.bg-secondary]="i==0">
                   {{subcategory.name}}</li>
               </ul>
             </div>
@@ -59,16 +60,15 @@
             <div class="card-body">
               <h4 class="card-title">{{item.name}}</h4>
               <div class="card-text">{{item.description}}</div>
-              <img class="card-img-bottom" src={{item.imagelink}} alt="product name"
+              <img class="card-img-bottom img-thumbnail" src={{item.imagelink}} alt="product name"
                 *ngIf="!isImageLoading; else noImageFound">
               <ng-template #noImageFound>
                 <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
               </ng-template>
             </div>
             <div class="card-footer">
-              <button type="button" class="btn btn-outline-dark mb-5"
-                [class.selected]="item === selectedItem" [routerLink]="['/product', item.name]"
-                routerLinkActive>Shopping
+              <button type="button" class="btn btn-outline-dark mb-5" [class.selected]="item === selectedItem"
+                [routerLink]="['/product', item.name]" routerLinkActive>Shopping
                 <fa name="tag"></fa>
               </button>
             </div>
