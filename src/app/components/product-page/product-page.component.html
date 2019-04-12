@@ -15,7 +15,7 @@
           <p class="card-text">{{item.description}}</p>
           <p>price: {{item.price}}</p>
           <p>stock: {{item.stock}}</p>
-          <form #stockForm="ngForm">
+          <form (ngSubmit)="onSubmit()" #stockForm="ngForm">
 
             <div class="input-group mb-3" id="plusMinus">
 
