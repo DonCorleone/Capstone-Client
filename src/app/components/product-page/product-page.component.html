@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row" *ngIf="item$ | async as item">
     <div class="col-sm-6 col-md tempBorder">
-      <img src="{{item.imagelink}}"  class="img-fluid" alt="Responsive image">
+      <img src="{{item.imagelink}}" class="img-fluid" alt="Responsive image">
       <!-- img src="../../../assets/images/fallbackImage.png" class="img-fluid" alt="Responsive image" -->
     </div>
     <div class="col-sm-6 col-md-auto tempBorder">
@@ -15,38 +15,65 @@
           <p class="card-text">{{item.description}}</p>
           <p>price: {{item.price}}</p>
           <p>stock: {{item.stock}}</p>
-          <div class="input-group mb-3" id="plusMinus">
+          <form #stockForm="ngForm">
+
+            <div class="input-group mb-3" id="plusMinus">
 
               <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon1">
-                    <fa name="plus"></fa>
+                <button class="btn btn-outline-secondary" type="button" id="btnPlus" (click)="onIncrementAmount()">
+                  <fa name="plus"></fa>
                 </button>
               </div>
-               <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                    <fa name="minus"></fa>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="btnMinus" (click)="onDecrementAmount()">
+                  <fa name="minus"></fa>
+                </button>
+              </div>
+              <input id="amount"
+                [(ngModel)]="stockManipulator.amount" name="amount" class="form-control"  type="text" placeholder="0"
+                aria-label="Example text with button addon" aria-describedby="btnAdd">
+              <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-primary" [disabled]="!stockForm.form.valid" Submitid="btnAdd">Add To Cart <fa name="cart-plus"></fa>
                   </button>
-                </div>
-                <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="button" id="button-addon2">Add To Cart <fa name="cart-plus"></fa></button>
-                  </div>
+              </div>
             </div>
+          </form>
+
         </div>
         <div class="card-footer bg-secondary text-white">
           <p>Rating</p>
           <ul class="list-inline">
 
-              <li class="list-inline-item" *ngIf="item.rating > 0"><fa name="star" inverse = "true"></fa></li>
-              <li class="list-inline-item" *ngIf="item.rating < 1"><fa name="star"></fa></li>
-              <li class="list-inline-item" *ngIf="item.rating > 1"><fa name="star" inverse = "true"></fa></li>
-              <li class="list-inline-item" *ngIf="item.rating < 2"><fa name="star"></fa></li>
-              <li class="list-inline-item" *ngIf="item.rating > 2"><fa name="star" inverse = "true"></fa></li>
-              <li class="list-inline-item" *ngIf="item.rating < 3"><fa name="star"></fa></li>
-              <li class="list-inline-item" *ngIf="item.rating > 3"><fa name="star" inverse = "true"></fa></li>
-              <li class="list-inline-item" *ngIf="item.rating < 4"><fa name="star"></fa></li>
-              <li class="list-inline-item" *ngIf="item.rating > 4"><fa name="star" inverse = "true"></fa></li>
-              <li class="list-inline-item" *ngIf="item.rating < 5"><fa name="star"></fa></li>
+            <li class="list-inline-item" *ngIf="item.rating > 0">
+              <fa name="star" inverse="true"></fa>
+            </li>
+            <li class="list-inline-item" *ngIf="item.rating < 1">
+              <fa name="star"></fa>
+            </li>
+            <li class="list-inline-item" *ngIf="item.rating > 1">
+              <fa name="star" inverse="true"></fa>
+            </li>
+            <li class="list-inline-item" *ngIf="item.rating < 2">
+              <fa name="star"></fa>
+            </li>
+            <li class="list-inline-item" *ngIf="item.rating > 2">
+              <fa name="star" inverse="true"></fa>
+            </li>
+            <li class="list-inline-item" *ngIf="item.rating < 3">
+              <fa name="star"></fa>
+            </li>
+            <li class="list-inline-item" *ngIf="item.rating > 3">
+              <fa name="star" inverse="true"></fa>
+            </li>
+            <li class="list-inline-item" *ngIf="item.rating < 4">
+              <fa name="star"></fa>
+            </li>
+            <li class="list-inline-item" *ngIf="item.rating > 4">
+              <fa name="star" inverse="true"></fa>
+            </li>
+            <li class="list-inline-item" *ngIf="item.rating < 5">
+              <fa name="star"></fa>
+            </li>
           </ul>
         </div>
       </div>

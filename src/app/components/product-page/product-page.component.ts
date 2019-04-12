@@ -4,6 +4,7 @@ import { IItem, Item } from 'src/app/models/item';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Subcategory } from 'src/app/models/subcategory';
+import { StockManipulator } from 'src/app/models/stockManipulator';
 
 @Component({
   selector: 'app-product-page',
@@ -19,17 +20,24 @@ export class ProductPageComponent implements OnInit {
   errors: string;
   itemId$: string;
   items: IItem[] = [];
+  stockManipulator = new StockManipulator(1);
+
+  submitted = false;
 
   ngOnInit() {
     this.errors = '';
 
     this.route.paramMap.subscribe(
       params =>
-        this.loadItems(params.get('id'))
+        this.loadItem(params.get('id'))
     );
   }
 
-  loadItems(id: string) {
+  onSubmit() { this.submitted = true; }
+  onDecrementAmount() { this.stockManipulator.amount --; }
+  onIncrementAmount() { this.stockManipulator.amount ++; }
+
+  loadItem(id: string) {
 
     this.itemsService.getItems()
       .subscribe(resp => {
