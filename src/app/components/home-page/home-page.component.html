@@ -1,14 +1,25 @@
 <div class=" p-2">
   <div id="featuredProductsCarousel" class="carousel slide carousel-fade d-inline-block" data-ride="carousel">
     <ol class="carousel-indicators">
-      <li *ngFor="let item of featuringItems; index as i" data-target="#featuredProductsCarousel"
-        [attr.data-slide-to]="i"
-        [class.active]="i==0">
+      <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#featuredProductsCarousel"
+        [attr.data-slide-to]="i" [class.active]="i==0">
       </li>
     </ol>
     <div class="carousel-inner">
-      <div *ngFor="let item of featuringItems; index as i" class="carousel-item" [class.active]="i==0">
-        <img src="{{item.imagelink}}" class="d-block mx-auto img-fluid " alt="...">
+      <div *ngFor="let featuringItems of featuringItemGroup; index as j" class="carousel-item" [class.active]="j==0">
+        <div class="row">
+          <div class="card-columns">
+            <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card">
+              <a class="nav-link" [routerLink]="['/product', item.name]">
+                <img class="card-img-top" src="{{item.imagelink}}" alt="Image of">
+                <ng-template #noImageFound>
+                  <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
+
+                </ng-template>
+              </a>
+            </div>
+          </div>
+        </div>
         <!--img src="../../../assets/images/fallbackImage.png" class="d-block mx-auto img-fluid " alt="..."-->
       </div>
     </div>
@@ -21,7 +32,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <button type="button" class="btn btn-outline-dark mb-5" routerLink="/shopping" routerLinkActive>Shopping
+  <button type="button" class="btn btn-outline-dark mb-5" routerLink="/shopping" routerLinkActive>Shop All
     <fa name="tag"></fa>
   </button>
 </div>

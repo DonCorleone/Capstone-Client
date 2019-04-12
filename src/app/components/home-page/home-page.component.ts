@@ -3,6 +3,8 @@ import { ItemsService } from 'src/app/services/items.service';
 import { Subcategory, ISubcategory } from 'src/app/models/subcategory';
 import { Item, IItem } from 'src/app/models/item';
 import { ICategory } from 'src/app/models/category';
+import { IFeaturingItems, FeaturingItems } from 'src/app/models/featuringitem';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -17,6 +19,7 @@ export class HomePageComponent implements OnInit {
   subcategories: ISubcategory[] = [];
   items: IItem[] = [];
   featuringItems: IItem[] = [];
+  featuringItemGroup: FeaturingItems[];
 
   ngOnInit() {
 
@@ -46,11 +49,36 @@ export class HomePageComponent implements OnInit {
         this.subcategories = subcategoriesLoop;
         this.items = itemsLoop;
         this.pickFeaturedItems();
+        // const fg: FeaturingItems[] = [];
+        // const itemsFeatured = this.items.filter(isFeatured);
+        // for (let ix = 0; ix < itemsFeatured.length;) {
+        //   const amountInGroup = 3; // ToDo = random(1,4);
+        //   const featuringItems = new FeaturingItems();
+        //   for (let ixInner = 0; ixInner < amountInGroup; ixInner++) {
+
+        //     featuringItems.items.push(itemsFeatured[ix]);
+        //     ix++;
+        //   }
+        //   fg.push(featuringItems);
+        // }
+        // this.featuringItemGroup = fg;
       });
   }
-
   pickFeaturedItems() {
     this.featuringItems = this.items.filter(isFeatured);
+    const fg: FeaturingItems[] = [];
+    const itemsFeatured = this.items.filter(isFeatured);
+    for (let ix = 0; ix < itemsFeatured.length;) {
+      const amountInGroup = 3; // ToDo = random(1,4);
+      const featuringItems = new FeaturingItems();
+      for (let ixInner = 0; ixInner < amountInGroup; ixInner++) {
+
+        featuringItems.items.push(itemsFeatured[ix]);
+        ix++;
+      }
+      fg.push(featuringItems);
+    }
+    this.featuringItemGroup = fg;
   }
 }
 function isFeatured(filterItems, index, array) {
