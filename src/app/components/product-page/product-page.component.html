@@ -50,7 +50,7 @@
           <p>price: {{item.price}}</p>
           <p>stock: {{item.stock}}</p>
 
-          <form (ngSubmit)="onSubmit()" #stockForm="ngForm">
+          <form (ngSubmit)="onSubmit(item)" #stockForm="ngForm">
 
             <div class="input-group mb-3" id="plusMinus">
 

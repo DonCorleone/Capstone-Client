@@ -22,30 +22,34 @@ export class ProductPageComponent implements OnInit {
 
    }
 
-
-
   item$: Observable<IItem>;
   errors: string;
   itemId$: string;
   items: IItem[] = [];
   stockManipulator = this.cartService.stockManipulator;
+  cart = this.cartService.cart;
 
   submitted = false;
 
   ngOnInit() {
     this.errors = '';
-
+    this.stockManipulator.amount = 1;
     this.route.paramMap.subscribe(
       params =>
         this.loadItem(params.get('id'))
     );
   }
 
-  onSubmit() {
+  onSubmit(item: IItem) {
     this.submitted = true;
-    this.router.navigate(['/cart']);
+    if (this.stockManipulator) {
+      for (let ix = 0; ix < this.stockManipulator.amount; ix++) {
+        this.cart.push(item);
+      }
+    }
   }
-  onDecrementAmount() { this.stockManipulator.amount--; }
+  onDecrementAmount() {
+    this.stockManipulator.amount--; }
   onIncrementAmount() { this.stockManipulator.amount++; }
 
   loadItem(id: string) {

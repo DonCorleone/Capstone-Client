@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StockManipulator } from '../models/stockManipulator';
+import { IItem } from '../models/item';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,14 @@ export class CartService {
     this._stockManipulator = value;
   }
 
+  // tslint:disable-next-line:variable-name
+  private _cart: IItem [] = [];
+  public get cart(): IItem[] {
+    return this._cart;
+  }
+
+  public set cart(cart: IItem[]) {
+    this._cart = cart;
+  }
   constructor() { }
 }
