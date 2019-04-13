@@ -9,8 +9,10 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartPageComponent implements OnInit {
 
   constructor(private cartService: CartService) {
-    this.cartService.stockManipulator.amount ++;
+
   }
+
+  cart = this.cartService.cart;
 
   ngOnInit() {
   }

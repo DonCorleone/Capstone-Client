@@ -27,7 +27,6 @@ export class ProductPageComponent implements OnInit {
   itemId$: string;
   items: IItem[] = [];
   stockManipulator = this.cartService.stockManipulator;
-  cart = this.cartService.cart;
 
   submitted = false;
 
@@ -42,10 +41,13 @@ export class ProductPageComponent implements OnInit {
 
   onSubmit(item: IItem) {
     this.submitted = true;
+
+    // Anything chosen?
     if (this.stockManipulator) {
-      for (let ix = 0; ix < this.stockManipulator.amount; ix++) {
-        this.cart.push(item);
-      }
+    //  for (let ix = 0; ix < this.stockManipulator.amount; ix++) {
+
+        this.cartService.createOrUpdateCartItem(item, this.stockManipulator.amount);
+    //  }
     }
   }
   onDecrementAmount() {
