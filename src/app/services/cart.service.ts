@@ -8,7 +8,7 @@ export class CartService {
 
 
   // tslint:disable-next-line:variable-name
-  private _stockManipulator: StockManipulator = new StockManipulator(77);
+  private _stockManipulator: StockManipulator = new StockManipulator(1);
   public get stockManipulator(): StockManipulator {
     return this._stockManipulator;
   }

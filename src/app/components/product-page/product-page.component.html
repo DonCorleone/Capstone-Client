@@ -6,41 +6,8 @@
     </div>
     <div class="col-sm-6 col-md-auto tempBorder">
       <div class="card text-center">
-        <div class="card-header">
+        <div class="card-header  bg-secondary text-white">
           <h3 class="card-title">{{item.name}}</h3>
-        </div>
-        <div class="card-body">
-          <h5>category: {{item.category}}</h5>
-          <h6>subcategory: {{item.subcategory}}</h6>
-          <p class="card-text">{{item.description}}</p>
-          <p>price: {{item.price}}</p>
-          <p>stock: {{item.stock}}</p>
-          <form (ngSubmit)="onSubmit()" #stockForm="ngForm">
-
-            <div class="input-group mb-3" id="plusMinus">
-
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary" type="button" id="btnPlus" (click)="onIncrementAmount()">
-                  <fa name="plus"></fa>
-                </button>
-              </div>
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="btnMinus" (click)="onDecrementAmount()">
-                  <fa name="minus"></fa>
-                </button>
-              </div>
-              <input id="amount"
-                [(ngModel)]="stockManipulator.amount" name="amount" class="form-control"  type="text" placeholder="0"
-                aria-label="Example text with button addon" aria-describedby="btnAdd">
-              <div class="input-group-append">
-                  <button type="submit" class="btn btn-outline-primary" [disabled]="!stockForm.form.valid" Submitid="btnAdd">Add To Cart <fa name="cart-plus"></fa>
-                  </button>
-              </div>
-            </div>
-          </form>
-
-        </div>
-        <div class="card-footer bg-secondary text-white">
           <p>Rating</p>
           <ul class="list-inline">
 
@@ -75,6 +42,50 @@
               <fa name="star"></fa>
             </li>
           </ul>
+        </div>
+        <div class="card-body">
+          <h5>category: {{item.category}}</h5>
+          <h6>subcategory: {{item.subcategory}}</h6>
+          <p class="card-text">{{item.description}}</p>
+          <p>price: {{item.price}}</p>
+          <p>stock: {{item.stock}}</p>
+
+          <form (ngSubmit)="onSubmit()" #stockForm="ngForm">
+
+            <div class="input-group mb-3" id="plusMinus">
+
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button" id="btnPlus" (click)="onIncrementAmount()">
+                  <fa name="plus"></fa>
+                </button>
+              </div>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="btnMinus" (click)="onDecrementAmount()">
+                  <fa name="minus"></fa>
+                </button>
+              </div>
+              <input id="amount"
+                [(ngModel)]="stockManipulator.amount" name="amount" class="form-control"  type="text" placeholder="0"
+                aria-label="Example text with button addon" aria-describedby="btnAdd">
+              <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-primary" [disabled]="!stockForm.form.valid" Submitid="btnAdd">Add To Cart <fa name="cart-plus"></fa>
+                  </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+        <div class="card-footer bg-secondary text-white">
+          <div class="container">
+            <div class="row">
+              <div class="col-auto mr-auto my-1">
+                <a name="btnShopping" id="btnShopping" class="btn btn-outline-light" [routerLink]='["/shopping"]' role="button">Continue Shopping</a>
+              </div>
+              <div class="col-auto my-1">
+                <a name="btnCart" id="btnCart" class="btn btn-outline-light" [routerLink]='["/cart"]' role="button">Go to Cart</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
