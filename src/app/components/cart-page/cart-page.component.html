@@ -5,34 +5,20 @@
         <table class="table table-striped table-hover thead-light">
           <thead>
             <tr>
-              <th scope="col">Item</th>
-              <th scope="col">Detail</th>
+              <th scope="col">Name</th>
+              <th class="d-none d-md-table-cell" scope="col">Detail</th>
               <th scope="col">Price</th>
               <th scope="col">Qty</th>
               <th scope="col">Total</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-              <td>@mdo</td>
+            <tr *ngFor="let cartItem of cart; index as i">
+              <td>{{cartItem.name}}</td>
+              <td class="d-none d-md-table-cell">{{cartItem.description}}</td>
+              <td>{{cartItem.price}}</td>
+              <td>{{cartItem.amount}}</td>
+              <td>{{cartItem.total}}</td>
             </tr>
           </tbody>
         </table>
