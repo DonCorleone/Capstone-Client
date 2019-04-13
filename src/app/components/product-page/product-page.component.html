@@ -47,7 +47,7 @@
           <h5>category: {{item.category}}</h5>
           <h6>subcategory: {{item.subcategory}}</h6>
           <p class="card-text">{{item.description}}</p>
-          <p>price: {{item.price}}</p>
+          <p>price: {{item.price | currency}}</p>
           <p>stock: {{item.stock}}</p>
 
           <form (ngSubmit)="onSubmit(item)" #stockForm="ngForm">
@@ -79,10 +79,10 @@
           <div class="container">
             <div class="row">
               <div class="col-auto mr-auto my-1">
-                <a name="btnShopping" id="btnShopping" class="btn btn-outline-light" [routerLink]='["/shopping"]' role="button">Continue Shopping</a>
+                <a name="btnShopping" id="btnShopping" class="btn btn-outline-light" [routerLink]='["/shopping"]' role="button">Continue Shopping <fa name="tag"></fa></a>
               </div>
               <div class="col-auto my-1">
-                <a name="btnCart" id="btnCart" class="btn btn-outline-light" [routerLink]='["/cart"]' role="button">Go to Cart</a>
+                <a name="btnCart" id="btnCart" class="btn btn-outline-light" [routerLink]='["/cart"]' role="button">Go to Cart <fa name="shopping-cart"></fa></a>
               </div>
             </div>
           </div>

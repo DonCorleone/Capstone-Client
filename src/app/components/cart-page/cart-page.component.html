@@ -10,44 +10,69 @@
               <th scope="col">Price</th>
               <th scope="col">Qty</th>
               <th scope="col">Total</th>
+              <th scope="col">Qty</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let cartItem of cart; index as i">
               <td>{{cartItem.name}}</td>
               <td class="d-none d-md-table-cell">{{cartItem.description}}</td>
-              <td>{{cartItem.price}}</td>
+              <td>{{cartItem.price | currency}}</td>
               <td>{{cartItem.amount}}</td>
-              <td>{{cartItem.total}}</td>
+              <td>{{cartItem.total | currency}}</td>
+              <td><button type="button" class="btn btn-secondary btn-sm" (click)="onIncrementAmount(cartItem)">
+                  <fa name="plus"></fa>
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm mx-1" (click)="onDecrementAmount(cartItem)">
+                  <fa name="minus"></fa>
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" (click)="onRemoveEntry(cartItem)">
+                  <fa name="trash"></fa>
+                </button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-      <div class="col-sm-5 col-md-auto tempBorder">
-        <table class="table">
-          <thead>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Subtotal</th>
-              <td>0.00</td>
-            </tr>
-            <tr>
-              <th scope="row">Shipping</th>
-              <td>2.00</td>
-            </tr>
-            <tr>
-              <th scope="row">Tax</th>
-              <td>3.00</td>
-            </tr>
-            <tr>
-              <th scope="row">Total</th>
-              <td>5.00</td>
-            </tr>
-          </tbody>
-        </table>
-        <button type="button" class="btn btn-outline-dark mb-5" routerLink="/#" routerLinkActive>Checkout<fa name="tag"></fa></button>
+    <div class="col-sm-5 col-md-auto tempBorder">
+      <button type="button" class="btn btn-outline-dark mb-5" (click)="onRecalculate()">Recalculate <fa
+          name="calculator"></fa></button>
+      <table class="table">
+        <thead>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Subtotal</th>
+            <td>{{subTotal | currency}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Shipping</th>
+            <td>{{shipping | currency}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Tax ({{taxRate}}%)</th>
+            <td>{{tax | currency}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Total</th>
+            <td>{{cartTotal | currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="container">
+        <div class="row">
+          <div class="col-auto">
+            <a name="btnShopping" id="btnShopping" class="btn btn-outline-dark" [routerLink]='["/shopping"]'
+              role="button">Continue Shopping <fa name="tag"></fa></a>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-auto my-2">
+            <a name="btnCart" id="btnCart" class="btn btn-outline-dark" [routerLink]='["/#"]'
+              role="button">Checkout <fa name="credit-card"></fa></a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
