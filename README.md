@@ -8,7 +8,7 @@
 
 ### Client Status
 
-[![Build Status](https://vitocorleone77.visualstudio.com/Capstone_Client/_apis/build/status/Capstone_Client-CI?branchName=master)](https://vitocorleone77.visualstudio.com/Capstone_Client/_build/latest?definitionId=7&branchName=master)
+[![Build Status](https://dev.azure.com/linuswieland/capstone-client-lwieland/_apis/build/status/DonCorleone.Capstone-Client?branchName=master)](https://dev.azure.com/linuswieland/capstone-client-lwieland/_build/latest?definitionId=3&branchName=master)
 
 ## Hosting
 
