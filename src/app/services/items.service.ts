@@ -19,7 +19,7 @@ export class ItemsService implements OnInit {
   subcategories: ISubcategory[] = [];
   featuringItems: IItem[] = [];
 
-  configUrl = 'assets/itemsdata.json';
+  configUrl = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
 
   ngOnInit(): void {
     const x = 'ngOnInit';
