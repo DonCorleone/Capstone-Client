@@ -51,7 +51,6 @@ export class CartService {
   }
 
   public decrementAmount(cartItem: ICartItem) {
-    // const tempItem = this._cart.find(entry => entry.name === cartItem.name);
     if (cartItem.amount === 1) {
       this.removeEntry(cartItem);
     } else {
@@ -60,13 +59,11 @@ export class CartService {
     }
   }
   public incrementAmount(cartItem: ICartItem) {
-    // const tempItem = this._cart.find(entry => entry.name === cartItem.name);
     cartItem.amount ++;
     cartItem.total += cartItem.price;
   }
 
   public removeEntry(cartItem: ICartItem) {
-   // const tempItem = this._cart.find(entry => entry.name === cartItem.name);
    const index = this._cart.indexOf(cartItem, 0);
    if (index > -1) {
     this._cart.splice(index, 1);

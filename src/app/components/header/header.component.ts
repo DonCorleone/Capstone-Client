@@ -9,7 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class HeaderComponent implements OnInit {
 
   constructor(private cartService: CartService) { }
-
+  isExpanded: boolean;
   cart = this.cartService.cart;
 
   ngOnInit() {
