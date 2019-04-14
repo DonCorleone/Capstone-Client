@@ -14,7 +14,7 @@
 
 ### Client Hosting
 
-[Azure](https://capstone-client.azurewebsites.net/)
+[Azure](http://capstone-client-lwieland.azurewebsites.net)
 
 ## Links
 
