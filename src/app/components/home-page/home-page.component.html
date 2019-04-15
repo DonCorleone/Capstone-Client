@@ -11,17 +11,12 @@
           <div class="card-columns">
             <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card">
               <a class="nav-link" [routerLink]="['/product', item ? item.name : '']">
-                <img class="card-img-top img-thumbnail" src="{{item ? item.imagelink : ''}}" alt="Image of">
-                <ng-template #noImageFound>
-                  <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
-
-                </ng-template>
+                <img class="card-img-top img-thumbnail" src="{{item ? item.imagelink : ''}}" appImgFallback alt="{{item ? item.name : 'Product-Product'}}">
               </a>
             </div>
           </div>
         </div>
-        <!--img src="../../../assets/images/fallbackImage.png" class="d-block mx-auto img-fluid " alt="..."-->
-      </div>
+     </div>
     </div>
     <a class="carousel-control-prev" href="#featuredProductsCarousel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>

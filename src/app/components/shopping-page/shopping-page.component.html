@@ -73,10 +73,7 @@
               <h4 class="card-title">{{item.name}}</h4>
               <div class="card-text">{{item.description}}</div>
               <a class="nav-link" [routerLink]="['/product', item.name]">
-                  <img *ngIf="!isImageLoading; else noImageFound" class="card-img-bottom img-thumbnail" src={{item.imagelink}} alt="product name">
-                  <ng-template #noImageFound>
-                    <img src="../../../assets/images/fallbackImage.png" alt="Fallbackimage">
-                  </ng-template>
+                  <img class="card-img-bottom img-thumbnail" src={{item.imagelink}} appImgFallback alt="{{item ? item.name : 'Product-Image'}}">
                 </a>
             </div>
             <div class="card-footer">

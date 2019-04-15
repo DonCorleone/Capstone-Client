@@ -1,8 +1,7 @@
 <div class="container-fluid">
   <div class="row" *ngIf="item$ | async as item">
     <div class="col-sm-6 col-md tempBorder">
-      <img src="{{item.imagelink}}" class="img-fluid" alt="Responsive image">
-      <!-- img src="../../../assets/images/fallbackImage.png" class="img-fluid" alt="Responsive image" -->
+      <img src="{{item.imagelink}}" class="img-fluid" alt="Responsive image" appImgFallback alt="{{item ? item.name : 'Product-Product'}}">
     </div>
     <div class="col-sm-6 col-md-auto tempBorder">
       <div class="card text-center">

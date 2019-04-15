@@ -15,6 +15,7 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { AboutUsPageComponent } from './components/about-us-page/about-us-page.component';
 import { ContactUsPageComponent } from './components/contact-us-page/contact-us-page.component';
+import { ImgFallbackDirective } from './directives/img-fallback.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ContactUsPageComponent } from './components/contact-us-page/contact-us-
     CartPageComponent,
     ProductPageComponent,
     AboutUsPageComponent,
-    ContactUsPageComponent
+    ContactUsPageComponent,
+    ImgFallbackDirective
   ],
   imports: [
     BrowserModule,
