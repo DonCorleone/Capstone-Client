@@ -64,7 +64,7 @@ export class ShoppingPageComponent implements OnInit {
     this.selectedSubcategory = null;
     this.selectedItem = null;
 
-    const categoryName = category !== null ? category.category.toLowerCase : '';
+    const categoryName = category !== null ? category.category.toLowerCase() : '';
     this.filteredItems = this.itemsStock.filter(itemInStock =>
       itemInStock.category.toLowerCase() === categoryName);
   }
