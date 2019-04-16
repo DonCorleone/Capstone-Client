@@ -2,23 +2,20 @@
 
   <div class="row tempBorder">
     <div class="col-auto">
-      {{selectedCategory ? selectedCategory.category : '' }} {{selectedSubcategory && selectedCategory ? ' : ' : ''}} {{selectedSubcategory ? selectedSubcategory.name : ''}}
+      {{selectedCategory ? selectedCategory.category : '' }} {{selectedSubcategory && selectedCategory ? ' : ' : ''}}
+      {{selectedSubcategory ? selectedSubcategory.name : ''}}
     </div>
     <div class="col">
 
     </div>
     <div class="col-auto">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
+      <span>Sort By </span>
+      <select class="btn btn-secondary dropdown-toggle" (change)="setOrderBy($event.target.value)">
+        <option value="0">--All--</option>
+        <option *ngFor="let entry of oderByItems" value={{entry}}>
+          {{entry}}
+        </option>
+      </select>
     </div>
     <div class="col">
 
@@ -39,7 +36,7 @@
           <div class="card rounded-0">
 
             <!-- Category Header -->
-            <a class="card-header" [attr.id]="'heading' +i" data-toggle="collapse" role="button" [class.collapsed] = "i>0"
+            <a class="card-header" [attr.id]="'heading' +i" data-toggle="collapse" role="button" [class.collapsed]="i>0"
               [attr.data-target]="'#collapse' +i" aria-expanded="true" [attr.aria-controls]="'collapse'+i"
               (click)="onClickCategory(category)">
               {{category.category}}
@@ -71,19 +68,19 @@
           <div *ngFor="let item of filteredItems; index as i" class="card shadow">
             <div class="card-body">
               <h4 class="card-title">{{item.name}}</h4>
-              <div class="card-text">{{item.description}}</div>
+              <div class="card-text">{{item.price | currency}}</div>
               <a class="nav-link" [routerLink]="['/product', item.name]">
-                  <img class="card-img-bottom img-thumbnail" src={{item.imagelink}} appImgFallback alt="{{item ? item.name : 'Product-Image'}}">
-                </a>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-outline-dark" [class.selected]="item === selectedItem"
-                [routerLink]="['/product', item.name]" routerLinkActive>Details <fa name="info-circle"></fa>
-              </button>
+                <img class="card-img-bottom img-thumbnail" src={{item.imagelink}} appImgFallback
+                  alt="{{item ? item.name : 'Product-Image'}}">
+              </a>
+              <div class="card-footer">
+                <button type="button" class="btn btn-outline-dark" [class.selected]="item === selectedItem"
+                  [routerLink]="['/product', item.name]" routerLinkActive>Details <fa name="info-circle"></fa>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>

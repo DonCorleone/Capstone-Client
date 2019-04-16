@@ -20,14 +20,52 @@ export class ShoppingPageComponent implements OnInit {
   selectedSubcategory: ISubcategory;
   selectedItem: IItem;
 
+  oderByItems: string[] = [];
+  orderBy: string;
+
   constructor(private itemsService: ItemsService) { }
 
   ngOnInit() {
 
     this.loadItems();
+    this.oderByItems = ['Alphabetical', 'Price', 'Rating'];
   }
 
   loadItems() {
+
+    if (this.selectedSubcategory != null) {
+      const subcategoryName = this.selectedSubcategory.name.toLowerCase();
+      this.filteredItems = this.itemsStock
+        .filter(itemInStock =>
+          itemInStock.subcategory.toLowerCase() === subcategoryName)
+        .sort((n1, n2) => {
+          if (n1[this.orderBy] > n2[this.orderBy]) {
+              return 1;
+          }
+          if (n1[this.orderBy] < n2[this.orderBy]) {
+              return -1;
+          }
+          return 0;
+      });
+      return;
+    }
+
+    if (this.selectedCategory != null) {
+      const categoryName = this.selectedCategory.category.toLowerCase();
+      this.filteredItems = this.itemsStock
+        .filter(itemInStock =>
+          itemInStock.category.toLowerCase() === categoryName)
+        .sort((n1, n2) => {
+          if (n1[this.orderBy] > n2[this.orderBy]) {
+              return 1;
+          }
+          if (n1[this.orderBy] < n2[this.orderBy]) {
+              return -1;
+          }
+          return 0;
+      });
+      return;
+    }
 
     this.itemsService.getItems()
       .subscribe(resp => {
@@ -54,9 +92,21 @@ export class ShoppingPageComponent implements OnInit {
         this.selectedCategory = resp[0];
 
         // Show first categories Items
-        this.filteredItems = itemsLoop.filter(itemInStock =>
-          itemInStock.category.toLowerCase() === resp[0].category.toLowerCase());
-      });
+        this.filteredItems = itemsLoop
+          .filter(itemInStock =>
+            itemInStock.category.toLowerCase() === resp[0].category.toLowerCase())
+          .sort((n1, n2) => {
+
+            if (n1[this.orderBy] > n2[this.orderBy]) {
+                return 1;
+            }
+            if (n1[this.orderBy] < n2[this.orderBy]) {
+                return -1;
+            }
+            return 0;
+          });
+        }
+      );
   }
 
   onClickCategory(category: ICategory) {
@@ -64,9 +114,7 @@ export class ShoppingPageComponent implements OnInit {
     this.selectedSubcategory = null;
     this.selectedItem = null;
 
-    const categoryName = category !== null ? category.category.toLowerCase() : '';
-    this.filteredItems = this.itemsStock.filter(itemInStock =>
-      itemInStock.category.toLowerCase() === categoryName);
+    this.loadItems();
   }
 
   onClickSubcategory(subcategory: ISubcategory) {
@@ -74,8 +122,11 @@ export class ShoppingPageComponent implements OnInit {
     this.selectedSubcategory = subcategory;
     this.selectedItem = null;
 
-    const subcategoryName = subcategory != null ? subcategory.name.toLowerCase() : '';
-    this.filteredItems = this.itemsStock.filter(itemInStock =>
-      itemInStock.subcategory.toLowerCase() === subcategoryName);
+    this.loadItems();
+  }
+
+  setOrderBy(orderBy: string) {
+    this.orderBy = orderBy === 'Alphabetical' ? 'name' : orderBy.toLowerCase();
+    this.loadItems();
   }
 }
