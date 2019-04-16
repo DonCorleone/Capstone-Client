@@ -22,22 +22,25 @@ export class ShoppingPageComponent implements OnInit {
 
   oderByItems: string[] = [];
   orderBy: string;
+  stockOnly = false;
 
   constructor(private itemsService: ItemsService) { }
 
   ngOnInit() {
 
-    this.loadItems();
+    this.LoadOrFilterItems();
     this.oderByItems = ['Alphabetical', 'Price', 'Rating'];
   }
 
-  loadItems() {
+  LoadOrFilterItems() {
 
     if (this.selectedSubcategory != null) {
       const subcategoryName = this.selectedSubcategory.name.toLowerCase();
       this.filteredItems = this.itemsStock
         .filter(itemInStock =>
           itemInStock.subcategory.toLowerCase() === subcategoryName)
+        .filter(itemInStock2 =>
+          (this.stockOnly && itemInStock2.stock !== '0') || !this.stockOnly)
         .sort((n1, n2) => {
           if (n1[this.orderBy] > n2[this.orderBy]) {
               return 1;
@@ -114,7 +117,7 @@ export class ShoppingPageComponent implements OnInit {
     this.selectedSubcategory = null;
     this.selectedItem = null;
 
-    this.loadItems();
+    this.LoadOrFilterItems();
   }
 
   onClickSubcategory(subcategory: ISubcategory) {
@@ -122,11 +125,16 @@ export class ShoppingPageComponent implements OnInit {
     this.selectedSubcategory = subcategory;
     this.selectedItem = null;
 
-    this.loadItems();
+    this.LoadOrFilterItems();
   }
 
   setOrderBy(orderBy: string) {
     this.orderBy = orderBy === 'Alphabetical' ? 'name' : orderBy.toLowerCase();
-    this.loadItems();
+    this.LoadOrFilterItems();
+  }
+
+  changeStockOnly() {
+    this.stockOnly = !this.stockOnly;
+    this.LoadOrFilterItems();
   }
 }

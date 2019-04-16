@@ -53,6 +53,8 @@ Angular and Bootstrap [medium.com/codingthesmartway-com-blog/](https://medium.co
 
 Angular Routing [Angular.io](https://angular.io/guide/router)
 
+Dropdown [talkingdotnet.com](https://www.talkingdotnet.com/bind-select-dropdown-list-in-angular-4-and-5/)
+
 ### Deployment
 
 Deploy a web app [docs.microsoft.com](https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/javascript?view=azure-devops&tabs=yaml)
