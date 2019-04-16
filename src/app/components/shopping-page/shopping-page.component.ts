@@ -14,6 +14,7 @@ export class ShoppingPageComponent implements OnInit {
   categories: ICategory[];
   subcategories: ISubcategory[];
   filteredItems: IItem[];
+  itemsInCategory: IItem[];
   itemsStock: IItem[];
 
   selectedCategory: ICategory;

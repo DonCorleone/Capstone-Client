@@ -12,5 +12,5 @@ $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
 .appComponent {
     text-align: center;
-    background-color: $gray-300;
+   /* background-color: $gray-300; */
 }
