@@ -33,6 +33,11 @@
             <label class="custom-control-label" for="rubric17">In Stock Only</label>
           </div>
     </div>
+    <div class="col">
+        <div>
+          Showing {{filteredItems? filteredItems.length : 0}} of {{itemsInCategory? itemsInCategory.length : 0}} Items
+        </div>
+    </div>
   </div>
 
 
@@ -49,7 +54,7 @@
           <div class="card rounded-0">
 
             <!-- Category Header -->
-            <a class="card-header" [attr.id]="'heading' +i" data-toggle="collapse" role="button" [class.collapsed]="i>0"
+            <a class="card-header collapsed" [attr.id]="'heading' +i" data-toggle="collapse" role="button"
               [attr.data-target]="'#collapse' +i" aria-expanded="true" [attr.aria-controls]="'collapse'+i"
               (click)="onClickCategory(category)">
               {{category.category}}
@@ -57,7 +62,7 @@
           </div>
 
           <!-- Category Body -->
-          <div [attr.id]="'collapse' +i" class="collapse" [class.show]="i==0" [attr.aria-labelledby]="'heading' +i"
+          <div [attr.id]="'collapse' +i" class="collapse" [attr.aria-labelledby]="'heading' +i"
             data-parent="#categoriesAccordion">
             <div class="card-body p-0">
               <div class="list-group list-group-flush" id="subcategories" role="tablist">

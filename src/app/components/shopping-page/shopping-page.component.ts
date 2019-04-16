@@ -37,37 +37,44 @@ export class ShoppingPageComponent implements OnInit {
 
     if (this.selectedSubcategory != null) {
       const subcategoryName = this.selectedSubcategory.name.toLowerCase();
-      this.filteredItems = this.itemsStock
+      this.itemsInCategory = this.itemsStock
         .filter(itemInStock =>
           itemInStock.subcategory.toLowerCase() === subcategoryName)
-        .filter(itemInStock2 =>
-          (this.stockOnly && itemInStock2.stock !== '0') || !this.stockOnly)
         .sort((n1, n2) => {
           if (n1[this.orderBy] > n2[this.orderBy]) {
-              return 1;
+            return 1;
           }
           if (n1[this.orderBy] < n2[this.orderBy]) {
-              return -1;
+            return -1;
           }
           return 0;
-      });
+        });
+
+      this.filteredItems = this.itemsInCategory
+        .filter(itemInStock2 =>
+          (this.stockOnly && itemInStock2.stock !== '0') || !this.stockOnly);
+      // exit function
       return;
     }
 
     if (this.selectedCategory != null) {
       const categoryName = this.selectedCategory.category.toLowerCase();
-      this.filteredItems = this.itemsStock
+      this.itemsInCategory = this.itemsStock
         .filter(itemInStock =>
           itemInStock.category.toLowerCase() === categoryName)
         .sort((n1, n2) => {
           if (n1[this.orderBy] > n2[this.orderBy]) {
-              return 1;
+            return 1;
           }
           if (n1[this.orderBy] < n2[this.orderBy]) {
-              return -1;
+            return -1;
           }
           return 0;
-      });
+        });
+      this.filteredItems = this.itemsInCategory
+        .filter(itemInStock2 =>
+          (this.stockOnly && itemInStock2.stock !== '0') || !this.stockOnly);
+      // exit function
       return;
     }
 
@@ -93,24 +100,33 @@ export class ShoppingPageComponent implements OnInit {
         this.subcategories = subcategoriesLoop;
         this.itemsStock = itemsLoop;
 
-        this.selectedCategory = resp[0];
+        // Selecting first Category as initial value
+       // this.selectedCategory = resp[0];
 
         // Show first categories Items
-        this.filteredItems = itemsLoop
-          .filter(itemInStock =>
-            itemInStock.category.toLowerCase() === resp[0].category.toLowerCase())
-          .sort((n1, n2) => {
+        this.itemsInCategory = itemsLoop
+          // .filter(itemInStock =>
+          //   itemInStock.category.toLowerCase() === resp[0].category.toLowerCase())
+          // .sort((n1, n2) => {
 
-            if (n1[this.orderBy] > n2[this.orderBy]) {
-                return 1;
-            }
-            if (n1[this.orderBy] < n2[this.orderBy]) {
-                return -1;
-            }
-            return 0;
-          });
-        }
+          //   if (n1[this.orderBy] > n2[this.orderBy]) {
+          //       return 1;
+          //   }
+          //   if (n1[this.orderBy] < n2[this.orderBy]) {
+          //       return -1;
+          //   }
+          //   return 0;
+          // })
+          ;
+
+      }
+        //   this.filteredItems = this.itemsInCategory
+        //   .filter(itemInStock2 =>
+        //     (this.stockOnly && itemInStock2.stock !== '0') || !this.stockOnly);
+        // // exit function
+        // return;
       );
+
   }
 
   onClickCategory(category: ICategory) {
