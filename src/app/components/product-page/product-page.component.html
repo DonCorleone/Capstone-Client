@@ -6,7 +6,7 @@
     </div>
     <div class="col-sm-6 col-md-auto tempBorder">
       <div class="card text-center shadow-lg">
-        <div class="card-header  bg-secondary text-white">
+        <div class="card-header bg-secondary text-white">
           <h3 id="rubric35" class="card-title">{{item.name}}</h3>
           <p>Rating</p>
           <ul id="rubric37" class="list-inline">
@@ -58,7 +58,7 @@
                 <label for="amount" id="rubric42" class="col-sm-2 col-form-label pr-2">Qty</label>
               </div>
               <input id="amount" [(ngModel)]="stockManipulator.amount" name="amount" class="form-control" type="number"
-                placeholder=0 aria-label="Example text with button addon" aria-describedby="btnAdd">
+                placeholder=0 aria-label="PlusMinus" aria-describedby="btnAdd">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button" id="btnPlus" (click)="onIncrementAmount()">
                       <fa name="plus"></fa>

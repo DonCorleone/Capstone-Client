@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { ICartItem } from 'src/app/models/cart-item';
+import { ShippingDetail, IShippingDetail } from 'src/app/models/shipping-detail';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-cart-page',
@@ -19,8 +21,17 @@ export class CartPageComponent implements OnInit {
   taxRate = this.cartService.taxRate;
   tax = this.cartService.tax;
   cartTotal = this.cartService.cartTotal;
+  shippingDetail: IShippingDetail = null;
+  submitted = false;
 
   ngOnInit() {
+    if (this.shippingDetail == null) {
+       this.shippingDetail = new ShippingDetail();
+    }
+  }
+
+  onSubmit() {
+    this.submitted = true;
   }
 
   onDecrementAmount(cartItem: ICartItem) {
