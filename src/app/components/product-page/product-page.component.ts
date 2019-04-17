@@ -4,8 +4,7 @@ import { IItem, Item } from 'src/app/models/item';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Subcategory } from 'src/app/models/subcategory';
-import { StockManipulator } from 'src/app/models/stockManipulator';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { Location } from '@angular/common';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -18,8 +17,8 @@ export class ProductPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, private router: Router,
-    private itemsService: ItemsService, private cartService: CartService) {
-
+    private itemsService: ItemsService, private cartService: CartService,
+    private location: Location) {
    }
 
   item$: Observable<IItem>;
@@ -77,6 +76,10 @@ export class ProductPageComponent implements OnInit {
       const itemsFeatured = this.items.filter(item => item.name === id);
       this.item$ = of(itemsFeatured.length > 0 ? itemsFeatured[0] : null);
     });
+  }
+
+  onBackClick() {
+    this.location.back(); // ToDo: Send Location
   }
 }
 
