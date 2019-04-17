@@ -3,6 +3,7 @@ import { ItemsService } from 'src/app/services/items.service';
 import { ICategory } from 'src/app/models/category';
 import { ISubcategory } from 'src/app/models/subcategory';
 import { IItem } from 'src/app/models/item';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-shopping-page',
@@ -25,7 +26,7 @@ export class ShoppingPageComponent implements OnInit {
   orderBy: string;
   stockOnly = false;
 
-  constructor(private itemsService: ItemsService) { }
+  constructor(private itemsService: ItemsService, private cartService: CartService) { }
 
   ngOnInit() {
 
@@ -153,5 +154,9 @@ export class ShoppingPageComponent implements OnInit {
   changeStockOnly() {
     this.stockOnly = !this.stockOnly;
     this.LoadOrFilterItems();
+  }
+
+  addToCart(item: IItem) {
+    this.cartService.createOrUpdateCartItem(item);
   }
 }

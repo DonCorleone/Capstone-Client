@@ -1,58 +1,13 @@
 <div class="container">
-
-
-  <div class="row tempBorder p-3">
-
-    <div class="align-items-end col-auto">
-      <div>
-          <h3>
-              {{selectedCategory ? selectedCategory.category : '' }} {{selectedSubcategory && selectedCategory ? ' :  ' : ''}}
-          </h3>
-          <h4>
-              {{selectedSubcategory ? selectedSubcategory.name : ''}}
-          </h4>
-      </div>
-
-    </div>
-    <div class="col">
-
-    </div>
-    <div class="col-auto">
-      <span>Sort By </span>
-      <select class="btn btn-secondary dropdown-toggle" (change)="setOrderBy($event.target.value)">
-        <option value="0">--None--</option>
-        <option *ngFor="let entry of oderByItems" value={{entry}}>
-          {{entry}}
-        </option>
-      </select>
-    </div>
-    <div class="col">
-        <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
-            (change)="changeStockOnly()"/>
-            <label class="custom-control-label" for="rubric17">In Stock Only</label>
-          </div>
-    </div>
-    <div class="col">
-        <div>
-          Showing {{filteredItems? filteredItems.length : 0}} of {{itemsInCategory? itemsInCategory.length : 0}} Items
-        </div>
-    </div>
-  </div>
-
-
-  <!-- Row -->
-  <div class="row tempBorder">
-    <!-- Column -->
-    <div class="col-auto tempBorder py-0">
-
-      <!-- Accordion -->
+  <!-- Row Shopping-->
+  <div class="row">
+    <!-- Column Categories-->
+    <div class="col-auto py-0">
+      <!-- Accordion Categories-->
       <div class="accordion" id="categoriesAccordion">
-
         <!-- Loop through Categories -->
-        <div *ngFor="let category of categories; index as i">
-          <div class="card rounded-0">
-
+        <div id="rubric19" *ngFor="let category of categories; index as i">
+          <div id="rubric25" class="card rounded-0">
             <!-- Category Header -->
             <a class="card-header collapsed" [attr.id]="'heading' +i" data-toggle="collapse" role="button"
               [attr.data-target]="'#collapse' +i" aria-expanded="true" [attr.aria-controls]="'collapse'+i"
@@ -60,12 +15,11 @@
               {{category.category}}
             </a>
           </div>
-
           <!-- Category Body -->
           <div [attr.id]="'collapse' +i" class="collapse" [attr.aria-labelledby]="'heading' +i"
             data-parent="#categoriesAccordion">
             <div class="card-body p-0">
-              <div class="list-group list-group-flush" id="subcategories" role="tablist">
+              <div class="list-group list-group-flush" id="rubric26" role="tablist">
 
                 <!-- Loop through Subcategories -->
                 <a *ngFor="let subcategory of category.subcategories; index as j"
@@ -80,20 +34,83 @@
         </div>
       </div>
     </div>
-    <div class="col tempBorder">
+    <!-- Column Controls Bar & Items-->
+    <div class="col">
+      <!-- Row Controls Bar-->
       <div class="row">
-        <div class="card-columns">
-          <div *ngFor="let item of filteredItems; index as i" class="card shadow">
+        <!-- Column Controls Bar-->
+        <div class="col">
+          <!-- Controls Bar-->
+          <div id="rubric14" class="card shadow-sm">
             <div class="card-body">
-              <h4 class="card-title">{{item.name}}</h4>
-              <div class="card-text">{{item.price | currency}}</div>
-              <a class="nav-link" [routerLink]="['/product', item.name]">
-                <img class="card-img-bottom img-thumbnail" src={{item.imagelink}} appImgFallback
+              <div class="row">
+                <div class="align-items-end col-auto">
+                  <div id="rubric15rubric26">
+                    <h3>
+                      {{selectedCategory ? selectedCategory.category : '' }}
+                      {{selectedSubcategory && selectedCategory ? ' :  ' : ''}}
+                    </h3>
+                    <h4>
+                      {{selectedSubcategory ? selectedSubcategory.name : ''}}
+                    </h4>
+                  </div>
+
+                </div>
+                <div class="col">
+
+                </div>
+                <div class="col-auto">
+                  <span id="rubric18">Sort By </span>
+                  <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle" (change)="setOrderBy($event.target.value)">
+                    <option value="0">--None--</option>
+                    <option *ngFor="let entry of oderByItems" value={{entry}}>
+                      {{entry}}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-auto">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
+                      (change)="changeStockOnly()" />
+                    <label id="rubric17" class="custom-control-label" for="rubric17">In Stock Only</label>
+                  </div>
+                </div>
+                <!-- <div class="col">
+
+                        </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Row Header -->
+      <div class="row">
+        <!-- Column Header -->
+        <div class="col">
+          <div id="rubric16rubric28">
+            Showing {{filteredItems? filteredItems.length : 0}} of {{itemsInCategory? itemsInCategory.length : 0}}
+            Items
+          </div>
+        </div>
+      </div>
+      <!-- Row Items -->
+      <div class="row">
+        <!-- Column Items -->
+        <div class="card-columns">
+          <div id="rubric20" *ngFor="let item of filteredItems; index as i" class="card shadow">
+            <div class="card-body">
+
+              <a class="" [routerLink]="['/product', item.name]">
+                <h4 id="rubric21rubric32" class="card-title">{{item.name}}</h4>
+                <img id="rubric23" class="card-img-bottom img-thumbnail" src={{item.imagelink}} appImgFallback
                   alt="{{item ? item.name : 'Product-Image'}}">
               </a>
+
+              <div id="rubric22" class="card-text">{{item.price | currency}}</div>
               <div class="card-footer">
-                <button type="button" class="btn btn-outline-dark" [class.selected]="item === selectedItem"
-                  [routerLink]="['/product', item.name]" routerLinkActive>Details <fa name="info-circle"></fa>
+                <button id="rubric24rubric30" class="btn btn-outline-dark" type="button"
+                  [class.selected]="item === selectedItem" (click)="addToCart(item)">Add
+                  <fa name="cart-plus"></fa>
                 </button>
               </div>
             </div>
@@ -101,4 +118,6 @@
         </div>
       </div>
     </div>
+
   </div>
+</div>

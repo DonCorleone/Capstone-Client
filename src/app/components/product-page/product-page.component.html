@@ -1,14 +1,15 @@
 <div class="container-fluid">
   <div class="row" *ngIf="item$ | async as item">
     <div class="col-sm-6 col-md tempBorder">
-      <img src="{{item.imagelink}}" class="img-fluid" alt="Responsive image" appImgFallback alt="{{item ? item.name : 'Product-Product'}}">
+      <img id="rubric36" src="{{item.imagelink}}" class="img-fluid" alt="Responsive image" appImgFallback
+        alt="{{item ? item.name : 'Product-Product'}}">
     </div>
     <div class="col-sm-6 col-md-auto tempBorder">
       <div class="card text-center shadow-lg">
         <div class="card-header  bg-secondary text-white">
-          <h3 class="card-title">{{item.name}}</h3>
+          <h3 id="rubric35" class="card-title">{{item.name}}</h3>
           <p>Rating</p>
-          <ul class="list-inline">
+          <ul id="rubric37" class="list-inline">
 
             <li class="list-inline-item" *ngIf="item.rating > 0">
               <fa name="star" inverse="true"></fa>
@@ -45,30 +46,33 @@
         <div class="card-body">
           <h5>category: {{item.category}}</h5>
           <h6>subcategory: {{item.subcategory}}</h6>
-          <p class="card-text">{{item.description}}</p>
-          <p>price: {{item.price | currency}}</p>
-          <p>stock: {{item.stock}}</p>
+          <p id="rubric40" class="card-text">{{item.description}}</p>
+          <p id="rubric39">price: {{item.price | currency}}</p>
+          <p id="rubric38">stock: {{item.stock}}</p>
 
-          <form (ngSubmit)="onSubmit(item)" #stockForm="ngForm">
+          <form class="form-inline" (ngSubmit)="onSubmit(item)" #stockForm="ngForm">
 
             <div class="input-group mb-3" id="plusMinus">
 
               <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary" type="button" id="btnPlus" (click)="onIncrementAmount()">
-                  <fa name="plus"></fa>
-                </button>
+                <label for="amount" id="rubric42" class="col-sm-2 col-form-label pr-2">Qty</label>
               </div>
+              <input id="amount" [(ngModel)]="stockManipulator.amount" name="amount" class="form-control" type="number"
+                placeholder=0 aria-label="Example text with button addon" aria-describedby="btnAdd">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="btnPlus" (click)="onIncrementAmount()">
+                      <fa name="plus"></fa>
+                    </button>
+                  </div>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="btnMinus" (click)="onDecrementAmount()">
+                      <fa name="minus"></fa>
+                    </button>
+                  </div>
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="btnMinus" (click)="onDecrementAmount()">
-                  <fa name="minus"></fa>
+                <button id="rubric41" type="submit" class="btn btn-outline-primary" [disabled]="!stockForm.form.valid"
+                  Submitid="btnAdd">Add To Cart <fa name="cart-plus"></fa>
                 </button>
-              </div>
-              <input id="amount"
-                [(ngModel)]="stockManipulator.amount" name="amount" class="form-control" type="number" placeholder=0
-                aria-label="Example text with button addon" aria-describedby="btnAdd">
-              <div class="input-group-append">
-                  <button type="submit" class="btn btn-outline-primary" [disabled]="!stockForm.form.valid" Submitid="btnAdd">Add To Cart <fa name="cart-plus"></fa>
-                  </button>
               </div>
             </div>
           </form>
@@ -78,10 +82,12 @@
           <div class="container">
             <div class="row">
               <div class="col-auto mr-auto my-1">
-                <a name="btnShopping" id="btnShopping" class="btn btn-outline-light" [routerLink]='["/shopping"]' role="button">Continue Shopping <fa name="tag"></fa></a>
+                <a id="rubric43" class="btn btn-outline-light" [routerLink]='["/shopping"]'
+                  role="button">Back <fa name="tag"></fa></a>
               </div>
               <div class="col-auto my-1">
-                <a name="btnCart" id="btnCart" class="btn btn-outline-light" [routerLink]='["/cart"]' role="button">Go to Cart <fa name="shopping-cart"></fa></a>
+                <a name="btnCart" id="btnCart" class="btn btn-outline-light" [routerLink]='["/cart"]' role="button">Go
+                  to Cart <fa name="shopping-cart"></fa></a>
               </div>
             </div>
           </div>

@@ -19,7 +19,9 @@ export class ItemsService implements OnInit {
   subcategories: ISubcategory[] = [];
   featuringItems: IItem[] = [];
 
-  configUrl = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json'; // '../assets/itemsdata.json';
+  configUrl = '../assets/itemsdata.json';
+
+  // '../assets/itemsdata.json';
 
    // 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
 
