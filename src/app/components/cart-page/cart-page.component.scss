@@ -5,3 +5,15 @@ form {
 .alertLeftAligned{
   text-align: left;
 }
+
+.alertFormValidation{
+  height: 0,5rem;;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 0.25rem solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 0.25rem solid #a94442; /* red */
+}

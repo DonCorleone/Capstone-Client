@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { ICartItem } from 'src/app/models/cart-item';
 import { ShippingDetail, IShippingDetail } from 'src/app/models/shipping-detail';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -30,29 +31,36 @@ export class CartPageComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    this.submitted = true;
+  onSubmit(shippingForm: IShippingDetail) {
 
+    if  (shippingForm.FirstName === undefined) { // (!isValid) {
+      return; // Validation gets handled in Form
+    } else {
 
-    // tslint:disable:space-before-function-paren
-    // tslint:disable-next-line:only-arrow-functions
-    $(function () {
+      this.submitted = true;
 
+      // tslint:disable:space-before-function-paren
       // tslint:disable-next-line:only-arrow-functions
-      $('#checkoutAlert').removeAttr('hidden');
-    });
+      $(function () {
 
+        // tslint:disable-next-line:only-arrow-functions
+        $('#checkoutAlert').removeAttr('hidden');
+      });
+    }
   }
 
   onDecrementAmount(cartItem: ICartItem) {
     this.cartService.decrementAmount(cartItem);
+    this.onRecalculate();
   }
   onIncrementAmount(cartItem: ICartItem) {
     this.cartService.incrementAmount(cartItem);
+    this.onRecalculate();
   }
 
   onRemoveEntry(cartItem: ICartItem) {
     this.cartService.removeEntry(cartItem);
+    this.onRecalculate();
   }
 
   onRecalculate() {
