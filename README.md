@@ -55,9 +55,14 @@ Angular Routing [Angular.io](https://angular.io/guide/router)
 
 > The :id in the second route is a token for a route parameter. In a URL such as /hero/42, "42" is the value of the id parameter. The corresponding HeroDetailComponent will use that value to find and present the hero whose id is 42. 
 
-
 Dropdown [talkingdotnet.com](https://www.talkingdotnet.com/bind-select-dropdown-list-in-angular-4-and-5/)
 
+Back Button [stackoverflow.com](https://stackoverflow.com/questions/35446955/how-to-go-back-last-page)
+
+jQuery [medium.com](https://medium.com/@swarnakishore/how-to-include-and-use-jquery-in-angular-cli-project-592e0fe63176)
+jQuery [therichpost.com/](https://therichpost.com/how-to-run-jquery-in-angular-6)
+
+alers [stackoverflow.com](https://stackoverflow.com/questions/47924999/bootstrap-4-show-alerts)
 
 ### Deployment
 

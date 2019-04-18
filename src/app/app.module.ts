@@ -16,6 +16,7 @@ import { ProductPageComponent } from './components/product-page/product-page.com
 import { AboutUsPageComponent } from './components/about-us-page/about-us-page.component';
 import { ContactUsPageComponent } from './components/contact-us-page/contact-us-page.component';
 import { ImgFallbackDirective } from './directives/img-fallback.directive';
+import * as $ from 'jquery';
 
 @NgModule({
   declarations: [

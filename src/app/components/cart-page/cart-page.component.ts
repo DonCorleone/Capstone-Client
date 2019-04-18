@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { ICartItem } from 'src/app/models/cart-item';
 import { ShippingDetail, IShippingDetail } from 'src/app/models/shipping-detail';
-import { $ } from 'protractor';
+
 
 @Component({
   selector: 'app-cart-page',
@@ -26,12 +26,22 @@ export class CartPageComponent implements OnInit {
 
   ngOnInit() {
     if (this.shippingDetail == null) {
-       this.shippingDetail = new ShippingDetail();
+      this.shippingDetail = new ShippingDetail();
     }
   }
 
   onSubmit() {
     this.submitted = true;
+
+
+    // tslint:disable:space-before-function-paren
+    // tslint:disable-next-line:only-arrow-functions
+    $(function () {
+
+      // tslint:disable-next-line:only-arrow-functions
+      $('#checkoutAlert').removeAttr('hidden');
+    });
+
   }
 
   onDecrementAmount(cartItem: ICartItem) {
