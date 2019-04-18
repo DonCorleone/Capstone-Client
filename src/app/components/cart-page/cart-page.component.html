@@ -22,14 +22,14 @@
                 <td class="d-none d-md-table-cell">{{cartItem.description}}</td>
                 <td>{{cartItem.price | currency}}</td>
                 <td>{{cartItem.amount}}</td>
-                <td>{{cartItem.total | currency}}</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" (click)="onIncrementAmount(cartItem)">
+                <td id="rubric55">{{cartItem.total | currency}}</td>
+                <td id="rubric53"><button type="button" class="btn btn-secondary btn-sm" (click)="onIncrementAmount(cartItem)">
                     <fa name="plus"></fa>
                   </button>
                   <button type="button" class="btn btn-secondary btn-sm mx-1" (click)="onDecrementAmount(cartItem)">
                     <fa name="minus"></fa>
                   </button>
-                  <button type="button" class="btn btn-secondary btn-sm" (click)="onRemoveEntry(cartItem)">
+                  <button id="rubric54" type="button" class="btn btn-secondary btn-sm" (click)="onRemoveEntry(cartItem)">
                     <fa name="trash"></fa>
                   </button></td>
               </tr>
@@ -76,7 +76,7 @@
       <!-- Column Shipping Details -->
       <div class="col-sm-7 col-md tempBorder">
         <!-- Shipping Details -->
-        <form id="rubric48" (ngSubmit)="onSubmit(shippingDetail)" #shippingForm="ngForm" novalidate>
+        <form id="rubric48rubric52" (ngSubmit)="onSubmit(shippingDetail)" #shippingForm="ngForm" novalidate>
           <div class="card shadow mb-4">
             <div class="card-header bg-secondary text-white">
               <div class="row">
