@@ -1,36 +1,91 @@
-<div id="rubric57" class="container, contactForm">
+<div class="container-fluid, contactForm">
+  <!-- Form Row -->
   <div class="row">
-    <div class="col sm-1 col-lg-auto">
-
+    <div class="col">
+      <!-- WhiteSpace -->
     </div>
-    <div class="col sm-auto col-lg-auto">
+    <div class="col-sm-6 mx-3">
+      <form id="rubric57" #contactForm="ngForm" (ngSubmit)="onSubmit(model)" novalidate>
+        <div class="card text-center shadow-lg">
+          <div class="card-header bg-secondary text-white">
+            <h3 class="card-title">Contact us</h3>
+            <ul id="rubric58" class="list list-unstyled">
+              <li class="list-item">
+                <fa name="house" inverse="true"></fa> World Wide Importers
+              </li>
+              <li class="list-item">
+                <fa name="phone" inverse="true"></fa> 0041 41 444 11 11
+              </li>
+              <li class="list-item">
+                <fa name="at"></fa> <a class="contactMail" href="mailto:nowhere@mozilla.org"> World Wide Importers</a>
+            </ul>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="name" class="sr-only">Name</label>
+              <input type="text" class="form-control" id="name" required placeholder="Name"
+              [(ngModel)]="model.name" name="name" #name="ngModel">
+                <div [hidden]="name.valid || name.pristine"
+                      class="alert alert-danger">
+                  Name is required
+                </div>
+            </div>
 
-      <h1>Contact us</h1>
-      <form>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" required>
+            <div class="form-group">
+              <label for="email" class="sr-only">Email</label>
+              <input type="email" class="form-control" id="email" required placeholder="Email"
+              [(ngModel)]="model.email" name="email" #email="ngModel">
+              <div [hidden]="email.valid || email.pristine"
+                    class="alert alert-danger">
+                Email is required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject" class="sr-only">Subject</label>
+              <select class="form-control" id="subject" required placeholder="Subject"
+              [(ngModel)]="model.subject" name="subject" #subject="ngModel">
+              <div [hidden]="subject.valid || subject.pristine"
+                    class="alert alert-danger">
+                    Subject is required
+              </div>
+                <option *ngFor="let subj of subjects" [value]="subj">{{subj}}</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="txtMessage" class="sr-only">Message</label>
+              <textarea class="form-control" id="txtMessage" rows="6" placeholder="Message" required
+              [(ngModel)]="model.message" name="message" #message="ngModel">
+              <div [hidden]="message.valid || message.pristine"
+                    class="alert alert-danger">
+                    Message is required
+              </div>
+            </textarea>
+            </div>
+          </div>
+          <div class="card-footer bg-secondary text-white">
+
+            <button id="rubric59" type="submit" class="btn btn-outline-light">Send</button>
+          </div>
         </div>
-
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email">
-        </div>
-
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <select class="form-control" id="subject" required>
-            <option *ngFor="let subj of subjects" [value]="subj">{{subj}}</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn btn-success">Submit</button>
-
       </form>
+      <div id="rubric60" class="col">
+          <div id="contactAlert" hidden class="alert show fade alertLeftAligned"
+            [class.alert-success]="model != null" [class.alert-danger]="model == null">
+            <div class="row">
+              <div class="col">
+                <p>Your Message:</p>
+                <div *ngIf="model !== null" class="alertLeftAligned">
+                  <p>{{model.message}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-    <div class="col sm-1 col-lg-auto">
-
+    <div class="col">
+      <!-- WhiteSpace -->
     </div>
   </div>
-
 </div>

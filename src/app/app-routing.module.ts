@@ -41,14 +41,14 @@ const appRoutes: Routes = [
     }
   },
   {
-    path: 'aboutus',
+    path: 'about',
     component: AboutUsPageComponent,
     data: {
       title: 'About Us Page'
     }
   },
   {
-    path: 'contactus',
+    path: 'contact',
     component: ContactUsPageComponent,
     data: {
       title: 'Product Page'

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactRequest } from 'src/app/models/contact-request';
+import { ContactRequest, IContactRequest } from 'src/app/models/contact-request';
 
 @Component({
   selector: 'app-contact-us-page',
@@ -16,7 +16,23 @@ export class ContactUsPageComponent implements OnInit {
   constructor() { }
 
 
-  onSubmit() { this.submitted = true; }
+  onSubmit(contactRequest: IContactRequest) {
+
+    if (contactRequest.message === '') { // (!isValid) {
+      return; // Validation gets handled in Form
+    } else {
+
+      this.submitted = true;
+
+      // tslint:disable:space-before-function-paren
+      // tslint:disable-next-line:only-arrow-functions
+      $(function () {
+
+        // tslint:disable-next-line:only-arrow-functions
+        $('#contactAlert').removeAttr('hidden');
+      });
+    }
+  }
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }

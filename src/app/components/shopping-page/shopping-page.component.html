@@ -1,47 +1,4 @@
 <div class="container">
-
-
-  <div class="row tempBorder p-3">
-
-    <div class="align-items-end col-auto">
-      <div>
-          <h3>
-              {{selectedCategory ? selectedCategory.category : '' }} {{selectedSubcategory && selectedCategory ? ' :  ' : ''}}
-          </h3>
-          <h4>
-              {{selectedSubcategory ? selectedSubcategory.name : ''}}
-          </h4>
-      </div>
-
-    </div>
-    <div class="col">
-
-    </div>
-    <div class="col-auto">
-      <span>Sort By </span>
-      <select class="btn btn-secondary dropdown-toggle" (change)="setOrderBy($event.target.value)">
-        <option value="0">--None--</option>
-        <option *ngFor="let entry of oderByItems" value={{entry}}>
-          {{entry}}
-        </option>
-      </select>
-      <span> (column by column)</span>
-    </div>
-    <div class="col">
-        <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
-            (change)="changeStockOnly()"/>
-            <label class="custom-control-label" for="rubric17">In Stock Only</label>
-          </div>
-    </div>
-    <div class="col">
-        <div>
-          Showing {{filteredItems? filteredItems.length : 0}} of {{itemsInCategory? itemsInCategory.length : 0}} Items
-        </div>
-    </div>
-  </div>
-
-
   <!-- Row -->
   <div class="row tempBorder">
     <!-- Column -->
