@@ -20,7 +20,7 @@
           <div [attr.id]="'collapse' +i" class="collapse" [attr.aria-labelledby]="'heading' +i"
             data-parent="#categoriesAccordion">
             <div class="card-body p-0">
-              <div class="list-group list-group-flush" id="rubric26" role="tablist">
+              <div class="list-group list-group-flush bg-gradient-light" id="rubric26" role="tablist">
 
                 <!-- Loop through Subcategories -->
                 <a *ngFor="let subcategory of category.subcategories; index as j"
@@ -62,7 +62,8 @@
                 </div>
                 <div class="col-auto">
                   <span id="rubric18">Sort By </span>
-                  <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle" (change)="setOrderBy($event.target.value)">
+                  <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle"
+                    (change)="setOrderBy($event.target.value)">
                     <option value="0">--None--</option>
                     <option *ngFor="let entry of oderByItems" value={{entry}}>
                       {{entry}}
@@ -99,21 +100,25 @@
         <!-- Column Items -->
         <div class="card-columns">
           <div id="rubric20" *ngFor="let item of filteredItems; index as i" class="card shadow">
+            <div class="card-header">
+              <a class="text-dark" [routerLink]="['/product', item.name]">
+                <h4 id="rubric21rubric32" class="card-title">{{item.name}}</h4>
+              </a>
+            </div>
             <div class="card-body">
 
               <a class="" [routerLink]="['/product', item.name]">
-                <h4 id="rubric21rubric32" class="card-title">{{item.name}}</h4>
                 <img id="rubric23" class="card-img-bottom img-thumbnail" src={{item.imagelink}} appImgFallback
                   alt="{{item ? item.name : 'Product-Image'}}">
               </a>
 
               <div id="rubric22" class="card-text">{{item.price | currency}}</div>
-              <div class="card-footer">
-                <button id="rubric24rubric30" class="btn btn-outline-dark" type="button"
-                  [class.selected]="item === selectedItem" (click)="addToCart(item)">Add
-                  <fa name="cart-plus"></fa>
-                </button>
-              </div>
+            </div>
+            <div class="card-footer">
+              <button id="rubric24rubric30" class="btn btn-outline-dark" type="button"
+                [class.selected]="item === selectedItem" (click)="addToCart(item)">Add
+                <fa name="cart-plus"></fa>
+              </button>
             </div>
           </div>
         </div>

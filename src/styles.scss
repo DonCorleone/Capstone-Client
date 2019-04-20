@@ -6,20 +6,25 @@
 // }
 // Custom.scss
 // Option B: Include parts of Bootstrap
+$enable-gradients : true;
 
-// Required
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/mixins";
 
-// Optional
-@import "node_modules/bootstrap/scss/reboot";
-@import "node_modules/bootstrap/scss/type";
-@import "node_modules/bootstrap/scss/images";
-@import "node_modules/bootstrap/scss/code";
-@import "node_modules/bootstrap/scss/grid";
+// Bootstrap and its default variables
+@import "../node_modules/bootstrap/scss/bootstrap";
 
-$enable-gradients: true;
+// // Required
+// @import "../node_modules/bootstrap/scss/functions";
+// @import "../node_modules/bootstrap/scss/variables";
+// @import "../node_modules/bootstrap/scss/mixins";
+
+// // Optional
+// @import "../node_modules/bootstrap/scss/reboot";
+// @import "../node_modules/bootstrap/scss/type";
+// @import "../node_modules/bootstrap/scss/images";
+// @import "../node_modules/bootstrap/scss/code";
+// @import "../node_modules/bootstrap/scss/grid";
+
+// $enable-gradients: true;
 
 // Responsible Font Size
 @import "../node_modules/rfs/scss";
@@ -45,4 +50,11 @@ $enable-gradients: true;
   // @include responsive-font-size(64px);
   // or
   @include rfs(40);
+}
+
+
+// make distance for icons globally
+fa{
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
 }
