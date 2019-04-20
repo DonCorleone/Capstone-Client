@@ -20,3 +20,29 @@
 @import "node_modules/bootstrap/scss/grid";
 
 $enable-gradients: true;
+
+// Responsible Font Size
+@import "../node_modules/rfs/scss";
+
+.title1 {
+  // @include font-size(4rem);
+  // // or
+  // @include responsive-font-size(64px);
+  // or
+  @include rfs(90);
+}
+
+.title4 {
+  // @include font-size(4rem);
+  // // or
+  // @include responsive-font-size(64px);
+  // or
+  @include rfs(16);
+}
+.title2 {
+  // @include font-size(4rem);
+  // // or
+  // @include responsive-font-size(64px);
+  // or
+  @include rfs(40);
+}

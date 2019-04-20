@@ -32,6 +32,9 @@ Bootstrap 4 [codeburst](https://codeburst.io/getting-started-with-angular-7-and-
 
 Icons [Angular Bootstrap Font Awesome](https://www.npmjs.com/package/angular-font-awesome)
 
+Responsible Font Sizes
+[RFS](https://github.com/twbs/rfs)
+
 ### Run
 
 #### Build watch
