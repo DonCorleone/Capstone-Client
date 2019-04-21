@@ -1,43 +1,59 @@
-<div class=" p-2">
-  <p id="rubric04" class="lead">
-    Welcome to WorldWideImporters!
-  </p>
-  <button id="rubric06" class="btn btn-outline-dark mb-5 mx-1" type="button" data-toggle="collapse" data-target="#collapseCarousel"
-    aria-expanded="false" aria-controls="collapseCarousel">
-    Toggle Slide Show
-  </button>
-  <div class="collapse show" id="collapseCarousel">
-    <div id="rubric01rubric11" class="carousel slide carousel-fade d-inline-block" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#rubric01rubric11"
-          [attr.data-slide-to]="i" [class.active]="i==0">
-        </li>
-      </ol>
-      <div class="carousel-inner">
-        <div id="rubric10" *ngFor="let featuringItems of featuringItemGroup; index as j" class="carousel-item" data-interval="3000" [class.active]="j==0">
-          <div class="row">
-            <div class="card-columns">
-              <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow">
-                <a id="rubric09" class="nav-link" [routerLink]="['/product', item ? item.name : '']">
-                  <img class="card-img-top img-thumbnail" src="{{item ? item.imagelink : ''}}" appImgFallback
-                    alt="{{item ? item.name : 'Product-Product'}}">
-                </a>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class=" p-2">
+        <p id="rubric04" class="lead">
+          Welcome to WorldWideImporters!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button id="rubric06" class="btn btn-outline-dark mb-1 mx-1" type="button" data-toggle="collapse"
+        data-target="#collapseCarousel" aria-expanded="false" aria-controls="collapseCarousel">
+        Toggle Slide Show
+      </button>
+      <div class="collapse show" id="collapseCarousel">
+        <div id="rubric01rubric11" class="carousel slide carousel-fade d-inline-block" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#rubric01rubric11"
+              [attr.data-slide-to]="i" [class.active]="i==0">
+            </li>
+          </ol>
+          <div class="carousel-inner">
+            <div id="rubric10" *ngFor="let featuringItems of featuringItemGroup; index as j" class="carousel-item"
+              data-interval="3000" [class.active]="j==0">
+              <div class="row">
+                <div class="card-columns">
+                  <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow">
+                    <a id="rubric09" class="nav-link" [routerLink]="['/product', item ? item.name : '']">
+                      <img class="card-img-top img-thumbnail" src="{{item ? item.imagelink : ''}}" appImgFallback
+                        alt="{{item ? item.name : 'Product-Product'}}">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <a id="rubric08" class="carousel-control-prev" href="#rubric01rubric11" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
+            <span id="rubric02" class="sr-only">Previous</span>
+          </a>
+          <a id="rubric07" class="carousel-control-next" href="#rubric01rubric11" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span id="rubric03" class="sr-only">Next</span>
+          </a>
         </div>
       </div>
-      <a id="rubric08" class="carousel-control-prev" href="#rubric01rubric11" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
-        <span id="rubric02" class="sr-only">Previous</span>
-      </a>
-      <a id="rubric07" class="carousel-control-next" href="#rubric01rubric11" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span id="rubric03"class="sr-only">Next</span>
-      </a>
     </div>
   </div>
-  <button id="rubric05rubric12" class="btn btn-outline-dark mb-5 mx-1" type="button" routerLink="/shopping" routerLinkActive>Shop All
-    <fa name="tag"></fa>
-  </button>
+  <div class="row">
+    <div class="col">
+      <button id="rubric05rubric12" class="btn btn-outline-dark mb-5 mx-1" type="button" routerLink="/shopping"
+        routerLinkActive>Shop All
+        <fa name="tag"></fa>
+      </button>
+    </div>
+  </div>
 </div>

@@ -27,16 +27,10 @@ export class ItemsService implements OnInit {
     }
   }
 
-  // '../assets/itemsdata.json';
-
   ngOnInit(): void {
-    const x = 'ngOnInit';
-    console.log(x);
   }
 
   constructor(private http: HttpClient) {
-    const ctr = 'ctr';
-    console.log(ctr);
   }
 
   getItems(): Observable<Array<ICategory>> {
