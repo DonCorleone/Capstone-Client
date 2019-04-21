@@ -68,8 +68,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Capstone-Client:build",
-            "port": 8080
+            "browserTarget": "Capstone-Client:build"
           },
           "configurations": {
             "production": {
