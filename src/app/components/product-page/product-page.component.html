@@ -54,22 +54,22 @@
 
             <div class="input-group mb-3" id="plusMinus">
 
-              <div class="input-group-prepend">
+              <div class="input-group-prepend pb-2">
                 <label for="amount" id="rubric42" class="col-sm-2 col-form-label pr-2">Qty</label>
               </div>
-              <input id="amount" [(ngModel)]="stockManipulator.amount" name="amount" class="form-control" type="number"
-                placeholder=0 aria-label="PlusMinus" aria-describedby="btnAdd">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="btnPlus" (click)="onIncrementAmount()">
-                      <fa name="plus"></fa>
-                    </button>
-                  </div>
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="btnMinus" (click)="onDecrementAmount()">
-                      <fa name="minus"></fa>
-                    </button>
-                  </div>
-              <div class="input-group-append">
+              <input id="amount" [(ngModel)]="stockManipulator.amount" name="amount" class="form-control pb-2"
+                type="number" placeholder=0 aria-label="PlusMinus" aria-describedby="btnAdd">
+              <div class="input-group-append pb-2">
+                <button class="btn btn-outline-secondary" type="button" id="btnPlus" (click)="onIncrementAmount()">
+                  <fa name="plus"></fa>
+                </button>
+              </div>
+              <div class="input-group-append pb-2">
+                <button class="btn btn-outline-secondary" type="button" id="btnMinus" (click)="onDecrementAmount()">
+                  <fa name="minus"></fa>
+                </button>
+              </div>
+              <div class="input-group-append pb-2">
                 <button id="rubric41" type="submit" class="btn btn-outline-primary" [disabled]="!stockForm.form.valid"
                   Submitid="btnAdd">Add To Cart <fa name="cart-plus"></fa>
                 </button>
@@ -82,8 +82,8 @@
           <div class="container">
             <div class="row">
               <div class="col-auto mr-auto my-1">
-                <a id="rubric43rubric45" class="btn btn-outline-light" (click)="onBackClick()"
-                  role="button">Back <fa name="tag"></fa></a>
+                <a id="rubric43rubric45" class="btn btn-outline-light" (click)="onBackClick()" role="button">Back <fa
+                    name="tag"></fa></a>
               </div>
               <div class="col-auto my-1">
                 <a name="btnCart" id="btnCart" class="btn btn-outline-light" [routerLink]='["/cart"]' role="button">Go
