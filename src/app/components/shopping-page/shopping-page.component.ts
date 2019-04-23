@@ -4,6 +4,7 @@ import { ICategory } from 'src/app/models/category';
 import { ISubcategory } from 'src/app/models/subcategory';
 import { IItem } from 'src/app/models/item';
 import { CartService } from 'src/app/services/cart.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-page',
@@ -12,15 +13,15 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ShoppingPageComponent implements OnInit {
 
-  categories: ICategory[];
-  subcategories: ISubcategory[];
+  categories$: Observable<ICategory[]>;
+  subcategories$: Observable<ISubcategory[]>;
   filteredItems: IItem[];
   itemsInCategory: IItem[];
   itemsStock: IItem[];
 
   selectedCategory: ICategory;
   selectedSubcategory: ISubcategory;
-  selectedItem: IItem;
+  selectedItem$: IItem;
 
   oderByItems: string[] = [];
   orderBy: string;
@@ -30,6 +31,15 @@ export class ShoppingPageComponent implements OnInit {
 
   ngOnInit() {
 
+    // this.heroes$ = this.route.paramMap.pipe(
+    //   switchMap(params => {
+    //     // (+) before `params.get()` turns the string into a number
+    //     this.selectedId = +params.get('id');
+    //     return this.service.getHeroes();
+    //   })
+    // );
+
+
     this.LoadOrFilterItems();
     this.oderByItems = ['Alphabetical', 'Price', 'Rating'];
   }
@@ -37,7 +47,11 @@ export class ShoppingPageComponent implements OnInit {
   LoadOrFilterItems() {
 
     if (this.selectedSubcategory != null) {
+      // let subcategoryName = '';
+
       const subcategoryName = this.selectedSubcategory.name.toLowerCase();
+
+      //  this.selectedSubcategory.subscribe(res => subcategoryName = res.name.toLowerCase());
       this.itemsInCategory = this.itemsStock
         .filter(itemInStock =>
           itemInStock.subcategory.toLowerCase() === subcategoryName)
@@ -59,7 +73,10 @@ export class ShoppingPageComponent implements OnInit {
     }
 
     if (this.selectedCategory != null) {
+      //  let categoryName = '';
+      //  this.selectedCategory this.cat.category.toLowerCase()// .subscribe(res => categoryName = res.category.toLowerCase());
       const categoryName = this.selectedCategory.category.toLowerCase();
+
       this.itemsInCategory = this.itemsStock
         .filter(itemInStock =>
           itemInStock.category.toLowerCase() === categoryName)
@@ -97,12 +114,12 @@ export class ShoppingPageComponent implements OnInit {
         });
 
         // save member
-        this.categories = resp;
-        this.subcategories = subcategoriesLoop;
+        this.categories$ = of(resp);
+        this.subcategories$ = of(subcategoriesLoop);
         this.itemsStock = itemsLoop;
 
         // Selecting first Category as initial value
-       // this.selectedCategory = resp[0];
+        // this.selectedCategory = resp[0];
 
         // Show first categories Items
         this.itemsInCategory = itemsLoop
@@ -133,7 +150,7 @@ export class ShoppingPageComponent implements OnInit {
   onClickCategory(category: ICategory) {
     this.selectedCategory = category;
     this.selectedSubcategory = null;
-    this.selectedItem = null;
+    this.selectedItem$ = null;
 
     this.LoadOrFilterItems();
   }
@@ -141,7 +158,7 @@ export class ShoppingPageComponent implements OnInit {
   onClickSubcategory(subcategory: ISubcategory) {
 
     this.selectedSubcategory = subcategory;
-    this.selectedItem = null;
+    this.selectedItem$ = null;
 
     this.LoadOrFilterItems();
   }

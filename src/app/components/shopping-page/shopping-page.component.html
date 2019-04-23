@@ -7,12 +7,12 @@
       <!-- Accordion -->
       <div class="accordion" id="categoriesAccordion">
         <!-- Loop through Categories -->
-        <div id="rubric19" *ngFor="let category of categories; index as i">
+        <div id="rubric19" *ngFor="let category of categories$ | async; index as i">
           <div id="rubric25" class="card rounded-0">
             <!-- Category Header -->
             <a class="card-header collapsed" [attr.id]="'heading' +i" data-toggle="collapse" role="button"
               [attr.data-target]="'#collapse' +i" aria-expanded="true" [attr.aria-controls]="'collapse'+i"
-              (click)="onClickCategory(category)">
+              (click)="onClickCategory(category)" [class.selected]="category.category === selectedCategory? selectedCategory?.category : ''">
               {{category.category}}
             </a>
           </div>
@@ -26,7 +26,7 @@
                 <a *ngFor="let subcategory of category.subcategories; index as j"
                   class="list-group-item list-group-item-action " [attr.id]="'listItem' +j" data-toggle="list"
                   [attr.data-target]="'#active' +j" aria-expanded="true" [attr.aria-controls]="'active'+j"
-                  (click)="onClickSubcategory(subcategory)">
+                  (click)="onClickSubcategory(subcategory)" [class.selected]="subcategory.name === selectedSubcategory? selectedSubcategory.name : ''">
                   {{subcategory.name}}
                 </a>
               </div>
