@@ -20,14 +20,6 @@ export class ItemsService implements OnInit {
   subcategories: ISubcategory[] = [];
   featuringItems: IItem[] = [];
 
-  // public get configUrl(): string {
-  //   // if (!environment.production) { // ToDo : Hardcode url
-  //   //   return '../assets/itemsdata.json';
-  //   // } else {
-  //     return 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
-  //   // }
-  // }
-
   ngOnInit(): void {
   }
 
@@ -37,9 +29,6 @@ export class ItemsService implements OnInit {
   getItems(): Observable<Array<ICategory>> {
 
     // ToDo Interactive URL
-    // return this.http.get<ICategory[]>('https://webmppcapstone.blob.core.windows.net/data/itemsdata.json').pipe(
-    //   map(response => response.map((category: ICategory) => new Category().deserialize(category))));
-
     let configUrl = '';
     if (!environment.production) { // ToDo : Hardcode url
       configUrl = '../assets/itemsdata.json';
