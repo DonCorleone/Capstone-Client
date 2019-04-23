@@ -22,9 +22,9 @@ export class ItemsService implements OnInit {
 
   public get configUrl(): string {
    // if (!environment.production) {
-      return '../assets/itemsdata.json';
+      // return '../assets/itemsdata.json';
   //  } else {
-  //    return 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
+      return 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
   //  }
   }
 
