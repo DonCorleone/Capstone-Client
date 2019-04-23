@@ -20,13 +20,13 @@ export class ItemsService implements OnInit {
   subcategories: ISubcategory[] = [];
   featuringItems: IItem[] = [];
 
-  public get configUrl(): string {
+  // public get configUrl(): string {
    // if (!environment.production) {
       // return '../assets/itemsdata.json';
   //  } else {
-      return 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
+  //    return 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
   //  }
-  }
+  // }
 
   ngOnInit(): void {
   }
