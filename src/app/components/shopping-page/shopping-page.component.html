@@ -12,9 +12,8 @@
             <!-- Category Header -->
             <a class="card-header collapsed" [attr.id]="'heading' +i" data-toggle="collapse" role="button"
               [attr.data-target]="'#collapse' +i" aria-expanded="true" [attr.aria-controls]="'collapse'+i"
-              (click)="selectedCategory = category"
-              [class.selected]="selectedCategory === category"
-              [class.bg-gradient-danger] = "selectedCategory === category">
+              (click)="selectedCategory = category" [class.selected]="selectedCategory === category"
+              [class.bg-gradient-danger]="selectedCategory === category">
               {{category.category}}
             </a>
           </div>
@@ -28,9 +27,8 @@
                 <a *ngFor="let subcategory of category.subcategories; index as j"
                   class="list-group-item list-group-item-action " [attr.id]="'listItem' +j" data-toggle="list"
                   [attr.data-target]="'#active' +j" aria-expanded="true" [attr.aria-controls]="'active'+j"
-                  (click)="selectedSubcategory = subcategory"
-                  [class.selected]= "selectedSubcategory === subcategory"
-                  [class.bg-gradient-success] = "selectedSubcategory === subcategory">
+                  (click)="selectedSubcategory = subcategory" [class.selected]="selectedSubcategory === subcategory"
+                  [class.bg-gradient-success]="selectedSubcategory === subcategory">
                   {{subcategory.name}}
                 </a>
               </div>
@@ -104,17 +102,16 @@
         <!-- Column Items -->
         <div class="card-columns px-2 px-sm-0">
           <div id="rubric20" *ngFor="let item of filteredItems; index as i" class="card shadow-sm">
-            <div class="card-header">
-              <a class="text-dark" [routerLink]="['/product', item.name]">
-                <h4 id="rubric21rubric32" class="card-title">{{item.name}}</h4>
-              </a>
+            <div class="card-header text-dark" (click)="goToProduct(item ? item.name : '')">
+              <h4 id="rubric21rubric32" class="card-title">{{item.name}}</h4>
             </div>
             <div class="card-body">
 
-              <a class="" [routerLink]="['/product', item.name]">
-                <img id="rubric23" class="card-img-bottom img-thumbnail" src={{item.imagelink}} appImgFallback
-                  alt="{{item ? item.name : 'Product-Image'}}">
-              </a>
+
+              <img id="rubric23" class="card-img-bottom img-thumbnail clickableImage" src={{item.imagelink}} appImgFallback
+                alt="{{item ? item.name : 'Product-Image'}}"
+                (click)="goToProduct(item ? item.name : '')">
+
 
               <div id="rubric22" class="card-text">{{item.price | currency}}</div>
             </div>
@@ -128,6 +125,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

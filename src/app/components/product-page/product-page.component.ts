@@ -14,12 +14,13 @@ import { CartService } from 'src/app/services/cart.service';
 })
 
 export class ProductPageComponent implements OnInit {
+  comingFrom: any;
 
   constructor(
     private route: ActivatedRoute, private router: Router,
     private itemsService: ItemsService, private cartService: CartService,
     private location: Location) {
-   }
+  }
 
   item$: Observable<IItem>;
   errors: string;
@@ -33,8 +34,10 @@ export class ProductPageComponent implements OnInit {
     this.errors = '';
     this.stockManipulator.amount = 1;
     this.route.paramMap.subscribe(
-      params =>
-        this.loadItem(params.get('id'))
+      params => {
+        this.comingFrom = params.get('comingFrom');
+        this.loadItem(params.get('id'));
+      }
     );
   }
 
@@ -43,43 +46,44 @@ export class ProductPageComponent implements OnInit {
 
     // Anything chosen?
     if (this.stockManipulator) {
-    //  for (let ix = 0; ix < this.stockManipulator.amount; ix++) {
 
-        this.cartService.createOrUpdateCartItem(item, this.stockManipulator.amount);
-    //  }
+      this.cartService.createOrUpdateCartItem(item, this.stockManipulator.amount);
     }
   }
+
   onDecrementAmount() {
-    this.stockManipulator.amount--; }
+    this.stockManipulator.amount--;
+  }
   onIncrementAmount() { this.stockManipulator.amount++; }
 
   loadItem(id: string) {
 
-  this.itemsService.getItems()
-    .subscribe(resp => {
-      const subcategoriesLoop: Subcategory[] = [];
-      const itemsLoop: Item[] = [];
+    this.itemsService.getItems()
+      .subscribe(resp => {
+        const subcategoriesLoop: Subcategory[] = [];
+        const itemsLoop: Item[] = [];
 
-      resp.forEach(category => {
+        resp.forEach(category => {
 
-        category.subcategories.forEach(subcategory => {
+          category.subcategories.forEach(subcategory => {
 
-          subcategoriesLoop.push(subcategory);
-          subcategory.items.forEach(item => {
+            subcategoriesLoop.push(subcategory);
+            subcategory.items.forEach(item => {
 
-            itemsLoop.push(item);
+              itemsLoop.push(item);
+            });
           });
         });
-      });
-      this.items = itemsLoop;
+        this.items = itemsLoop;
 
-      const itemsFeatured = this.items.filter(item => item.name === id);
-      this.item$ = of(itemsFeatured.length > 0 ? itemsFeatured[0] : null);
-    });
+        const itemsFeatured = this.items.filter(item => item.name === id);
+        this.item$ = of(itemsFeatured.length > 0 ? itemsFeatured[0] : null);
+      });
   }
 
   onBackClick() {
-    this.location.back(); // ToDo: Send Location
+    this.item$.subscribe(res =>
+        this.router.navigate(['/' + this.comingFrom, { id: res.name, subcategory: res.subcategory }]));
   }
 }
 

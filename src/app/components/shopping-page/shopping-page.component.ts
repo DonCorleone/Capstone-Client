@@ -5,6 +5,8 @@ import { ISubcategory } from 'src/app/models/subcategory';
 import { IItem } from 'src/app/models/item';
 import { CartService } from 'src/app/services/cart.service';
 import { Observable, of } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shopping-page',
@@ -18,6 +20,7 @@ export class ShoppingPageComponent implements OnInit {
   filteredItems: IItem[];
   itemsInCategory: IItem[];
   itemsStock: IItem[];
+  cats$: Observable<ICategory[]>;
 
   // tslint:disable-next-line:variable-name
   private _selectedCategory: ICategory;
@@ -37,37 +40,47 @@ export class ShoppingPageComponent implements OnInit {
   public set selectedSubcategory(value: ISubcategory) {
     this._selectedSubcategory = value;
     this.selectedItem$ = null;
-    this.LoadOrFilterItems();
+    this.LoadOrFilterItems('');
   }
 
 
   selectedItem$: IItem;
+  selectedId: number;
 
   oderByItems: string[] = [];
   orderBy: string;
   stockOnly = false;
 
-  constructor(private itemsService: ItemsService, private cartService: CartService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private itemsService: ItemsService,
+    private cartService: CartService
+    ) {
 
 
   }
 
   ngOnInit() {
-
-    // this.heroes$ = this.route.paramMap.pipe(
-    //   switchMap(params => {
-    //     // (+) before `params.get()` turns the string into a number
-    //     this.selectedId = +params.get('id');
-    //     return this.service.getHeroes();
-    //   })
-    // );
-
-    this.LoadOrFilterItems();
+    this.LoadOrFilterItems('');
     this.oderByItems = ['Alphabetical', 'Price', 'Rating'];
-
   }
 
-  LoadOrFilterItems() {
+  // ngOnInit() {
+
+  //   this.cats$ = this.route.paramMap.pipe(
+  //     switchMap(params => {
+  //       // (+) before `params.get()` turns the string into a number
+  //       this.selectedId = +params.get('id');
+
+  //       // this.LoadOrFilterItems(params.get('subcategoryName'));
+  //       // this.oderByItems = ['Alphabetical', 'Price', 'Rating'];
+  //       return this.itemsService.getItems();
+  //     })
+  //   );
+  // }
+
+  LoadOrFilterItems(subcategoryNameExternal: string) {
 
     if (this.selectedSubcategory != null) {
 
@@ -142,14 +155,19 @@ export class ShoppingPageComponent implements OnInit {
   }
 
 
+  goToProduct(name: string) {
+
+    this.router.navigate(['/product/' + name, { id: name, comingFrom: 'shopping' }]);
+  }
+
   setOrderBy(orderBy: string) {
     this.orderBy = orderBy === 'Alphabetical' ? 'name' : orderBy.toLowerCase();
-    this.LoadOrFilterItems();
+    this.LoadOrFilterItems('');
   }
 
   changeStockOnly() {
     this.stockOnly = !this.stockOnly;
-    this.LoadOrFilterItems();
+    this.LoadOrFilterItems('');
   }
 
   addToCart(item: IItem) {

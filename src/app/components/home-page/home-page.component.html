@@ -26,11 +26,10 @@
               data-interval="3000" [class.active]="j==0">
               <div class="row">
                 <div class="card-columns">
-                  <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow">
-                    <a id="rubric09" class="nav-link" [routerLink]="['/product', item ? item.name : '']">
-                      <img class="card-img-top img-thumbnail" src="{{item ? item.imagelink : ''}}" appImgFallback
-                        alt="{{item ? item.name : 'Product-Product'}}">
-                    </a>
+                  <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow" (click)="goToProduct(item ? item.name : '')">
+                    <img id="rubric09" class="card-img-top img-thumbnail clickableImage" src="{{item ? item.imagelink : ''}}" appImgFallback
+                        alt="{{item ? item.name : 'Product-Product'}}"
+                        (click)="goToProduct(item ? item.name : '')">
                   </div>
                 </div>
               </div>

@@ -5,6 +5,7 @@ import { Item, IItem } from 'src/app/models/item';
 import { ICategory } from 'src/app/models/category';
 import { IFeaturingItems, FeaturingItems } from 'src/app/models/featuringitem';
 import { Observable, of } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -13,7 +14,10 @@ import { Observable, of } from 'rxjs';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private itemsService: ItemsService) { }
+  constructor(
+    private route: ActivatedRoute, private router: Router,
+    private itemsService: ItemsService
+    ) { }
 
   categories: ICategory[] = [];
   subcategories: ISubcategory[] = [];
@@ -51,6 +55,12 @@ export class HomePageComponent implements OnInit {
         this.pickFeaturedItems();
       });
   }
+
+  goToProduct(name: string) {
+
+    this.router.navigate(['/product/' + name, { id: name, comingFrom: 'home' }]);
+  }
+
   pickFeaturedItems() {
     this.featuringItems = this.items.filter(isFeatured);
     const fg: FeaturingItems[] = [];
