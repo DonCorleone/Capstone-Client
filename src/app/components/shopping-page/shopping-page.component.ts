@@ -19,15 +19,38 @@ export class ShoppingPageComponent implements OnInit {
   itemsInCategory: IItem[];
   itemsStock: IItem[];
 
-  selectedCategory: ICategory;
-  selectedSubcategory: ISubcategory;
+  // tslint:disable-next-line:variable-name
+  private _selectedCategory: ICategory;
+  public get selectedCategory(): ICategory {
+    return this._selectedCategory;
+  }
+  public set selectedCategory(value: ICategory) {
+    this._selectedCategory = value;
+    this.selectedSubcategory = null;
+    this.selectedItem$ = null;
+  }
+  // tslint:disable-next-line:variable-name
+  private _selectedSubcategory: ISubcategory;
+  public get selectedSubcategory(): ISubcategory {
+    return this._selectedSubcategory;
+  }
+  public set selectedSubcategory(value: ISubcategory) {
+    this._selectedSubcategory = value;
+    this.selectedItem$ = null;
+    this.LoadOrFilterItems();
+  }
+
+
   selectedItem$: IItem;
 
   oderByItems: string[] = [];
   orderBy: string;
   stockOnly = false;
 
-  constructor(private itemsService: ItemsService, private cartService: CartService) { }
+  constructor(private itemsService: ItemsService, private cartService: CartService) {
+
+
+  }
 
   ngOnInit() {
 
@@ -39,19 +62,17 @@ export class ShoppingPageComponent implements OnInit {
     //   })
     // );
 
-
     this.LoadOrFilterItems();
     this.oderByItems = ['Alphabetical', 'Price', 'Rating'];
+
   }
 
   LoadOrFilterItems() {
 
     if (this.selectedSubcategory != null) {
-      // let subcategoryName = '';
 
       const subcategoryName = this.selectedSubcategory.name.toLowerCase();
 
-      //  this.selectedSubcategory.subscribe(res => subcategoryName = res.name.toLowerCase());
       this.itemsInCategory = this.itemsStock
         .filter(itemInStock =>
           itemInStock.subcategory.toLowerCase() === subcategoryName)
@@ -73,10 +94,8 @@ export class ShoppingPageComponent implements OnInit {
     }
 
     if (this.selectedCategory != null) {
-      //  let categoryName = '';
-      //  this.selectedCategory this.cat.category.toLowerCase()// .subscribe(res => categoryName = res.category.toLowerCase());
-      const categoryName = this.selectedCategory.category.toLowerCase();
 
+      const categoryName = this.selectedCategory.category.toLowerCase();
       this.itemsInCategory = this.itemsStock
         .filter(itemInStock =>
           itemInStock.category.toLowerCase() === categoryName)
@@ -117,51 +136,11 @@ export class ShoppingPageComponent implements OnInit {
         this.categories$ = of(resp);
         this.subcategories$ = of(subcategoriesLoop);
         this.itemsStock = itemsLoop;
-
-        // Selecting first Category as initial value
-        // this.selectedCategory = resp[0];
-
-        // Show first categories Items
-        this.itemsInCategory = itemsLoop
-          // .filter(itemInStock =>
-          //   itemInStock.category.toLowerCase() === resp[0].category.toLowerCase())
-          // .sort((n1, n2) => {
-
-          //   if (n1[this.orderBy] > n2[this.orderBy]) {
-          //       return 1;
-          //   }
-          //   if (n1[this.orderBy] < n2[this.orderBy]) {
-          //       return -1;
-          //   }
-          //   return 0;
-          // })
-          ;
-
+        this.itemsInCategory = itemsLoop;
       }
-        //   this.filteredItems = this.itemsInCategory
-        //   .filter(itemInStock2 =>
-        //     (this.stockOnly && itemInStock2.stock !== '0') || !this.stockOnly);
-        // // exit function
-        // return;
       );
-
   }
 
-  onClickCategory(category: ICategory) {
-    this.selectedCategory = category;
-    this.selectedSubcategory = null;
-    this.selectedItem$ = null;
-
-    this.LoadOrFilterItems();
-  }
-
-  onClickSubcategory(subcategory: ISubcategory) {
-
-    this.selectedSubcategory = subcategory;
-    this.selectedItem$ = null;
-
-    this.LoadOrFilterItems();
-  }
 
   setOrderBy(orderBy: string) {
     this.orderBy = orderBy === 'Alphabetical' ? 'name' : orderBy.toLowerCase();

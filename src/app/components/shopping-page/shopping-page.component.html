@@ -12,7 +12,7 @@
             <!-- Category Header -->
             <a class="card-header collapsed" [attr.id]="'heading' +i" data-toggle="collapse" role="button"
               [attr.data-target]="'#collapse' +i" aria-expanded="true" [attr.aria-controls]="'collapse'+i"
-              (click)="onClickCategory(category)" [class.selected]="category.category === selectedCategory? selectedCategory?.category : ''">
+              (click)="selectedCategory = category" [class.selected]="selectedCategory === category" [class.bg-gradient-danger] = "selectedCategory === category">
               {{category.category}}
             </a>
           </div>
@@ -26,7 +26,9 @@
                 <a *ngFor="let subcategory of category.subcategories; index as j"
                   class="list-group-item list-group-item-action " [attr.id]="'listItem' +j" data-toggle="list"
                   [attr.data-target]="'#active' +j" aria-expanded="true" [attr.aria-controls]="'active'+j"
-                  (click)="onClickSubcategory(subcategory)" [class.selected]="subcategory.name === selectedSubcategory? selectedSubcategory.name : ''">
+                  (click)="selectedSubcategory = subcategory"
+                  [class.selected]= "selectedSubcategory === subcategory"
+                  [class.bg-gradient-success] = "selectedSubcategory === subcategory">
                   {{subcategory.name}}
                 </a>
               </div>
