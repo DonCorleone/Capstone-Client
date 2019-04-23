@@ -40,7 +40,7 @@ export class ItemsService implements OnInit {
     // return this.http.get<ICategory[]>('https://webmppcapstone.blob.core.windows.net/data/itemsdata.json').pipe(
     //   map(response => response.map((category: ICategory) => new Category().deserialize(category))));
 
-    return this.http.get<ICategory[]>(this.configUrl).pipe(
+    return this.http.get<ICategory[]>('https://webmppcapstone.blob.core.windows.net/data/itemsdata.json').pipe(
       map(response => response.map((category: ICategory) => new Category().deserialize(category))));
   }
 }
