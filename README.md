@@ -16,6 +16,8 @@
 
 [Azure](http://capstone-client-lwieland.azurewebsites.net)
 
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
+
 ## Links
 
 ### Github
