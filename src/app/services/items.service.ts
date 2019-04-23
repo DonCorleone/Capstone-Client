@@ -21,11 +21,11 @@ export class ItemsService implements OnInit {
   featuringItems: IItem[] = [];
 
   public get configUrl(): string {
-    if (!environment.production) {
+   // if (!environment.production) {
       return '../assets/itemsdata.json';
-    } else {
-      return 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
-    }
+  //  } else {
+  //    return 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
+  //  }
   }
 
   ngOnInit(): void {
