@@ -58,7 +58,7 @@ export class ProductPageComponent implements OnInit {
 
   loadItem(id: string) {
 
-    this.itemsService.getItems()
+    this.itemsService.getItems('')
       .subscribe(resp => {
         const subcategoriesLoop: Subcategory[] = [];
         const itemsLoop: Item[] = [];

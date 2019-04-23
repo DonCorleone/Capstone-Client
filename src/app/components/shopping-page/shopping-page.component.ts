@@ -20,7 +20,7 @@ export class ShoppingPageComponent implements OnInit {
   filteredItems: IItem[];
   itemsInCategory: IItem[];
   itemsStock: IItem[];
-  cats$: Observable<ICategory[]>;
+  subcategoryNameExternal: string;
 
   // tslint:disable-next-line:variable-name
   private _selectedCategory: ICategory;
@@ -62,8 +62,14 @@ export class ShoppingPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.LoadOrFilterItems('');
+
     this.oderByItems = ['Alphabetical', 'Price', 'Rating'];
+
+    this.route.paramMap.subscribe(
+      params => {
+        this.LoadOrFilterItems(params.get('subcategory'));
+      }
+    );
   }
 
   // ngOnInit() {
@@ -81,6 +87,8 @@ export class ShoppingPageComponent implements OnInit {
   // }
 
   LoadOrFilterItems(subcategoryNameExternal: string) {
+
+    this.subcategoryNameExternal = subcategoryNameExternal;
 
     if (this.selectedSubcategory != null) {
 
@@ -128,15 +136,22 @@ export class ShoppingPageComponent implements OnInit {
       return;
     }
 
-    this.itemsService.getItems()
+    this.itemsService.getItems(subcategoryNameExternal)
       .subscribe(resp => {
 
         const subcategoriesLoop: ISubcategory[] = [];
         const itemsLoop: IItem[] = [];
 
+        let subcategoryExternal: ISubcategory = null;
+
         resp.forEach(category => {
           category.subcategories.forEach(subcategory => {
             // grab each categories' subcategories
+
+            if (subcategory.name === category.subcategoryNameExternal) {
+              // gotcha!
+              subcategoryExternal = subcategory;
+            }
             subcategoriesLoop.push(subcategory);
             subcategory.items.forEach(item => {
               // grab items of each subcategory
@@ -150,6 +165,9 @@ export class ShoppingPageComponent implements OnInit {
         this.subcategories$ = of(subcategoriesLoop);
         this.itemsStock = itemsLoop;
         this.itemsInCategory = itemsLoop;
+        if (subcategoryExternal !== null) {
+          this.selectedSubcategory = subcategoryExternal;
+        }
       }
       );
   }

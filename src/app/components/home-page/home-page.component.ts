@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit {
 
   loadItems() {
 
-    this.itemsService.getItems()
+    this.itemsService.getItems('')
       .subscribe(resp => {
 
         this.categories = resp;

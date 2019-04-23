@@ -4,6 +4,7 @@ import { Deserializable } from './deserializable.model';
 export interface ICategory {
   category: string;
   subcategories: Subcategory[];
+  subcategoryNameExternal: string;
   deserialize(input: any): ICategory;
 }
 
@@ -11,8 +12,10 @@ export class Category implements ICategory, Deserializable<Category> {
 
   category: string;
   subcategories: Subcategory[];
+  subcategoryNameExternal: string;
 
-  constructor() {
+  constructor(subcategoryNameExternal: string) {
+    this.subcategoryNameExternal = subcategoryNameExternal;
   }
 
   deserialize(input: any): Category {

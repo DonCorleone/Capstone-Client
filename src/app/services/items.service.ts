@@ -26,7 +26,7 @@ export class ItemsService implements OnInit {
   constructor(private http: HttpClient) {
   }
 
-  getItems(): Observable<Array<ICategory>> {
+  getItems(subcategoryNameExternal: string): Observable<Array<ICategory>> {
 
     // ToDo Interactive URL
     let configUrl = '';
@@ -37,6 +37,6 @@ export class ItemsService implements OnInit {
     }
 
     return this.http.get<ICategory[]>(configUrl).pipe(
-      map(response => response.map((category: ICategory) => new Category().deserialize(category))));
+      map(response => response.map((category: ICategory) => new Category(subcategoryNameExternal).deserialize(category))));
   }
 }
