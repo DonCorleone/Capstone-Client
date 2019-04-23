@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { IItem, Item } from '../models/item';
 import { ISubcategory, Subcategory } from '../models/subcategory';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -19,13 +20,13 @@ export class ItemsService implements OnInit {
   subcategories: ISubcategory[] = [];
   featuringItems: IItem[] = [];
 
-  // public get configUrl() {
-  //   if (isDevMode()) {
-  //     return '../assets/itemsdata.json';
-  //   } else {
-  //     return 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
-  //   }
-  // }
+  public get configUrl(): string {
+    if (!environment.production) {
+      return '../assets/itemsdata.json';
+    } else {
+      return 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -39,7 +40,7 @@ export class ItemsService implements OnInit {
     // return this.http.get<ICategory[]>('https://webmppcapstone.blob.core.windows.net/data/itemsdata.json').pipe(
     //   map(response => response.map((category: ICategory) => new Category().deserialize(category))));
 
-    return this.http.get<ICategory[]>('https://webmppcapstone.blob.core.windows.net/data/itemsdata.json').pipe(
+    return this.http.get<ICategory[]>(this.configUrl).pipe(
       map(response => response.map((category: ICategory) => new Category().deserialize(category))));
   }
 }
