@@ -143,6 +143,7 @@ export class ShoppingPageComponent implements OnInit {
         const itemsLoop: IItem[] = [];
 
         let subcategoryExternal: ISubcategory = null;
+        let categoryExternal: ICategory = null;
 
         resp.forEach(category => {
           category.subcategories.forEach(subcategory => {
@@ -151,6 +152,7 @@ export class ShoppingPageComponent implements OnInit {
             if (subcategory.name === category.subcategoryNameExternal) {
               // gotcha!
               subcategoryExternal = subcategory;
+              categoryExternal = category;
             }
             subcategoriesLoop.push(subcategory);
             subcategory.items.forEach(item => {
@@ -166,6 +168,7 @@ export class ShoppingPageComponent implements OnInit {
         this.itemsStock = itemsLoop;
         this.itemsInCategory = itemsLoop;
         if (subcategoryExternal !== null) {
+          this.selectedCategory = categoryExternal;
           this.selectedSubcategory = subcategoryExternal;
         }
       }
