@@ -31,9 +31,9 @@ export class ItemsService implements OnInit {
     // ToDo Interactive URL
     let configUrl = '';
     if (!environment.production) { // dev?
-      configUrl = '../assets/itemsdata.json'; // load local file with non-existing imagelinks due to huge data volume 
+      configUrl = '../assets/itemsdata.json'; // load local file with non-existing imagelinks due to huge data volume
     } else {
-      configUrl = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json'; // load online json with real imagelinks 
+      configUrl = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json'; // load online json with real imagelinks
     }
 
     return this.http.get<ICategory[]>(configUrl).pipe(

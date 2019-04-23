@@ -58,7 +58,7 @@ Angular and Bootstrap [medium.com/codingthesmartway-com-blog/](https://medium.co
 
 Angular Routing [Angular.io](https://angular.io/guide/router)
 
-> The :id in the second route is a token for a route parameter. In a URL such as /hero/42, "42" is the value of the id parameter. The corresponding HeroDetailComponent will use that value to find and present the hero whose id is 42. 
+> The :id in the second route is a token for a route parameter. In a URL such as /hero/42, "42" is the value of the id parameter. The corresponding HeroDetailComponent will use that value to find and present the hero whose id is 42.
 
 Dropdown [talkingdotnet.com](https://www.talkingdotnet.com/bind-select-dropdown-list-in-angular-4-and-5/)
 
