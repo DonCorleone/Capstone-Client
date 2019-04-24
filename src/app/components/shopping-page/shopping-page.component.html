@@ -10,17 +10,17 @@
         <div id="rubric19" *ngFor="let category of categories$ | async; index as i">
           <div id="rubric25" class="card rounded-0">
             <!-- Category Header -->
-            <a class="card-header" [attr.id]="'heading' +i" data-toggle="collapse" role="button"
+            <div class="card-header" [attr.id]="'heading' +i" role="button"
               [attr.data-target]="'#collapse' +i" [attr.aria-expanded]="selectedCategory === category" [attr.aria-controls]="'collapse'+i"
               (click)="selectedCategory = category"
               [class.selected]="selectedCategory === category" [class.bg-gradient-danger]="selectedCategory === category"
               [class.collapsed]="selectedCategory !== category">
               {{category.category}}
-            </a>
+            </div>
           </div>
           <!-- Category Body -->
-          <div [attr.id]="'collapse' +i" class="collapse" [class.show]="selectedCategory === category" [attr.aria-labelledby]="'heading' +i"
-            data-parent="#categoriesAccordion">
+          <div [attr.id]="'collapse' +i" [attr.aria-labelledby]="'heading' +i" data-parent="#categoriesAccordion"
+            class="collapse" [class.collapsed]="selectedCategory !== category" [class.show]="selectedCategory === category" >
             <div class="card-body p-0">
               <div class="list-group list-group-flush bg-gradient-light" id="rubric26" role="tablist">
 
