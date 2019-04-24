@@ -29,28 +29,79 @@ $enable-gradients : true;
 // Responsible Font Size
 @import "../node_modules/rfs/scss";
 
+$SizeTitle1: 90; 
+$SizeTitle2: 50; 
+$SizeTitle3: 28; 
+$SizeTitle4: 18; 
+
+$factorXs: 0.5;
+$factorMd: 0.75;
+$factorLg: 1;
+$factorXl: 2;
+
+
 .title1 {
-  // @include font-size(4rem);
-  // // or
-  // @include responsive-font-size(64px);
-  // or
-  @include rfs(90);
+
+  @include media-breakpoint-up(xs) {
+    @include rfs($SizeTitle1 * $factorXs);
+  }
+  @include media-breakpoint-up(md) {
+    @include rfs($SizeTitle1 * $factorMd);
+  }
+  @include media-breakpoint-up(lg) {
+    @include rfs($SizeTitle1 * $factorLg);
+  }
+  @include media-breakpoint-up(xl) {
+    @include rfs($SizeTitle1 * $factorXl);
+  }
+}
+
+.title2 {
+
+  @include media-breakpoint-up(xs) {
+    @include rfs($SizeTitle2 * $factorXs);
+  }
+  @include media-breakpoint-up(md) {
+    @include rfs($SizeTitle2 * $factorMd);
+  }
+  @include media-breakpoint-up(lg) {
+    @include rfs($SizeTitle2 * $factorLg);
+  }
+  @include media-breakpoint-up(xl) {
+    @include rfs($SizeTitle2 * $factorXl);
+  }
+}
+
+.title3 {
+  @include media-breakpoint-up(xs) {
+    @include rfs($SizeTitle3 * $factorXs);
+  }
+  @include media-breakpoint-up(md) {
+    @include rfs($SizeTitle3 * $factorMd);
+  }
+  @include media-breakpoint-up(lg) {
+    @include rfs($SizeTitle3 * $factorLg);
+  }
+  @include media-breakpoint-up(xl) {
+    @include rfs($SizeTitle3 * $factorXl);
+    }
 }
 
 .title4 {
-  // @include font-size(4rem);
-  // // or
-  // @include responsive-font-size(64px);
-  // or
-  @include rfs(16);
+  @include media-breakpoint-up(xs) {
+    @include rfs($SizeTitle4 * $factorXs);
+  }
+  @include media-breakpoint-up(md) {
+    @include rfs($SizeTitle4 * $factorMd);
+  }
+  @include media-breakpoint-up(lg) {
+    @include rfs($SizeTitle4 * $factorLg);
+  }
+  @include media-breakpoint-up(xl) {
+    @include rfs($SizeTitle4 * $factorXl);
+  }
 }
-.title2 {
-  // @include font-size(4rem);
-  // // or
-  // @include responsive-font-size(64px);
-  // or
-  @include rfs(40);
-}
+
 
 
 // make distance for icons globally
