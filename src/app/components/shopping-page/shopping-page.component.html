@@ -64,26 +64,29 @@
 
                 </div>
                 <div class="col-auto">
-                  <span id="rubric18">Sort By </span>
-                  <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle"
-                    (change)="setOrderBy($event.target.value)">
-                    <option value="0">--None--</option>
-                    <option *ngFor="let entry of oderByItems" value={{entry}}>
-                      {{entry}}
-                    </option>
-                  </select>
-                  <span> (Column by Column)</span>
-                </div>
-                <div class="col-auto">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
-                      (change)="changeStockOnly()" />
-                    <label id="rubric17" class="custom-control-label" for="rubric17">In Stock Only</label>
-                  </div>
-                </div>
-                <!-- <div class="col">
+                  <div class="d-flex flex-row align-items-baseline flex-wrap mx-2">
 
-                        </div> -->
+                      <span id="rubric18" class="flexChild">Sort By </span>
+                      <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle flexChild"
+                        (change)="setOrderBy($event.target.value)">
+                        <option value="0">--None--</option>
+                        <option *ngFor="let entry of oderByItems" value={{entry}}>
+                          {{entry}}
+                        </option>
+                      </select>
+                      <span class="flexChild"> (Column by Column)</span>
+                      <span class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
+                          (change)="changeStockOnly()" />
+                        <label id="rubric17" class="custom-control-label" for="rubric17">In Stock Only</label>
+                      </span>
+                  </div>
+
+
+                </div>
+                 <div class="col">
+
+                        </div> 
               </div>
             </div>
           </div>

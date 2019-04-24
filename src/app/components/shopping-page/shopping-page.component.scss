@@ -27,16 +27,10 @@
   border-color: #f5f5f5;
 }
 
-
-
-// $bg-gradient-hover: $bg-gradient-warning;
 .list-group-item:hover {
   background-color: gray("400");
   cursor: pointer;
 }
-
-
-//@import "../../../../node_modules/bootstrap/scss/variables";
 
 .list-group-item.active {
   background-color: gray("100");
@@ -61,9 +55,14 @@
   cursor: pointer;
 }
 .card.shadow.hover{
-  box-shadow: 0.5rem
+  box-shadow: 0.5rem;
 }
 
 .clickableImage {
   cursor: pointer;
+}
+
+.flexChild{  
+  // margin-left: 1rem;
+  // margin-top: 0.5rem;
 }
