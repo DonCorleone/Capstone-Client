@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactRequest, IContactRequest } from 'src/app/models/contact-request';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-us-page',
@@ -16,9 +17,9 @@ export class ContactUsPageComponent implements OnInit {
   constructor() { }
 
 
-  onSubmit(contactRequest: IContactRequest) {
+  onSubmit(contactRequest: IContactRequest, contactForm: NgForm) {
 
-    if (contactRequest.message === '') { // (!isValid) {
+    if (!contactForm.valid) { // (!isValid) {
       return; // Validation gets handled in Form
     } else {
 

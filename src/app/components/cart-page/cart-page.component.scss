@@ -17,3 +17,13 @@ form {
 .ng-invalid:not(form)  {
   border-left: 0.25rem solid #a94442; /* red */
 }
+
+
+.headerCell{
+  text-align: left;
+ }
+
+.clickableCell{
+ text-align: left;
+  cursor: pointer;
+}

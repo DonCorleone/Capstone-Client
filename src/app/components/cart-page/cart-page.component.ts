@@ -3,6 +3,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { ICartItem } from 'src/app/models/cart-item';
 import { ShippingDetail, IShippingDetail } from 'src/app/models/shipping-detail';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,9 @@ import { NgForm } from '@angular/forms';
 })
 export class CartPageComponent implements OnInit {
 
-  constructor(private cartService: CartService) {
+  constructor(
+    private router: Router,
+    private cartService: CartService) {
 
   }
 
@@ -31,9 +34,9 @@ export class CartPageComponent implements OnInit {
     }
   }
 
-  onSubmit(shippingForm: IShippingDetail) {
+  onSubmit(shippingDetail: IShippingDetail, shippingForm: NgForm) {
 
-    if  (shippingForm.FirstName === undefined) { // (!isValid) {
+    if (!shippingForm.valid) { // (!isValid) {
       return; // Validation gets handled in Form
     } else {
 
@@ -71,4 +74,8 @@ export class CartPageComponent implements OnInit {
     this.cartTotal = this.cartService.cartTotal;
   }
 
+  goToProduct(name: string) {
+
+    this.router.navigate(['/product/' + name, { id: name, comingFrom: 'cart' }]);
+  }
 }

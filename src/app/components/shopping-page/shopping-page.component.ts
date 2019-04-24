@@ -43,7 +43,6 @@ export class ShoppingPageComponent implements OnInit {
     this.LoadOrFilterItems('');
   }
 
-
   selectedItem$: IItem;
   selectedId: number;
 
@@ -57,8 +56,6 @@ export class ShoppingPageComponent implements OnInit {
     private itemsService: ItemsService,
     private cartService: CartService
     ) {
-
-
   }
 
   ngOnInit() {
@@ -71,20 +68,6 @@ export class ShoppingPageComponent implements OnInit {
       }
     );
   }
-
-  // ngOnInit() {
-
-  //   this.cats$ = this.route.paramMap.pipe(
-  //     switchMap(params => {
-  //       // (+) before `params.get()` turns the string into a number
-  //       this.selectedId = +params.get('id');
-
-  //       // this.LoadOrFilterItems(params.get('subcategoryName'));
-  //       // this.oderByItems = ['Alphabetical', 'Price', 'Rating'];
-  //       return this.itemsService.getItems();
-  //     })
-  //   );
-  // }
 
   LoadOrFilterItems(subcategoryNameExternal: string) {
 
