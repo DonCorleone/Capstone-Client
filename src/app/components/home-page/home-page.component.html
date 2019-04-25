@@ -19,9 +19,10 @@
         Toggle Slide Show
       </button>
       <div class="collapse show" id="collapseCarousel">
-          <div id="rubric01rubric11" class="carousel slide carousel-fade d-none d-sm-inline-block">
+          <!-- rubric01 rubric11 for Media >MD -->
+          <div id="carouselMd" class="carousel slide carousel-fade d-none d-sm-inline-block">
             <ol class="carousel-indicators">
-              <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#rubric01rubric11"
+              <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#carouselMd"
                 [attr.data-slide-to]="i" [class.active]="i==0">
               </li>
             </ol>
@@ -39,18 +40,19 @@
                 </div>
               </div>
             </div>
-            <a id="rubric08" class="carousel-control-prev" href="#rubric01rubric11" role="button" data-slide="prev">
+            <a id="rubric08" class="carousel-control-prev" href="#carouselMd" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
               <span id="rubric02" class="sr-only">Previous</span>
             </a>
-            <a id="rubric07" class="carousel-control-next" href="#rubric01rubric11" role="button" data-slide="next">
+            <a id="rubric07" class="carousel-control-next" href="#carouselMd" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span id="rubric03" class="sr-only">Next</span>
             </a>
           </div>
-          <div id="rubric01rubric11Sm" class="carousel slide carousel-fade d-inline-block d-sm-none">
+          <!-- rubric01 rubric11 for Media XS & SM -->
+          <div id="carouselXs" class="carousel slide carousel-fade d-inline-block d-sm-none">
               <ol class="carousel-indicators">
-                <li *ngFor="let item of featuringItems; index as i" data-target="#rubric01rubric11Sm"
+                <li *ngFor="let item of featuringItems; index as i" data-target="#carouselXs"
                   [attr.data-slide-to]="i" [class.active]="i==0">
                 </li>
               </ol>
@@ -68,15 +70,15 @@
                   </div>
                 </div>
               </div>
-              <a id="rubric08Sm" class="carousel-control-prev" href="#rubric01rubric11Sm" role="button" data-slide="prev">
+              <a id="rubric08Sm" class="carousel-control-prev" href="#carouselXs" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
                 <span id="rubric02Sm" class="sr-only">Previous</span>
               </a>
-              <a id="rubric07Sm" class="carousel-control-next" href="#rubric01rubric11Sm" role="button" data-slide="next">
+              <a id="rubric07Sm" class="carousel-control-next" href="#carouselXs" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span id="rubric03Sm" class="sr-only">Next</span>
               </a>
-            </div>
+          </div>
         </div>
     </div>
   </div>

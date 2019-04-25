@@ -1,11 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ItemsService } from 'src/app/services/items.service';
-import { Subcategory, ISubcategory } from 'src/app/models/subcategory';
-import { Item, IItem } from 'src/app/models/item';
-import { ICategory } from 'src/app/models/category';
-import { IFeaturingItems, FeaturingItems } from 'src/app/models/featuringitem';
-import { Observable, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ICategory } from 'src/app/models/category';
+import { FeaturingItems } from 'src/app/models/featuringitem';
+import { IItem, Item } from 'src/app/models/item';
+import { ISubcategory, Subcategory } from 'src/app/models/subcategory';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-home-page',
@@ -24,6 +23,8 @@ export class HomePageComponent implements OnInit {
   items: IItem[] = [];
   featuringItems: IItem[] = [];
   featuringItemGroup: FeaturingItems[];
+
+  carouselToggled = false;
 
   ngOnInit() {
 
@@ -84,16 +85,25 @@ export class HomePageComponent implements OnInit {
     this.featuringItemGroup = fg;
   }
 
-  // startCarousel() {
+  startCarousel() {
 
-  //   let carousel: HTMLElement = null;
-  //   if(!$('#rubric01rubric11').
-  //   if(!$('#yourID').is(':visible'))
-  //   {
+    this.carouselToggled = !this.carouselToggled;
 
+    let carousel: any = null;
+    if ($('#carouselMd').is(':visible')) {
+      carousel = $('#carouselMd');
+    } else if ($('#carouselXs').is(':visible')) {
+      carousel = $('#carouselXs');
+    }
 
-  //   ($('#rubric01rubric11') as HTMLElement).carousel();
-  // }
+    if (this.carouselToggled) {
+      carousel.carousel({
+        interval: 3000
+      });
+    } else {
+      carousel.carousel('pause');
+    }
+  }
 }
 function isFeatured(filterItems, index, array) {
   return (filterItems !== null && (parseInt(filterItems.rating, 10) > 4));
