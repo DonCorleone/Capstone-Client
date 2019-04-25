@@ -18,7 +18,7 @@
         (click)="startCarousel()">
         Toggle Slide Show
       </button>
-      <div class="collapse show" id="collapseCarousel">
+
           <!-- rubric01 rubric11 for Media >MD -->
           <div id="carouselMd" class="carousel slide carousel-fade d-none d-sm-inline-block">
             <ol class="carousel-indicators">
@@ -28,7 +28,7 @@
             </ol>
             <div class="carousel-inner">
               <div id="rubric10" *ngFor="let featuringItems of featuringItemGroup; index as j" class="carousel-item h-75 pt-3"
-                data-interval="3000" [class.active]="j==0">
+                [class.active]="j==0">
                 <div class="row">
                   <div class="card-columns">
                     <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow" (click)="goToProduct(item ? item.name : '')">
@@ -58,7 +58,7 @@
               </ol>
               <div class="carousel-inner">
                 <div id="rubric10Sm" *ngFor="let item of featuringItems; index as j" class="carousel-item h-75 pt-3"
-                  data-interval="3000" [class.active]="j==0">
+                  [class.active]="j==0">
                   <div class="row">
                     <div class="card">
                       <!--div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow" (click)="goToProduct(item ? item.name : '')"-->
@@ -79,7 +79,7 @@
                 <span id="rubric03Sm" class="sr-only">Next</span>
               </a>
           </div>
-        </div>
+        
     </div>
   </div>
   <div class="row">

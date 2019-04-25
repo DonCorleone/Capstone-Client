@@ -89,19 +89,19 @@ export class HomePageComponent implements OnInit {
 
     this.carouselToggled = !this.carouselToggled;
 
-    let carousel: any = null;
-    if ($('#carouselMd').is(':visible')) {
-      carousel = $('#carouselMd');
-    } else if ($('#carouselXs').is(':visible')) {
-      carousel = $('#carouselXs');
-    }
+    // let carousel: any = null;
+    // if ($('#carouselMd').is(':visible')) {
+    //   carousel = $('#carouselMd');
+    // } else if ($('#carouselXs').is(':visible')) {
+    //   carousel = $('#carouselXs');
+    // }
 
     if (this.carouselToggled) {
-      carousel.carousel({
+      ($('.carousel') as any).carousel({
         interval: 3000
       });
     } else {
-      carousel.carousel('pause');
+      ($('.carousel') as any).carousel('pause');
     }
   }
 }
