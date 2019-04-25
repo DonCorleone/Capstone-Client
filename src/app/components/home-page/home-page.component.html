@@ -22,7 +22,7 @@
         </button>
 
         <!-- rubric01 rubric11 for Media >MD -->
-        <div id="carouselMd" class="carousel slide carousel-fade" datainterval="false">
+        <div id="carouselMd" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
           <ol class="carousel-indicators">
             <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#carouselMd"
               [attr.data-slide-to]="i" [class.active]="i==0">
@@ -64,7 +64,7 @@
         </button>
 
         <!-- rubric01 rubric11 for Media XS & SM -->
-        <div id="carouselXs" class="carousel slide carousel-fade" datainterval="false">
+        <div id="carouselXs" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
           <ol class="carousel-indicators">
             <li *ngFor="let item of featuringItems; index as i" data-target="#carouselXs" [attr.data-slide-to]="i"
               [class.active]="i==0">

@@ -40,6 +40,12 @@ export class ShoppingPageComponent implements OnInit {
   public set selectedSubcategory(value: ISubcategory) {
     this._selectedSubcategory = value;
     this.selectedItem$ = null;
+
+    if (value != null && $('#colCategories').hasClass('col-sm-auto')) {
+      $('#collapseAccordion').removeClass('show');
+    }
+
+
     this.LoadOrFilterItems('');
   }
 

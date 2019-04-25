@@ -25,8 +25,8 @@ export class HomePageComponent implements OnInit {
   featuringItems: IItem[] = [];
   featuringItemGroup: FeaturingItems[];
 
-  carouselXsToggled: boolean;
-  carouselMdToggled: boolean;
+  carouselXsToggled = false;
+  carouselMdToggled = false;
 
   ngOnInit() {
 
@@ -89,8 +89,6 @@ export class HomePageComponent implements OnInit {
 
   startCarousel() {
 
-    this.carouselMdToggled = !this.carouselMdToggled;
-
     let carousel: Carousel = null;
     let toggler = false;
 
@@ -104,14 +102,12 @@ export class HomePageComponent implements OnInit {
       this.carouselXsToggled = !this.carouselXsToggled;
     }
 
-    if (toggler) {
+    if (!toggler) {
       carousel.carousel({
         interval: 3000
       });
     } else {
-      carousel.carousel({
-        interval: 0
-      });
+      carousel.carousel('pause');
     }
   }
 }

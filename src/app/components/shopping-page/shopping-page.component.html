@@ -2,36 +2,45 @@
   <!-- Row -->
   <div class="row tempBorder">
     <!-- Column -->
-    <div class="col-auto tempBorder py-0">
-
-      <!-- Accordion -->
-      <div class="accordion" id="categoriesAccordion">
-        <!-- Loop through Categories -->
-        <div id="rubric19" *ngFor="let category of categories$ | async; index as i">
-          <div id="rubric25" class="card rounded-0">
-            <!-- Category Header -->
-            <div class="card-header" [attr.id]="'heading' +i" role="button"
-              [attr.data-target]="'#collapse' +i" [attr.aria-expanded]="selectedCategory === category" [attr.aria-controls]="'collapse'+i"
-              (click)="selectedCategory = category"
-              [class.selected]="selectedCategory === category" [class.bg-gradient-danger]="selectedCategory === category"
-              [class.collapsed]="selectedCategory !== category">
-              {{category.category}}
+    <div id="colCategories" class="col col-sm-auto tempBorder py-0">
+      <div class="d-flex">
+        <button class="btn btn-secondary btn-block" type="button" data-toggle="collapse"
+          data-target="#collapseAccordion" aria-expanded="true" aria-controls="collapseAccordion">
+          Collapse Categories
+        </button>
+      </div>
+      <div class="collapse show" id="collapseAccordion">
+        <!-- Accordion -->
+        <div class="accordion" id="categoriesAccordion">
+          <!-- Loop through Categories -->
+          <div id="rubric19" *ngFor="let category of categories$ | async; index as i">
+            <div id="rubric25" class="card rounded-0">
+              <!-- Category Header -->
+              <div class="card-header" [attr.id]="'heading' +i" role="button" [attr.data-target]="'#collapse' +i"
+                [attr.aria-expanded]="selectedCategory === category" [attr.aria-controls]="'collapse'+i"
+                (click)="selectedCategory = category" [class.selected]="selectedCategory === category"
+                [class.bg-gradient-danger]="selectedCategory === category"
+                [class.collapsed]="selectedCategory !== category">
+                {{category.category}}
+              </div>
             </div>
-          </div>
-          <!-- Category Body -->
-          <div [attr.id]="'collapse' +i" [attr.aria-labelledby]="'heading' +i" data-parent="#categoriesAccordion"
-            class="collapse" [class.collapsed]="selectedCategory !== category" [class.show]="selectedCategory === category" >
-            <div class="card-body p-0">
-              <div class="list-group list-group-flush bg-gradient-light" id="rubric26" role="tablist">
+            <!-- Category Body -->
+            <div [attr.id]="'collapse' +i" [attr.aria-labelledby]="'heading' +i" data-parent="#categoriesAccordion"
+              class="collapse" [class.collapsed]="selectedCategory !== category"
+              [class.show]="selectedCategory === category">
+              <div class="card-body p-0">
+                <div class="list-group list-group-flush bg-gradient-light" id="rubric26" role="tablist">
 
-                <!-- Loop through Subcategories -->
-                <a *ngFor="let subcategory of category.subcategories; index as j"
-                  class="list-group-item list-group-item-action " [attr.id]="'listItem' +j" data-toggle="list"
-                  [attr.data-target]="'#active' +j" aria-expanded="true" [attr.aria-controls]="'active'+j"
-                  (click)="selectedSubcategory = subcategory" [class.selected]="selectedSubcategory === subcategory"
-                  [class.bg-gradient-success]="selectedSubcategory === subcategory" [class.collapsed]="selectedSubcategory !== subcategory">
-                  {{subcategory.name}}
-                </a>
+                  <!-- Loop through Subcategories -->
+                  <a *ngFor="let subcategory of category.subcategories; index as j"
+                    class="list-group-item list-group-item-action " [attr.id]="'listItem' +j" data-toggle="list"
+                    [attr.data-target]="'#active' +j" aria-expanded="true" [attr.aria-controls]="'active'+j"
+                    (click)="selectedSubcategory = subcategory" [class.selected]="selectedSubcategory === subcategory"
+                    [class.bg-gradient-success]="selectedSubcategory === subcategory"
+                    [class.collapsed]="selectedSubcategory !== subcategory">
+                    {{subcategory.name}}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -66,27 +75,27 @@
                 <div class="col-auto">
                   <div class="d-flex flex-row align-items-baseline flex-wrap mx-2">
 
-                      <span id="rubric18" class="flexChild">Sort By </span>
-                      <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle flexChild"
-                        (change)="setOrderBy($event.target.value)">
-                        <option value="0">--None--</option>
-                        <option *ngFor="let entry of oderByItems" value={{entry}}>
-                          {{entry}}
-                        </option>
-                      </select>
-                      <span class="flexChild"> (Column by Column)</span>
-                      <span class="custom-control custom-checkbox flexChild">
-                        <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
-                          (change)="changeStockOnly()" />
-                        <label id="rubric17" class="custom-control-label" for="rubric17">In Stock Only</label>
-                      </span>
+                    <span id="rubric18" class="flexChild">Sort By </span>
+                    <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle flexChild"
+                      (change)="setOrderBy($event.target.value)">
+                      <option value="0">--None--</option>
+                      <option *ngFor="let entry of oderByItems" value={{entry}}>
+                        {{entry}}
+                      </option>
+                    </select>
+                    <span class="flexChild"> (Column by Column)</span>
+                    <span class="custom-control custom-checkbox flexChild">
+                      <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
+                        (change)="changeStockOnly()" />
+                      <label id="rubric17" class="custom-control-label" for="rubric17">In Stock Only</label>
+                    </span>
                   </div>
 
 
                 </div>
-                 <div class="col">
+                <div class="col">
 
-                        </div> 
+                </div>
               </div>
             </div>
           </div>
@@ -113,8 +122,8 @@
             <div class="card-body">
 
 
-              <img id="rubric23" class="card-img-bottom img-thumbnail clickableImage" src={{item.imagelink}} appImgFallback
-                alt="{{item ? item.name : 'Product-Image'}}"
+              <img id="rubric23" class="card-img-bottom img-thumbnail clickableImage" src={{item.imagelink}}
+                appImgFallback alt="{{item ? item.name : 'Product-Image'}}"
                 (click)="goToProduct(item ? item.name : '')">
 
 
