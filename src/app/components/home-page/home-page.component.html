@@ -18,7 +18,7 @@
         Toggle Slide Show
       </button>
       <div class="collapse show" id="collapseCarousel">
-          <div id="rubric01rubric11" class="carousel slide carousel-fade d-inline-block" data-ride="carousel">
+          <div id="rubric01rubric11" class="carousel slide carousel-fade d-none d-sm-inline-block" data-ride="carousel">
             <ol class="carousel-indicators">
               <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#rubric01rubric11"
                 [attr.data-slide-to]="i" [class.active]="i==0">
@@ -47,6 +47,35 @@
               <span id="rubric03" class="sr-only">Next</span>
             </a>
           </div>
+          <div id="rubric01rubric11Sm" class="carousel slide carousel-fade d-inline-block d-sm-none" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li *ngFor="let item of featuringItems; index as i" data-target="#rubric01rubric11Sm"
+                  [attr.data-slide-to]="i" [class.active]="i==0">
+                </li>
+              </ol>
+              <div class="carousel-inner">
+                <div id="rubric10Sm" *ngFor="let item of featuringItems; index as j" class="carousel-item h-75 pt-3"
+                  data-interval="3000" [class.active]="j==0">
+                  <div class="row">
+                    <div class="card">
+                      <!--div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow" (click)="goToProduct(item ? item.name : '')"-->
+                        <img id="rubric09Sm" class="card-img-top img-thumbnail clickableImage" src="{{item ? item.imagelink : ''}}" appImgFallback
+                            alt="{{item ? item.name : 'Product-Product'}}"
+                            (click)="goToProduct(item ? item.name : '')">
+                      <!--/div-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a id="rubric08Sm" class="carousel-control-prev" href="#rubric01rubric11Sm" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
+                <span id="rubric02Sm" class="sr-only">Previous</span>
+              </a>
+              <a id="rubric07Sm" class="carousel-control-next" href="#rubric01rubric11Sm" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span id="rubric03Sm" class="sr-only">Next</span>
+              </a>
+            </div>
         </div>
     </div>
   </div>
