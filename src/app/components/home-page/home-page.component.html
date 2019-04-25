@@ -13,12 +13,13 @@
   </div>
   <div class="row">
     <div class="col">
-      <button id="rubric06" class="btn btn-outline-dark mb-1 mx-1" type="button" data-toggle="collapse"
-        data-target="#collapseCarousel" aria-expanded="false" aria-controls="collapseCarousel">
+      <button id="rubric06" class="btn btn-outline-dark mb-1 mx-1" type="button"
+        data-toggle="button" aria-pressed="false" autocomplete="off"
+        (click)="startCarousel()">
         Toggle Slide Show
       </button>
       <div class="collapse show" id="collapseCarousel">
-          <div id="rubric01rubric11" class="carousel slide carousel-fade d-none d-sm-inline-block" data-ride="carousel">
+          <div id="rubric01rubric11" class="carousel slide carousel-fade d-none d-sm-inline-block">
             <ol class="carousel-indicators">
               <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#rubric01rubric11"
                 [attr.data-slide-to]="i" [class.active]="i==0">
@@ -47,7 +48,7 @@
               <span id="rubric03" class="sr-only">Next</span>
             </a>
           </div>
-          <div id="rubric01rubric11Sm" class="carousel slide carousel-fade d-inline-block d-sm-none" data-ride="carousel">
+          <div id="rubric01rubric11Sm" class="carousel slide carousel-fade d-inline-block d-sm-none">
               <ol class="carousel-indicators">
                 <li *ngFor="let item of featuringItems; index as i" data-target="#rubric01rubric11Sm"
                   [attr.data-slide-to]="i" [class.active]="i==0">

@@ -17,7 +17,7 @@ export class HomePageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, private router: Router,
     private itemsService: ItemsService
-    ) { }
+  ) { }
 
   categories: ICategory[] = [];
   subcategories: ISubcategory[] = [];
@@ -27,15 +27,13 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.loadItems();
-  }
-
-  loadItems() {
-
+    // load all items without providing a selected subCategory
     this.itemsService.getItems('')
       .subscribe(resp => {
 
+        // save the categories
         this.categories = resp;
+
         const subcategoriesLoop: Subcategory[] = [];
         const itemsLoop: Item[] = [];
 
@@ -43,15 +41,24 @@ export class HomePageComponent implements OnInit {
 
           category.subcategories.forEach(subcategory => {
 
+            // collect all subcategories
             subcategoriesLoop.push(subcategory);
+
+            // collect all items
             subcategory.items.forEach(item => {
 
               itemsLoop.push(item);
             });
           });
         });
+
+        // save collected subCategories
         this.subcategories = subcategoriesLoop;
+
+        // save collected items
         this.items = itemsLoop;
+
+        // generate 'featured' item-collections
         this.pickFeaturedItems();
       });
   }
@@ -76,6 +83,17 @@ export class HomePageComponent implements OnInit {
     }
     this.featuringItemGroup = fg;
   }
+
+  // startCarousel() {
+
+  //   let carousel: HTMLElement = null;
+  //   if(!$('#rubric01rubric11').
+  //   if(!$('#yourID').is(':visible'))
+  //   {
+
+
+  //   ($('#rubric01rubric11') as HTMLElement).carousel();
+  // }
 }
 function isFeatured(filterItems, index, array) {
   return (filterItems !== null && (parseInt(filterItems.rating, 10) > 4));
