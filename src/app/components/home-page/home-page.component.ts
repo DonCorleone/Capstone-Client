@@ -5,6 +5,7 @@ import { FeaturingItems } from 'src/app/models/featuringitem';
 import { IItem, Item } from 'src/app/models/item';
 import { ISubcategory, Subcategory } from 'src/app/models/subcategory';
 import { ItemsService } from 'src/app/services/items.service';
+import { Carousel } from '../../../../node_modules/bootstrap/js/dist';
 
 @Component({
   selector: 'app-home-page',
@@ -24,7 +25,8 @@ export class HomePageComponent implements OnInit {
   featuringItems: IItem[] = [];
   featuringItemGroup: FeaturingItems[];
 
-  carouselToggled = false;
+  carouselXsToggled: boolean;
+  carouselMdToggled: boolean;
 
   ngOnInit() {
 
@@ -87,21 +89,29 @@ export class HomePageComponent implements OnInit {
 
   startCarousel() {
 
-    this.carouselToggled = !this.carouselToggled;
+    this.carouselMdToggled = !this.carouselMdToggled;
 
-    // let carousel: any = null;
-    // if ($('#carouselMd').is(':visible')) {
-    //   carousel = $('#carouselMd');
-    // } else if ($('#carouselXs').is(':visible')) {
-    //   carousel = $('#carouselXs');
-    // }
+    let carousel: Carousel = null;
+    let toggler = false;
 
-    if (this.carouselToggled) {
-      ($('.carousel') as any).carousel({
+    if ($('#carouselMd').is(':visible')) {
+      carousel = $('#carouselMd');
+      toggler = this.carouselMdToggled;
+      this.carouselMdToggled = !this.carouselMdToggled;
+    } else if ($('#carouselXs').is(':visible')) {
+      carousel = $('#carouselXs');
+      toggler = this.carouselXsToggled;
+      this.carouselXsToggled = !this.carouselXsToggled;
+    }
+
+    if (toggler) {
+      carousel.carousel({
         interval: 3000
       });
     } else {
-      ($('.carousel') as any).carousel('pause');
+      carousel.carousel({
+        interval: 0
+      });
     }
   }
 }
