@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Carousel } from 'node_modules/bootstrap/js/src';
 
 @Component({
   selector: 'app-not-found',
@@ -11,5 +12,14 @@ export class NotFoundComponent implements OnInit {
 
   ngOnInit() {
   }
+  stopCarousel() {
+    ($('#carouselHeaders') as Carousel).carousel('pause');
+  }
 
+  startCarousel() {
+    ($('#carouselHeaders') as Carousel).carousel({
+      pause: false,
+      interval: 1000
+    });
+  }
 }

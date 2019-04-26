@@ -67,7 +67,11 @@ Back Button [stackoverflow.com](https://stackoverflow.com/questions/35446955/how
 jQuery [medium.com](https://medium.com/@swarnakishore/how-to-include-and-use-jquery-in-angular-cli-project-592e0fe63176)
 jQuery [therichpost.com/](https://therichpost.com/how-to-run-jquery-in-angular-6)
 
-alers [stackoverflow.com](https://stackoverflow.com/questions/47924999/bootstrap-4-show-alerts)
+alerts [stackoverflow.com](https://stackoverflow.com/questions/47924999/bootstrap-4-show-alerts)
+
+carousel multi [tutsmake.com](https://www.tutsmake.com/bootstrap-carousel-slider-multiple-item/)
+carousel pause [codepen.io](https://codepen.io/Johann-S/pen/oBedMZ)
+carousel start [plnkr.co](https://embed.plnkr.co/6s3bUl/)
 
 ### Deployment
 
