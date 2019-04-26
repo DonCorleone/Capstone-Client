@@ -30,14 +30,20 @@
           </ol>
           <div class="carousel-inner">
             <div id="rubric10" *ngFor="let featuringItems of featuringItemGroup; index as j"
-              class="carousel-item h-75 pt-3" [class.active]="j==0">
+              class="carousel-item pt-3" [class.active]="j==0">
               <div class="row">
                 <div class="card-columns">
                   <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow"
                     (click)="goToProduct(item ? item.name : '')">
-                    <img id="rubric09" class="card-img-top img-thumbnail clickableImage"
-                    src="{{item ? '//images.weserv.nl/?url=' + item.imagelink + '&w=1080&h=1080&t=fitup' : ''}}" appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
-                      (click)="goToProduct(item ? item.name : '')">
+                    <picture>
+                      <source srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=1200' : ''}}" media="(min-height:1600px)">
+                      <source srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=800' : ''}}" media="(min-height:1200px)">
+                      <source srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=500' : ''}}" media="(min-height:900px)">
+                      <source srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=200' : ''}}" media="(min-height:600px)">
+                      <img src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=500' : ''}}"
+                        appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
+                        (click)="goToProduct(item ? item.name : '')">
+                    </picture>
                   </div>
                 </div>
               </div>
@@ -77,7 +83,8 @@
                 <div class="card">
                   <!--div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow" (click)="goToProduct(item ? item.name : '')"-->
                   <img id="rubric09Xs" class="card-img-top img-thumbnail clickableImage"
-                    src="{{item ? '//images.weserv.nl/?url=' + item.imagelink + '&w=300&h=300&t=fitup' : ''}}" appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
+                    src="{{item ? '//images.weserv.nl/?url=' + item.imagelink + '&w=200&h=200&t=fitup' : ''}}"
+                    appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
                     (click)="goToProduct(item ? item.name : '')">
                   <!--/div-->
                 </div>

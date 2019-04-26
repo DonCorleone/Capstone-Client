@@ -7,8 +7,15 @@ import { Carousel } from 'node_modules/bootstrap/js/src';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit {
+  mobHeight: string;
+  mobWidth: string;
 
-  constructor() { }
+  constructor() {
+    this.mobHeight = (window.innerHeight) + 'px';
+    this.mobWidth = (window.innerWidth) + 'px';
+    console.log(this.mobHeight);
+    console.log(this.mobWidth);
+   }
 
   ngOnInit() {
   }
