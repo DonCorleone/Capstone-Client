@@ -36,7 +36,7 @@
                   <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow"
                     (click)="goToProduct(item ? item.name : '')">
                     <img id="rubric09" class="card-img-top img-thumbnail clickableImage"
-                      src="{{item ? item.imagelink : ''}}" appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
+                    src="{{item ? '//images.weserv.nl/?url=' + item.imagelink + '&w=1080&h=1080&t=fitup' : ''}}" appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
                       (click)="goToProduct(item ? item.name : '')">
                   </div>
                 </div>
@@ -77,7 +77,7 @@
                 <div class="card">
                   <!--div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow" (click)="goToProduct(item ? item.name : '')"-->
                   <img id="rubric09Xs" class="card-img-top img-thumbnail clickableImage"
-                    src="{{item ? item.imagelink : ''}}" appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
+                    src="{{item ? '//images.weserv.nl/?url=' + item.imagelink + '&w=300&h=300&t=fitup' : ''}}" appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
                     (click)="goToProduct(item ? item.name : '')">
                   <!--/div-->
                 </div>
