@@ -87,7 +87,7 @@ export class HomePageComponent implements OnInit {
     this.featuringItemGroup = fg;
   }
 
-  startCarousel() {
+  toggleCarousel() {
 
     let carousel: Carousel = null;
     let toggler = false;
@@ -104,13 +104,15 @@ export class HomePageComponent implements OnInit {
 
     if (!toggler) {
       carousel.carousel({
-        interval: 3000
+        pause: false,
+        interval: 1000
       });
     } else {
       carousel.carousel('pause');
     }
   }
 }
+
 function isFeatured(filterItems, index, array) {
   return (filterItems !== null && (parseInt(filterItems.rating, 10) > 4));
 }
