@@ -1,8 +1,25 @@
 <div class="container-fluid">
   <div class="row" *ngIf="item$ | async as item">
     <div class="col-sm-6 col-md tempBorder">
-      <img id="rubric36" src="{{item.imagelink}}" class="img-fluid" alt="Responsive image" appImgFallback
-        alt="{{item ? item.name : 'Product-Product'}}">
+
+        <picture>
+            <source
+              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=1400' : ''}}"
+              media="(min-height:1600px)">
+            <source
+              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=1000' : ''}}"
+              media="(min-height:1200px)">
+            <source
+              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=700' : ''}}"
+              media="(min-height:900px)">
+            <source
+              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
+              media="(min-height:600px)">
+            <img id="rubric36" src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=300' : ''}}"
+              appImgFallback alt="{{item ? item.name : 'Product-Image'}}"
+              class="img-fluid"
+              (click)="goToProduct(item ? item.name : '')">
+          </picture>
     </div>
     <div class="col-sm-6 col-md-auto tempBorder">
       <div class="card text-center shadow-lg">

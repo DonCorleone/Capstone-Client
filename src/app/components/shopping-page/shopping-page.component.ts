@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemsService } from 'src/app/services/items.service';
-import { ICategory } from 'src/app/models/category';
-import { ISubcategory } from 'src/app/models/subcategory';
-import { IItem } from 'src/app/models/item';
-import { CartService } from 'src/app/services/cart.service';
-import { Observable, of } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { ICategory } from 'src/app/models/category';
+import { IItem } from 'src/app/models/item';
+import { ISubcategory } from 'src/app/models/subcategory';
+import { CartService } from 'src/app/services/cart.service';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-shopping-page',
@@ -41,9 +40,10 @@ export class ShoppingPageComponent implements OnInit {
     this._selectedSubcategory = value;
     this.selectedItem$ = null;
 
-    if (value != null && $('#colCategories').hasClass('col-sm-auto')) {
+    if (value != null &&  $('#colCategories').width() > 240) {
       $('#collapseAccordion').removeClass('show');
-    }
+      $('#btnCollapseCategories').text('Show Categories');
+     }
 
 
     this.LoadOrFilterItems('');
@@ -182,5 +182,13 @@ export class ShoppingPageComponent implements OnInit {
 
   addToCart(item: IItem) {
     this.cartService.createOrUpdateCartItem(item);
+  }
+
+  collapseCategories() {
+    if ($('#btnCollapseCategories').text().indexOf('how') > 0) {
+      $('#btnCollapseCategories').text('Collapse Categories');
+    } else {
+      $('#btnCollapseCategories').text('Show Categories');
+    }
   }
 }

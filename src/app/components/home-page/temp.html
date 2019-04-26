@@ -1,0 +1,116 @@
+<div>
+    <h1 id="rubric04" class="title3">
+      Welcome to
+    </h1>
+    <h1 id="rubric05" class="title2">
+      World Wide Importers!
+    </h1>
+  </div>
+  
+  
+  <div id="carouselPackageMd" class="d-none d-sm-inline-block">
+  
+    <div>
+      <!-- rubric06 -->
+      <button id="btnToggleCarouselMd" class="btn btn-outline-dark mb-1 mx-1" type="button" data-toggle="button"
+        aria-pressed="false" autocomplete="off" (click)="toggleCarousel()">
+        Toggle Slide Show
+      </button>
+    </div>
+  
+  
+    <!-- rubric01 rubric11 for Media >MD -->
+    <div id="carouselMd" class="carousel slide" data-ride="carousel" [attr.data-pause]="false">
+      <ol class="carousel-indicators">
+        <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#carouselMd"
+          [attr.data-slide-to]="i" [class.active]="i==0">
+        </li>
+      </ol>
+      <div class="carousel-inner">
+        <div id="rubric10" *ngFor="let featuringItems of featuringItemGroup; index as j" class="carousel-item pt-3"
+          [class.active]="j==0">
+          <button id="rubric05rubric12" class="btn btn-outline-dark my-2 mx-1" type="button" routerLink="/shopping"
+          routerLinkActive>Shop All
+          <fa name="tag"></fa>
+        </button>
+          <!-- <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="col-sm"
+            (click)="goToProduct(item ? item.name : '')"> -->
+          <!-- <picture>
+              <source
+                srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=1200' : ''}}"
+                media="(min-height:1600px)">
+              <source
+                srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=800' : ''}}"
+                media="(min-height:1200px)">
+              <source
+                srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=500' : ''}}"
+                media="(min-height:900px)">
+              <source
+                srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=200' : ''}}"
+                media="(min-height:600px)">
+              <img src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=500' : ''}}" appImgFallback
+                alt="{{item ? item.name : 'Product-Product'}}" (click)="goToProduct(item ? item.name : '')"
+                class="d-inline-block w-100">
+            </picture> -->
+          <!-- </div> -->
+  
+        </div>
+      </div>
+      <a id="rubric08" class="carousel-control-prev" href="#carouselMd" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
+        <span id="rubric02" class="sr-only">Previous</span>
+      </a>
+      <a id="rubric07" class="carousel-control-next" href="#carouselMd" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span id="rubric03" class="sr-only">Next</span>
+      </a>
+    </div>
+  
+  </div>
+  
+  <div id="carouselPackageXs" class="d-inline-block d-sm-none">
+  
+    <!-- rubric06 -->
+    <button id="btnToggleCarouselXs" class="btn btn-outline-dark mb-1 mx-1" type="button" data-toggle="button"
+      aria-pressed="false" autocomplete="off" (click)="toggleCarousel()">
+      Toggle Slide Show
+    </button>
+  
+    <!-- rubric01 rubric11 for Media XS & SM -->
+    <div id="carouselXs" class="carousel slide carousel-fade" data-ride="carousel" [attr.data-pause]="false">
+      <ol class="carousel-indicators">
+        <li *ngFor="let item of featuringItems; index as i" data-target="#carouselXs" [attr.data-slide-to]="i"
+          [class.active]="i==0">
+        </li>
+      </ol>
+      <div class="carousel-inner">
+        <div id="rubric10Xs" *ngFor="let item of featuringItems; index as j" class="carousel-item h-75 pt-3"
+          [class.active]="j==0">
+          <div class="row">
+            <div class="card">
+              <!--div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow" (click)="goToProduct(item ? item.name : '')"-->
+              <img id="rubric09Xs" class="card-img-top img-thumbnail clickableImage"
+                src="{{item ? '//images.weserv.nl/?url=' + item.imagelink + '&w=200&h=200&t=fitup' : ''}}" appImgFallback
+                alt="{{item ? item.name : 'Product-Product'}}" (click)="goToProduct(item ? item.name : '')">
+              <!--/div-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <a id="rubric08Xs" class="carousel-control-prev" href="#carouselXs" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
+        <span id="rubric02Xs" class="sr-only">Previous</span>
+      </a>
+      <a id="rubric07Xs" class="carousel-control-next" href="#carouselXs" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span id="rubric03Xs" class="sr-only">Next</span>
+      </a>
+    </div>
+  
+  </div>
+  <div>
+    <button id="rubric05rubric12" class="btn btn-outline-dark my-2 mx-1" type="button" routerLink="/shopping"
+      routerLinkActive>Shop All
+      <fa name="tag"></fa>
+    </button>
+  </div>

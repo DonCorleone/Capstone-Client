@@ -1,13 +1,13 @@
-.carousel {
-    width: 100%;
-}
+// .carousel {
+//     width: 100%;
+// }
 
-.carousel-item {
-    height: 65vh;
-    min-height: 350px;
+// .carousel-item {
+//     height: 65vh;
+//     min-height: 350px;
 
-    width: 100%;
-}
+//     width: 100%;
+// }
 
 .img-fluid {
     height: 90%;
@@ -17,7 +17,7 @@
   filter: invert(100%);
 }
 
-.clickableImage {
-  cursor: pointer;
+.carousel-indicators{
+  top: 0;
+  height: 10px;
 }
-
