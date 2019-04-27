@@ -18,7 +18,8 @@
         Stop Slide Show
       </button>
       <!-- rubric05 rubric12 for Media >=MD -->
-      <button id="btnShopAllMd" class="btn btn-outline-dark m-2" type="button" routerLink="/shopping" routerLinkActive>Shop
+      <button id="btnShopAllMd" class="btn btn-outline-dark m-2" type="button" routerLink="/shopping"
+        routerLinkActive>Shop
         All
         <fa name="tag"></fa>
       </button>
@@ -28,8 +29,8 @@
     <!-- rubric01 rubric11 for Media >=MD -->
     <div id="carouselMd" class="carousel slide" data-ride="carousel" [attr.data-pause]="false">
       <ol class="carousel-indicators">
-        <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#carouselMd" [attr.data-slide-to]="i"
-          [class.active]="i==0">
+        <li *ngFor="let featuringItems of featuringItemGroup; index as i" data-target="#carouselMd"
+          [attr.data-slide-to]="i" [class.active]="i==0">
         </li>
       </ol>
       <div class="carousel-inner">
@@ -37,24 +38,27 @@
           [class.active]="j==0">
           <div class="d-flex justify-content-center">
             <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="col-sm">
-              <picture>
-                <source
-                  srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=550' : ''}}"
-                  media="(min-height:1600px)">
-                <source
-                  srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
-                  media="(min-height:1200px)">
-                <source
-                  srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
-                  media="(min-height:900px)">
-                <source
-                  srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=200' : ''}}"
-                  media="(min-height:600px)">
-                <img src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=500' : ''}}"
-                  appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
-                  class="clickableImage img-fluid"
-                  (click)="goToProduct(item ? item.name : '')">
-              </picture>
+              <div>
+                <picture>
+                  <source
+                    srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=550' : ''}}"
+                    media="(min-height:1600px)">
+                  <source
+                    srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
+                    media="(min-height:1200px)">
+                  <source
+                    srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
+                    media="(min-height:900px)">
+                  <source
+                    srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=200' : ''}}"
+                    media="(min-height:600px)">
+                  <img src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=500' : ''}}" appImgFallback
+                    alt="{{item ? item.name : 'Product-Product'}}" class="clickableImage img-fluid"
+                    (click)="goToProduct(item ? item.name : '')">
+                </picture>
+              </div>
+
+              <div>{{item ? item.name : ''}} {{item ? ': ' : ''}} {{item ? (item.price | currency) : ''}}</div>
             </div>
           </div>
         </div>
@@ -82,7 +86,7 @@
       <fa name="tag"></fa>
     </button>
     <!-- rubric01 rubric11 for Media XS & SM -->
-    <div id="carouselXs" class="carousel slide carousel-fade" data-ride="carousel" [attr.data-pause]="false">
+    <div id="carouselXs" class="carousel slide" data-ride="carousel" [attr.data-pause]="false">
       <ol class="carousel-indicators">
         <li *ngFor="let item of featuringItems; index as i" data-target="#carouselXs" [attr.data-slide-to]="i"
           [class.active]="i==0">
@@ -92,25 +96,23 @@
         <div id="rubric10Xs" *ngFor="let item of featuringItems; index as j" class="carousel-item pt-3"
           [class.active]="j==0">
           <div class="row justify-content-center">
-              <!--div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow" (click)="goToProduct(item ? item.name : '')"-->
-              <img id="rubric09Xs"
-                src="{{item ? '//images.weserv.nl/?url=' + item.imagelink + '&w=200&h=200&t=fitup' : ''}}"
-                appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
-                class="img-fluid"
-                (click)="goToProduct(item ? item.name : '')">
-              <!--/div-->
-            </div>
+            <img id="rubric09Xs"
+              src="{{item ? '//images.weserv.nl/?url=' + item.imagelink + '&w=200&h=200&t=fitup' : ''}}" appImgFallback
+              alt="{{item ? item.name : 'Product-Product'}}" class="img-fluid"
+              (click)="goToProduct(item ? item.name : '')">
           </div>
+          <div>{{item ? item.name : ''}} {{item ? ': ' : ''}} {{item ? (item.price | currency) : ''}}</div>
         </div>
       </div>
-      <a id="rubric08Xs" class="carousel-control-prev" href="#carouselXs" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
-        <span id="rubric02Xs" class="sr-only">Previous</span>
-      </a>
-      <a id="rubric07Xs" class="carousel-control-next" href="#carouselXs" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span id="rubric03Xs" class="sr-only">Next</span>
-      </a>
+    </div>
+    <a id="rubric08Xs" class="carousel-control-prev" href="#carouselXs" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
+      <span id="rubric02Xs" class="sr-only">Previous</span>
+    </a>
+    <a id="rubric07Xs" class="carousel-control-next" href="#carouselXs" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span id="rubric03Xs" class="sr-only">Next</span>
+    </a>
   </div>
 
 </div>
