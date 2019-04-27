@@ -5,7 +5,7 @@
     <div class="col">
       <!-- Cart -->
       <div id="rubric47" class="table-responsive-sm">
-        <table class="table table-striped table-hover thead-light">
+        <table class="table table-hover thead-light">
           <thead>
             <tr>
               <th scope="col" class="headerCell">Name</th>
@@ -20,6 +20,15 @@
             <tr *ngFor="let cartItem of cart; index as i">
               <td id="cellName" class="clickableCell" (click)="goToProduct(cartItem.name)">
                 {{cartItem.name}}
+                <picture>
+                    <source
+                      srcset="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink.split(' ').join('%20') + '&h=40' : ''}}"
+                      media="(min-height:600px)">
+                    <img id="rubric36" src="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink + '&h=30' : ''}}"
+                      appImgFallback alt="{{cartItem ? cartItem.name : 'Product-Image'}}"
+                      class="img-fluid"
+                      (click)="goToProduct(cartItem ? cartItem.name : '')">
+                  </picture>
               </td>
               <td id="cellDesc" class="d-none d-md-table-cell clickableCell" (click)="goToProduct(cartItem.name)">
                 {{cartItem.description}}
