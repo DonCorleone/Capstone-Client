@@ -40,9 +40,13 @@ export class ShoppingPageComponent implements OnInit {
     this._selectedSubcategory = value;
     this.selectedItem$ = null;
 
-    if (value != null &&  $('#colCategories').width() > 240) {
+    // If Window <= XS > Collapse automatically
+    if (value != null && window.innerWidth < 576) {
       $('#collapseAccordion').removeClass('show');
       $('#btnCollapseCategories').text('Show Categories');
+
+      $('#collapseFilter').removeClass('show');
+      $('#btnCollapseFilter').text('Show Filter');
      }
 
 
@@ -145,6 +149,7 @@ export class ShoppingPageComponent implements OnInit {
             }
             subcategoriesLoop.push(subcategory);
             subcategory.items.forEach(item => {
+
               // grab items of each subcategory
 
               // Fix Items Subcategory and Category-Name due to issue;
@@ -191,6 +196,13 @@ export class ShoppingPageComponent implements OnInit {
     this.cartService.createOrUpdateCartItem(item);
   }
 
+  collapseFilter() {
+    if ($('#btnCollapseFilter').text().indexOf('how') > 0) {
+      $('#btnCollapseFilter').text('Collapse Filter');
+    } else {
+      $('#btnCollapseFilter').text('Show Filter');
+    }
+  }
   collapseCategories() {
     if ($('#btnCollapseCategories').text().indexOf('how') > 0) {
       $('#btnCollapseCategories').text('Collapse Categories');

@@ -1,15 +1,17 @@
 <div class="container-fluid">
-  <!-- Row -->
+  <!-- Categories Row -->
   <div class="row tempBorder">
-    <!-- Column -->
+    <!-- Categories Column -->
     <div id="colCategories" class="col col-sm-auto tempBorder py-0">
       <div class="d-flex">
+        <!-- Categories Collapse Button -->
         <button id="btnCollapseCategories" class="btn btn-secondary btn-block" type="button" data-toggle="collapse"
           data-target="#collapseAccordion" aria-expanded="true" aria-controls="collapseAccordion"
           (click)="collapseCategories()">
           Collapse Categories
         </button>
       </div>
+      <!-- Categories  -->
       <div class="collapse show" id="collapseAccordion">
         <!-- Accordion -->
         <div class="accordion" id="categoriesAccordion">
@@ -54,53 +56,71 @@
       <div class="row">
         <!-- Column Controls Bar-->
         <div class="col">
- <!-- Controls Bar-->
- <div id="rubric14" class="card shadow-sm px-0">
-    <div class="card-body">
-      <div class="row">
-        <div class="align-items-end col-auto">
+          <!-- Categories Collapse Button -->
+          <button id="btnCollapseFilter" class="btn btn-secondary btn-block mt-1 mt-sm-0" type="button"
+            data-toggle="collapse" data-target="#collapseFilter" aria-expanded="true" aria-controls="collapseFilter"
+            (click)="collapseFilter()">
+            Collapse Filter
+          </button>
+
+          <div id="collapseFilter" class="collapse show">
+            <!-- Controls Bar-->
+            <div id="rubric14" class="card shadow-sm px-0">
+              <div class="card-body">
 
 
-        </div>
-        <div class="col">
 
-        </div>
-        <div class="col-auto">
-          <!-- rubric15 rubric26 -->
-          <div id="collapsableFilter" class="d-flex flex-row align-items-baseline flex-wrap collapse show">
-              <h3>
-                  {{selectedCategory ? selectedCategory.category : '' }}
-                  {{selectedSubcategory && selectedCategory ? ' :  ' : ''}}
-                </h3>
-                <h4>
-                  {{selectedSubcategory ? selectedSubcategory.name : ''}}
-                </h4>
-            <span id="rubric18" class="flexChild">Sort By </span>
-            <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle flexChild"
-              (change)="setOrderBy($event.target.value)">
-              <option value="0">--None--</option>
-              <option *ngFor="let entry of oderByItems" value={{entry}}>
-                {{entry}}
-              </option>
-            </select>
-            <span class="flexChild"> (Column by Column)</span>
-            <span class="custom-control custom-checkbox flexChild">
-              <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
-                (change)="changeStockOnly()" />
-              <label id="rubric17" class="custom-control-label" for="rubric17">In Stock Only</label>
-            </span>
+
+
+
+                <div class="row">
+                  <div class="align-items-end col-auto">
+
+
+                  </div>
+                  <div class="col">
+
+                  </div>
+                  <div class="col-auto">
+
+
+                    <!-- rubric15 rubric26 -->
+                    <div id="filter" class="d-flex flex-row align-items-baseline flex-wrap">
+                      <h4>
+                        {{selectedCategory ? selectedCategory.category : '' }}
+                        {{selectedSubcategory && selectedCategory ? ' >  ' : ''}}
+                      </h4>
+                      <h4>
+                        {{selectedSubcategory ? selectedSubcategory.name : ''}}
+                      </h4>
+                      <span id="rubric18" class="flexChild">Sort By </span>
+                      <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle flexChild"
+                        (change)="setOrderBy($event.target.value)">
+                        <option value="0">--None--</option>
+                        <option *ngFor="let entry of oderByItems" value={{entry}}>
+                          {{entry}}
+                        </option>
+                      </select>
+                      <span class="flexChild"> (Column by Column)</span>
+                      <span class="custom-control custom-checkbox flexChild">
+                        <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
+                          (change)="changeStockOnly()" />
+                        <label id="rubric17" class="custom-control-label" for="rubric17">In Stock Only</label>
+                      </span>
+                    </div>
+
+
+
+                  </div>
+                  <div class="col">
+
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
-
-        </div>
-        <div class="col">
-
         </div>
       </div>
-    </div>
-  </div>
-</div>
-</div>      <!-- Row Header -->
       <div class="row">
         <!-- Column Header -->
         <div class="col">
@@ -121,25 +141,25 @@
             <div class="card-body">
 
 
-                <picture>
-                    <source
-                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=800' : ''}}"
-                      media="(min-height:1400px)">
-                    <source
-                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=600' : ''}}"
-                      media="(min-height:1000px)">
-                    <source
-                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=450' : ''}}"
-                      media="(min-height:800px)">
-                    <source
-                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
-                      media="(min-height:500px)">
-                    <img id="rubric23" src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=300' : ''}}"
-                      appImgFallback alt="{{item ? item.name : 'Product-Image'}}"
-                      class="card-img-bottom img-thumbnail clickableImage img-fluid"
-                      (click)="goToProduct(item ? item.name : '')">
-                  </picture>
-                  
+              <picture>
+                <source
+                  srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=800' : ''}}"
+                  media="(min-height:1400px)">
+                <source
+                  srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=600' : ''}}"
+                  media="(min-height:1000px)">
+                <source
+                  srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=450' : ''}}"
+                  media="(min-height:800px)">
+                <source
+                  srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
+                  media="(min-height:500px)">
+                <img id="rubric23" src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=300' : ''}}"
+                  appImgFallback alt="{{item ? item.name : 'Product-Image'}}"
+                  class="card-img-bottom img-thumbnail clickableImage img-fluid"
+                  (click)="goToProduct(item ? item.name : '')">
+              </picture>
+
               <!-- <img id="rubric23" class="card-img-bottom img-thumbnail clickableImage" src={{item.imagelink}}
                 appImgFallback alt="{{item ? item.name : 'Product-Image'}}"
                 (click)="goToProduct(item ? item.name : '')"> -->

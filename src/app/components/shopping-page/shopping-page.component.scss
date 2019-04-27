@@ -58,7 +58,11 @@
   box-shadow: 0.5rem;
 }
 
-.flexChild{  
+.flexChild{
   margin-left: 1rem;
   margin-top: 0.5rem;
+}
+
+#btnCollapseCategories, #btnCollapseFilter {
+  min-width: 285px; // Width on IPhone SE
 }
