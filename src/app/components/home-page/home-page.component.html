@@ -52,7 +52,7 @@
                   media="(min-height:600px)">
                 <img src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=500' : ''}}"
                   appImgFallback alt="{{item ? item.name : 'Product-Product'}}"
-                  class="img-thumbnail clickableImage img-fluid"
+                  class="clickableImage img-fluid"
                   (click)="goToProduct(item ? item.name : '')">
               </picture>
             </div>
@@ -112,5 +112,5 @@
         <span id="rubric03Xs" class="sr-only">Next</span>
       </a>
   </div>
-  
+
 </div>

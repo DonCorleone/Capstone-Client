@@ -59,7 +59,7 @@ export class HomePageComponent implements OnInit {
         this.subcategories = subcategoriesLoop;
 
         // save collected items
-        this.items = itemsLoop;
+        this.items = shuffle(itemsLoop);
 
         // generate 'featured' item-collections
         this.pickFeaturedItems();
@@ -113,6 +113,12 @@ export class HomePageComponent implements OnInit {
   }
 }
 
+/// Featured === 5 Star Rating
 function isFeatured(filterItems, index, array) {
   return (filterItems !== null && (parseInt(filterItems.rating, 10) > 4));
+}
+
+/// Random Sort
+function shuffle(array: IItem[]): IItem[] {
+  return array.sort(() => Math.random() - 0.5);
 }
