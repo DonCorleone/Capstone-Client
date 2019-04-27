@@ -5,7 +5,7 @@ import { FeaturingItems } from 'src/app/models/featuringitem';
 import { IItem, Item } from 'src/app/models/item';
 import { ISubcategory, Subcategory } from 'src/app/models/subcategory';
 import { ItemsService } from 'src/app/services/items.service';
-import { Carousel } from '../../../../node_modules/bootstrap/js/dist';
+import { Carousel, Button } from '../../../../node_modules/bootstrap/js/dist';
 
 @Component({
   selector: 'app-home-page',
@@ -25,8 +25,8 @@ export class HomePageComponent implements OnInit {
   featuringItems: IItem[] = [];
   featuringItemGroup: FeaturingItems[];
 
-  carouselXsToggled = false;
-  carouselMdToggled = false;
+  carouselXsToggled = true;
+  carouselMdToggled = true;
 
   ngOnInit() {
 
@@ -91,13 +91,16 @@ export class HomePageComponent implements OnInit {
 
     let carousel: Carousel = null;
     let toggler = false;
+    let btn: Button = null;
 
     if ($('#carouselMd').is(':visible')) {
       carousel = $('#carouselMd');
+      btn = $('#btnToggleCarouselMd');
       toggler = this.carouselMdToggled;
       this.carouselMdToggled = !this.carouselMdToggled;
     } else if ($('#carouselXs').is(':visible')) {
       carousel = $('#carouselXs');
+      btn = $('#btnToggleCarouselXs');
       toggler = this.carouselXsToggled;
       this.carouselXsToggled = !this.carouselXsToggled;
     }
@@ -107,8 +110,10 @@ export class HomePageComponent implements OnInit {
         pause: false,
         interval: 1000
       });
+      $(btn).text('Stop Slide Show');
     } else {
       carousel.carousel('pause');
+      $(btn).text('Start Slide Show');
     }
   }
 }
