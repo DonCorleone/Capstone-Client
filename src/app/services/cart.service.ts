@@ -71,6 +71,11 @@ export class CartService {
   }
 
   createOrUpdateCartItem(item: IItem, amount: number = 1) {
+
+   // let stockNumber = Number.parseInt(item.stock, 10);
+   // stockNumber -= amount;
+   // item.stock = stockNumber.toString();
+
     let tempItem = this._cart.find(entry => entry.name === item.name);
     if (!tempItem) {
       // not found any existing > create and add to cart

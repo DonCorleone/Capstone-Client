@@ -4,6 +4,7 @@ import { ICartItem } from 'src/app/models/cart-item';
 import { ShippingDetail, IShippingDetail } from 'src/app/models/shipping-detail';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IItem } from 'src/app/models/item';
 
 
 @Component({
@@ -53,10 +54,19 @@ export class CartPageComponent implements OnInit {
   }
 
   onDecrementAmount(cartItem: ICartItem) {
+    if (cartItem.amount < 1) {
+      $('#notAllowedAlert').removeAttr('hidden');
+      return;
+    }
     this.cartService.decrementAmount(cartItem);
     this.onRecalculate();
   }
   onIncrementAmount(cartItem: ICartItem) {
+    if (cartItem.amount >= Number.parseInt(cartItem.stock, 10)) {
+      $('#outOfStockAlert').removeAttr('hidden');
+      return;
+    }
+
     this.cartService.incrementAmount(cartItem);
     this.onRecalculate();
   }
@@ -74,8 +84,8 @@ export class CartPageComponent implements OnInit {
     this.cartTotal = this.cartService.cartTotal;
   }
 
-  goToProduct(name: string) {
+  goToProduct(cartItem: ICartItem) {
 
-    this.router.navigate(['/product/' + name, { id: name, comingFrom: 'cart' }]);
+    this.router.navigate(['/product/' + cartItem.name, { id: cartItem.name, comingFrom: 'cart', amount: cartItem.amount }]);
   }
 }

@@ -2,24 +2,23 @@
   <div class="row" *ngIf="item$ | async as item">
     <div class="col-sm-6 col-md tempBorder">
 
-        <picture>
-            <source
-              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=1400' : ''}}"
-              media="(min-height:1600px)">
-            <source
-              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=1000' : ''}}"
-              media="(min-height:1200px)">
-            <source
-              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=700' : ''}}"
-              media="(min-height:900px)">
-            <source
-              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
-              media="(min-height:600px)">
-            <img id="rubric36" src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=300' : ''}}"
-              appImgFallback alt="{{item ? item.name : 'Product-Image'}}"
-              class="img-fluid"
-              (click)="goToProduct(item ? item.name : '')">
-          </picture>
+      <picture>
+        <source
+          srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=1400' : ''}}"
+          media="(min-height:1600px)">
+        <source
+          srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=1000' : ''}}"
+          media="(min-height:1200px)">
+        <source
+          srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=700' : ''}}"
+          media="(min-height:900px)">
+        <source
+          srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
+          media="(min-height:600px)">
+        <img id="rubric36" src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=300' : ''}}"
+          appImgFallback alt="{{item ? item.name : 'Product-Image'}}" class="img-fluid"
+          (click)="goToProduct(item ? item.name : '')">
+      </picture>
     </div>
     <div class="col-sm-6 col-md-auto tempBorder">
       <div class="card text-center shadow-lg">
@@ -67,6 +66,20 @@
           <p id="rubric39">price: {{item.price | currency}}</p>
           <p id="rubric38">stock: {{item.stock}}</p>
 
+          <div id="outOfStockAlert" hidden class="alert alert-danger alert-dismissible show fade alertLeftAligned">
+              Out of Stock
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+          </div>
+
+          <div id="notAllowedAlert" hidden class="alert alert-danger alert-dismissible show fade alertLeftAligned">
+              Not Allowed
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+          </div>
+
           <form class="form-inline" (ngSubmit)="onSubmit(item)" #stockForm="ngForm">
 
             <div class="input-group mb-3" id="plusMinus">
@@ -77,12 +90,12 @@
               <input id="amount" [(ngModel)]="stockManipulator.amount" name="amount" class="form-control pb-2"
                 type="number" placeholder=0 aria-label="PlusMinus" aria-describedby="btnAdd">
               <div class="input-group-append pb-2">
-                <button class="btn btn-outline-secondary" type="button" id="btnPlus" (click)="onIncrementAmount()">
+                <button class="btn btn-outline-secondary" type="button" id="btnPlus" (click)="onIncrementAmount(item)">
                   <fa name="plus"></fa>
                 </button>
               </div>
               <div class="input-group-append pb-2">
-                <button class="btn btn-outline-secondary" type="button" id="btnMinus" (click)="onDecrementAmount()">
+                <button class="btn btn-outline-secondary" type="button" id="btnMinus" (click)="onDecrementAmount(item)">
                   <fa name="minus"></fa>
                 </button>
               </div>

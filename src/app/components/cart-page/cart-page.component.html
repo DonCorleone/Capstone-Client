@@ -18,29 +18,47 @@
           </thead>
           <tbody>
             <tr *ngFor="let cartItem of cart; index as i">
-              <td id="cellName" class="clickableCell" (click)="goToProduct(cartItem.name)">
+              <td id="cellName" class="clickableCell" (click)="goToProduct(cartItem)">
                 {{cartItem.name}}
                 <picture>
-                    <source
-                      srcset="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink.split(' ').join('%20') + '&h=40' : ''}}"
-                      media="(min-height:600px)">
-                    <img id="rubric36" src="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink + '&h=30' : ''}}"
-                      appImgFallback alt="{{cartItem ? cartItem.name : 'Product-Image'}}"
-                      class="img-fluid"
-                      (click)="goToProduct(cartItem ? cartItem.name : '')">
-                  </picture>
+                  <source
+                    srcset="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink.split(' ').join('%20') + '&h=40' : ''}}"
+                    media="(min-height:600px)">
+                  <img id="rubric36"
+                    src="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink + '&h=30' : ''}}"
+                    appImgFallback alt="{{cartItem ? cartItem.name : 'Product-Image'}}" class="img-fluid"
+                    (click)="goToProduct(cartItem ? cartItem : null)">
+                </picture>
               </td>
-              <td id="cellDesc" class="d-none d-md-table-cell clickableCell" (click)="goToProduct(cartItem.name)">
+              <td id="cellDesc" class="d-none d-md-table-cell clickableCell" (click)="goToProduct(cartItem)">
                 {{cartItem.description}}
               </td>
-              <td id="cellPrice" class="clickableCell" (click)="goToProduct(cartItem.name)">
+              <td id="cellPrice" class="clickableCell" (click)="goToProduct(cartItem)">
                 {{cartItem.price | currency}}
               </td>
-              <td id="cellAmount" class="clickableCell" (click)="goToProduct(cartItem.name)">
+              <td id="cellAmount">
+                <div id="outOfStockAlert" hidden
+                  class="alert alert-danger alert-dismissible show fade alertLeftAligned">
+                  Out of Stock
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div id="notAllowedAlert" hidden
+                  class="alert alert-danger alert-dismissible show fade alertLeftAligned">
+                  Not Allowed
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="clickableCell" (click)="goToProduct(cartItem)">
+                  {{cartItem.amount}}
+                </div>
                 <!--input id="txtAmount" type="text" class="form-control" [(ngModel)]="cartItem.amount"/-->
-                {{cartItem.amount}}
+
               </td>
-              <td id="rubric55" class="clickableCell" (click)="goToProduct(cartItem.name)">{{cartItem.total | currency}}
+              <td id="rubric55" class="clickableCell" (click)="goToProduct(cartItem)">{{cartItem.total | currency}}
               </td>
               <td id="rubric53"><button type="button" class="btn btn-secondary btn-sm"
                   (click)="onIncrementAmount(cartItem)">
