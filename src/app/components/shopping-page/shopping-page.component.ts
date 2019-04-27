@@ -146,6 +146,13 @@ export class ShoppingPageComponent implements OnInit {
             subcategoriesLoop.push(subcategory);
             subcategory.items.forEach(item => {
               // grab items of each subcategory
+
+              // Fix Items Subcategory and Category-Name due to issue;
+              // tslint:disable-next-line:max-line-length
+              // https://courses.edx.org/courses/course-v1:Microsoft+DEV238x+1T2019a/discussion/forum/course/threads/5cb872a6d8eab1094c000490
+
+              item.subcategory = subcategory.name;
+              item.category = category.category;
               itemsLoop.push(item);
             });
           });
