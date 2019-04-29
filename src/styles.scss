@@ -42,7 +42,7 @@ $factorXl: 2;
 
 
 .title1 {
-
+  line-height: 100%;
   @include media-breakpoint-up(xs) {
     @include rfs($SizeTitle1 * $factorXs);
   }
@@ -58,7 +58,7 @@ $factorXl: 2;
 }
 
 .title2 {
-
+  line-height: 100%;
   @include media-breakpoint-up(xs) {
     @include rfs($SizeTitle2 * $factorXs);
   }
