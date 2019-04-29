@@ -13,6 +13,7 @@ export class ContactUsPageComponent implements OnInit {
 
   submitted = false;
   model = new ContactRequest('', '', this.subjects[0], '');
+  display = 'none';
 
   constructor() { }
 
@@ -24,13 +25,18 @@ export class ContactUsPageComponent implements OnInit {
     } else {
 
       this.submitted = true;
-      $('#modContact').modal('show');
+      this.openModal();
     }
   }
 
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
-  ngOnInit() {
+  openModal() {
+    this.display = 'block';
   }
 
+  onCloseHandled() {
+    this.display = 'none';
+  }
+
+  ngOnInit() {
+  }
 }

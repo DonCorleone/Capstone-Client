@@ -5,7 +5,6 @@ import { ICartItem } from 'src/app/models/cart-item';
 import { IShippingDetail, ShippingDetail } from 'src/app/models/shipping-detail';
 import { CartService } from 'src/app/services/cart.service';
 
-
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
@@ -27,6 +26,7 @@ export class CartPageComponent implements OnInit {
   cartTotal = this.cartService.cartTotal;
   shippingDetail: IShippingDetail = null;
   submitted = false;
+  display = 'none';
 
   ngOnInit() {
     if (this.shippingDetail == null) {
@@ -50,9 +50,16 @@ export class CartPageComponent implements OnInit {
     } else {
 
       this.submitted = true;
-
-      $('#modSuccess').modal('show');
+      this.openModal();
     }
+  }
+
+  openModal() {
+    this.display = 'block';
+  }
+
+  onCloseHandled() {
+    this.display = 'none';
   }
 
   onDecrementAmount(cartItem: ICartItem) {

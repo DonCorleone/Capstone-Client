@@ -81,22 +81,22 @@
     <section id="secModalContact">
       <h3 class="sr-only">Modal with Contact Info</h3>
       <!-- rubric60 -->
-      <div class="modal fade" id="modContact" tabindex="-1" role="dialog" aria-labelledby="lblModal" aria-hidden="true">
+      <div class="backdrop" [ngStyle]="{'display':display}"></div>
+      <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header bg-gradient-danger">
-              <span class="modal-title title5" id="lblModal">Your Message</span>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <div class="modal-title text-left">Your Message</div>
+              <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span
+                  aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-              <div *ngIf="model !== null" class="alertLeftAligned">
+              <div *ngIf="model !== null" class="text-left">
                 <p>{{model.message}}</p>
               </div>
             </div>
             <div class="modal-footer bg-gradient-danger">
-              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-light" (click)="onCloseHandled()">Close</button>
             </div>
           </div>
         </div>
