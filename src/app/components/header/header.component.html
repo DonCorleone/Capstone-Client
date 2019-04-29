@@ -1,25 +1,36 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-gradient-dark text-white">
-  <a id="rubric13" class="navbar-brand navbar-brand-text" href="#">
-    <img src="../../../assets/icons/squirrel.svg" appImgFallback class="BrandIcon d-inline-block align-top" alt="logo SVG">
-    Grocery Cloud</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse" [ngClass]='{"show": isExpanded}'>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'
-        data-target="#navbarCollapse" data-toggle="collapse">
-        <a id="rubric65rubric69" class="nav-link" [routerLink]='["/"]'>Home <fa name="home"></fa></a>
-      </li>
-      <li id="rubric34" class="nav-item" [routerLinkActive]='["link-active"]' data-target="#navbarCollapse" data-toggle="collapse">
-        <a id="rubric66rubric70" class="nav-link" [routerLink]='["/shopping"]'>Shopping <fa name="tag"></fa></a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li id="rubric56" class="nav-item" [routerLinkActive]='["link-active"]' data-target="#navbarCollapse" data-toggle="collapse">
-        <a id="rubric67rubric70" class="nav-link right" [routerLink]='["/cart"]'>Cart <fa name="shopping-cart"></fa> <span class="badge badge-light ml-2 mr-n2">{{cart ? cart.length : 0}}</span></a>
-      </li>
-    </ul>
-  </div>
+  <h1 class="sr-only">Navigation Menu</h1>
+  <section id="secBrand">
+    <h2 class="sr-only">Brand</h2>
+    <a id="rubric13" class="navbar-brand navbar-brand-text" href="#">
+      <img src="../../../assets/icons/squirrel.svg" appImgFallback class="BrandIcon d-inline-block align-top"
+        alt="logo SVG">
+      Grocery Cloud</a>
+  </section>
+  <section id="secMenu">
+    <h2 class="sr-only">Navigation Menu</h2>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse" [ngClass]='{"show": isExpanded}'>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'
+          data-target="#navbarCollapse" data-toggle="collapse">
+          <a id="rubric65rubric69" class="nav-link" [routerLink]='["/"]'>Home <fa name="home"></fa></a>
+        </li>
+        <li id="rubric34" class="nav-item" [routerLinkActive]='["link-active"]' data-target="#navbarCollapse"
+          data-toggle="collapse">
+          <a id="rubric66rubric70" class="nav-link" [routerLink]='["/shopping"]'>Shopping <fa name="tag"></fa></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li id="rubric56" class="nav-item" [routerLinkActive]='["link-active"]' data-target="#navbarCollapse"
+          data-toggle="collapse">
+          <a id="rubric67rubric70" class="nav-link right" [routerLink]='["/cart"]'>Cart <fa name="shopping-cart"></fa>
+            <span class="badge badge-light ml-2 mr-n2">{{cart ? cart.length : 0}}</span></a>
+        </li>
+      </ul>
+    </div>
+  </section>
 </nav>
