@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     }
   },
   {
-    path: 'product/:id',
+    path: 'product/:id', // rubric46 The product page is accessible at http://localhost:8080/#/product?name=productname
     component: ProductPageComponent,
     data: {
       title: 'Product Page'

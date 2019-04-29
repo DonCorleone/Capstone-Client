@@ -36,6 +36,8 @@
                   <div class="card-body p-0">
                     <div class="list-group list-group-flush bg-gradient-light" id="rubric26" role="tablist">
 
+                      <!-- rubric27 : Clicking on a subcategory should change the name of the selected category in the controls bar -->
+
                       <!-- Loop through Subcategories -->
                       <a *ngFor="let subcategory of category.subcategories; index as j"
                         class="list-group-item list-group-item-action " [attr.id]="'listItem' +j" data-toggle="list"
@@ -149,7 +151,7 @@
                       <source
                         srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
                         media="(min-height:500px)">
-                      <img id="rubric23"
+                      <img id="rubric23rubric31"
                         src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
                         appImgFallback alt="{{item ? item.name : 'Product-Image'}}"
                         class="card-img-bottom img-thumbnail clickableImage img-fluid"

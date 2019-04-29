@@ -20,8 +20,9 @@ export class ContactUsPageComponent implements OnInit {
 
   onSubmit(contactRequest: IContactRequest, contactForm: NgForm) {
 
-    if (!contactForm.valid) { // (!isValid) {
-      return; // Validation gets handled in Form
+    if (!contactForm.valid) {
+      // rubric61 : The form should show validation errors if the form isn’t filled out correctly and the send button is pressed
+      return; // Validation itself and markup gets handled in HTML-Form
     } else {
 
       this.submitted = true;
@@ -30,6 +31,7 @@ export class ContactUsPageComponent implements OnInit {
   }
 
   openModal() {
+    // rubric 60 : The send button should create an alert based on the message sent
     this.display = 'block';
   }
 

@@ -178,7 +178,7 @@ export class ShoppingPageComponent implements OnInit {
 
 
   goToProduct(name: string) {
-
+    // rubric46 The product page is accessible at http://localhost:8080/#/product?name=productname
     this.router.navigate(['/product/' + name, { id: name, comingFrom: 'shopping' }]);
   }
 

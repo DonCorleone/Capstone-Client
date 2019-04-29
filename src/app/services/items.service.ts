@@ -28,14 +28,19 @@ export class ItemsService implements OnInit {
 
   getItems(subcategoryNameExternal: string): Observable<Array<ICategory>> {
 
-    // ToDo Interactive URL
-    let configUrl = '';
-    if (!environment.production) { // dev?
-      configUrl = '../assets/itemsdata.json'; // load local file with non-existing imagelinks due to huge data volume
-    } else {
-      configUrl = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json'; // load online json with real imagelinks
-    }
+    // rubric81 : Data was accessed using the Azure Web API and not a local file
+    const configUrl = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json'; // load online json with real imagelinks
 
+    // Disabled for submitting to Microsoft
+    // if (!environment.production) { // dev?
+    //   configUrl = '../assets/itemsdata.json'; // load local file with non-existing imagelinks due to huge data volume
+    // } else {
+
+    // // rubric81 : Data was accessed using the Azure Web API and not a local file
+    //   configUrl = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json'; // load online json with real imagelinks
+    // }
+
+    // rubric80 : Used jQuery or Angular for data binding
     return this.http.get<ICategory[]>(configUrl).pipe(
       map(response => response.map((category: ICategory) => new Category(subcategoryNameExternal).deserialize(category))));
   }

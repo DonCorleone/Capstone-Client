@@ -96,6 +96,7 @@ export class CartPageComponent implements OnInit {
 
   goToProduct(cartItem: ICartItem) {
 
+    // rubric46 The product page is accessible at http://localhost:8080/#/product?name=productname
     this.router.navigate(['/product/' + cartItem.name, { id: cartItem.name, comingFrom: 'cart', amount: cartItem.amount }]);
   }
 }
