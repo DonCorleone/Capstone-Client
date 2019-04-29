@@ -84,7 +84,7 @@ export class HomePageComponent implements OnInit {
     this.featuringItems = this.items.filter(isFeatured);
     const fg: FeaturingItems[] = [];
     for (let ix = 0; ix < this.featuringItems.length;) {
-      const amountInGroup = 3; // ToDo = random(1,4);
+      const amountInGroup = getRandomInt(4) + 1;
       const featuringItemsNew = new FeaturingItems();
       for (let ixInner = 0; ixInner < amountInGroup; ixInner++) {
 
@@ -135,4 +135,9 @@ function isFeatured(filterItems, index, array) {
 /// Random Sort
 function shuffle(array: IItem[]): IItem[] {
   return array.sort(() => Math.random() - 0.5);
+}
+
+// with each slide having between 1 and 4 product images.
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
