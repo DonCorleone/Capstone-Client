@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/services/cart.service';
-import { ICartItem } from 'src/app/models/cart-item';
-import { ShippingDetail, IShippingDetail } from 'src/app/models/shipping-detail';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IItem } from 'src/app/models/item';
+import { ICartItem } from 'src/app/models/cart-item';
+import { IShippingDetail, ShippingDetail } from 'src/app/models/shipping-detail';
+import { CartService } from 'src/app/services/cart.service';
 
 
 @Component({
@@ -33,6 +32,15 @@ export class CartPageComponent implements OnInit {
     if (this.shippingDetail == null) {
       this.shippingDetail = new ShippingDetail();
     }
+
+    $(window).resize(go => {
+      // tslint:disable-next-line:prefer-const
+      if ($(window).width() < 768) {
+        $('#tblCart').addClass('table-sm');
+      } else {
+        $('#tblCart').removeClass('table-sm');
+      }
+    });
   }
 
   onSubmit(shippingDetail: IShippingDetail, shippingForm: NgForm) {
@@ -43,13 +51,7 @@ export class CartPageComponent implements OnInit {
 
       this.submitted = true;
 
-      // tslint:disable:space-before-function-paren
-      // tslint:disable-next-line:only-arrow-functions
-      $(function () {
-
-        // tslint:disable-next-line:only-arrow-functions
-        $('#checkoutAlert').removeAttr('hidden');
-      });
+      $('#modSuccess').modal('show');
     }
   }
 
@@ -61,6 +63,7 @@ export class CartPageComponent implements OnInit {
     this.cartService.decrementAmount(cartItem);
     this.onRecalculate();
   }
+
   onIncrementAmount(cartItem: ICartItem) {
     if (cartItem.amount >= Number.parseInt(cartItem.stock, 10)) {
       $('#outOfStockAlert').removeAttr('hidden');

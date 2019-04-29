@@ -54,7 +54,7 @@
           </div>
         </div>
       </section>
-      <!-- section id="secFilterAndItems"-->
+      <!-- section id="secFilterAndItems" -->
         <h3 class="sr-only">Filter and Product-Items</h3>
         <div class="col">
           <section id="secFilter">
@@ -129,9 +129,7 @@
           </section>
           <section id="secProductItems">
             <h4 class="sr-only">Product Items</h4>
-            <!-- Row Items -->
             <div class="row">
-              <!-- Column Items -->
               <div class="card-columns pl-3 pr-3">
                 <div id="rubric20" *ngFor="let item of filteredItems; index as i" class="card shadow-sm">
                   <div class="card-header text-dark" (click)="goToProduct(item ? item.name : '')">
@@ -152,7 +150,7 @@
                         srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
                         media="(min-height:500px)">
                       <img id="rubric23"
-                        src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=300' : ''}}"
+                        src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
                         appImgFallback alt="{{item ? item.name : 'Product-Image'}}"
                         class="card-img-bottom img-thumbnail clickableImage img-fluid"
                         (click)="goToProduct(item ? item.name : '')">
@@ -170,7 +168,7 @@
             </div>
           </section>
         </div>
-      <!-- </section> -->
+      <!-- section -->
     </div>
   </section>
 </div>

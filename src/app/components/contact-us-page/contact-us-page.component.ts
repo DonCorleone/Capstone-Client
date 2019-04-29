@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactRequest, IContactRequest } from 'src/app/models/contact-request';
 import { NgForm } from '@angular/forms';
+import { ContactRequest, IContactRequest } from 'src/app/models/contact-request';
 
 @Component({
   selector: 'app-contact-us-page',
@@ -24,14 +24,7 @@ export class ContactUsPageComponent implements OnInit {
     } else {
 
       this.submitted = true;
-
-      // tslint:disable:space-before-function-paren
-      // tslint:disable-next-line:only-arrow-functions
-      $(function () {
-
-        // tslint:disable-next-line:only-arrow-functions
-        $('#contactAlert').removeAttr('hidden');
-      });
+      $('#modContact').modal('show');
     }
   }
 

@@ -33,28 +33,7 @@
           routerLinkActive>Shop All
           <fa name="tag"></fa>
         </button>
-          <!-- <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="col-sm"
-            (click)="goToProduct(item ? item.name : '')"> -->
-          <!-- <picture>
-              <source
-                srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=1200' : ''}}"
-                media="(min-height:1600px)">
-              <source
-                srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=800' : ''}}"
-                media="(min-height:1200px)">
-              <source
-                srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=500' : ''}}"
-                media="(min-height:900px)">
-              <source
-                srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=200' : ''}}"
-                media="(min-height:600px)">
-              <img src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=500' : ''}}" appImgFallback
-                alt="{{item ? item.name : 'Product-Product'}}" (click)="goToProduct(item ? item.name : '')"
-                class="d-inline-block w-100">
-            </picture> -->
-          <!-- </div> -->
-  
-        </div>
+       </div>
       </div>
       <a id="rubric08" class="carousel-control-prev" href="#carouselMd" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
@@ -90,7 +69,7 @@
             <div class="card">
               <!--div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="card shadow" (click)="goToProduct(item ? item.name : '')"-->
               <img id="rubric09Xs" class="card-img-top img-thumbnail clickableImage"
-                src="{{item ? '//images.weserv.nl/?url=' + item.imagelink + '&w=200&h=200&t=fitup' : ''}}" appImgFallback
+                src="{{item ? '//images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&w=200&h=200&t=fitup' : ''}}" appImgFallback
                 alt="{{item ? item.name : 'Product-Product'}}" (click)="goToProduct(item ? item.name : '')">
               <!--/div-->
             </div>

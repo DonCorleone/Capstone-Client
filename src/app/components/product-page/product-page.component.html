@@ -15,7 +15,7 @@
         <source
           srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
           media="(min-height:600px)">
-        <img id="rubric36" src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=300' : ''}}"
+        <img id="rubric36" src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
           appImgFallback alt="{{item ? item.name : 'Product-Image'}}" class="img-fluid"
           (click)="goToProduct(item ? item.name : '')">
       </picture>

@@ -176,7 +176,7 @@
                         srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
                         media="(min-height:500px)">
                       <img id="rubric23"
-                        src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=300' : ''}}"
+                        src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
                         appImgFallback alt="{{item ? item.name : 'Product-Image'}}"
                         class="card-img-bottom img-thumbnail clickableImage img-fluid"
                         (click)="goToProduct(item ? item.name : '')">

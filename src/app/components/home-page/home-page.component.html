@@ -12,7 +12,7 @@
     </div>
   </section>
   <section id="secCarousel">
-    <h2 class="sr-only">Carousel with featuring Items</h2>
+    <h3 class="sr-only">Carousel with featuring Items</h3>
     <div id="carouselPackageMd" class="d-none d-sm-inline-block w-100">
       <div>
         <!-- rubric06 -->
@@ -53,7 +53,7 @@
                     <source
                       srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=200' : ''}}"
                       media="(min-height:600px)">
-                    <img src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink + '&h=500' : ''}}"
+                    <img src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=500' : ''}}"
                       appImgFallback alt="{{item ? item.name : 'Product-Product'}}" class="clickableImage img-fluid"
                       (click)="goToProduct(item ? item.name : '')">
                   </picture>
@@ -97,7 +97,7 @@
             [class.active]="j==0">
             <div class="row justify-content-center">
               <img id="rubric09Xs"
-                src="{{item ? '//images.weserv.nl/?url=' + item.imagelink + '&w=200&h=200&t=fitup' : ''}}"
+                src="{{item ? '//images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&w=200&h=200&t=fitup' : ''}}"
                 appImgFallback alt="{{item ? item.name : 'Product-Product'}}" class="img-fluid"
                 (click)="goToProduct(item ? item.name : '')">
             </div>

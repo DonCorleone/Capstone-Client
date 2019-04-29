@@ -1,257 +1,274 @@
 <div class="container-fluid">
-  <!-- Row Table -->
-  <div class="row">
-    <!-- Column Table -->
-    <div class="col">
-      <!-- Cart -->
-      <div id="rubric47" class="table-responsive-sm">
-        <table class="table table-hover thead-light">
-          <thead>
-            <tr>
-              <th scope="col" class="headerCell">Name</th>
-              <th scope="col" class="d-none d-md-table-cell headerCell">Detail</th>
-              <th scope="col" class="headerCell">Price</th>
-              <th scope="col" class="headerCell">Qty</th>
-              <th scope="col" class="headerCell">Total</th>
-              <th scope="col">Qty</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let cartItem of cart; index as i">
-              <td id="cellName" class="clickableCell" (click)="goToProduct(cartItem)">
-                {{cartItem.name}}
-                <picture>
-                  <source
-                    srcset="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink.split(' ').join('%20') + '&h=40' : ''}}"
-                    media="(min-height:600px)">
-                  <img id="rubric36"
-                    src="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink + '&h=30' : ''}}"
-                    appImgFallback alt="{{cartItem ? cartItem.name : 'Product-Image'}}" class="img-fluid"
-                    (click)="goToProduct(cartItem ? cartItem : null)">
-                </picture>
-              </td>
-              <td id="cellDesc" class="d-none d-md-table-cell clickableCell" (click)="goToProduct(cartItem)">
-                {{cartItem.description}}
-              </td>
-              <td id="cellPrice" class="clickableCell" (click)="goToProduct(cartItem)">
-                {{cartItem.price | currency}}
-              </td>
-              <td id="cellAmount">
-                <div id="outOfStockAlert" hidden
-                  class="alert alert-danger alert-dismissible show fade alertLeftAligned">
-                  Out of Stock
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
+  <section id="secCartPage">
+    <h2 class="sr-only">Cart Page</h2>
+    <section id="secCartTable">
+      <h3 class="sr-only">Cart Table</h3>
+      <div class="row">
+        <div class="col">
+          <!-- rubric47 -->
+          <div id="tblCart" class="table-responsive-sm">
+            <table class="table thead-light table-sm">
+              <thead>
+                <tr>
+                  <th scope="col" class="headerCell">Name</th>
+                  <th scope="col" class="d-none d-md-table-cell headerCell">Detail</th>
+                  <th scope="col" class="d-none d-md-table-cell headerCell">Price</th>
+                  <th scope="col" class="d-md-none headerCell">$</th>
+                  <th scope="col" class="d-none d-md-table-cell headerCell">Qty</th>
+                  <th scope="col" class="d-md-none headerCell">#</th>
+                  <th scope="col" class="headerCell">Total</th>
+                  <th scope="col" class="headerCell"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cartItem of cart; index as i">
+                  <td id="cellName" class="clickableCell" (click)="goToProduct(cartItem)">
+                    <picture>
+                      <source
+                        srcset="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink.split(' ').join('%20') + '&h=40' : ''}}"
+                        media="(min-height:600px)">
+                      <img id="rubric36"
+                        src="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink.split(' ').join('%20') + '&h=30' : ''}}"
+                        appImgFallback alt="{{cartItem ? cartItem.name : 'Product-Image'}}" class="img-fluid"
+                        (click)="goToProduct(cartItem ? cartItem : null)">
+                    </picture>
 
-                <div id="notAllowedAlert" hidden
-                  class="alert alert-danger alert-dismissible show fade alertLeftAligned">
-                  Not Allowed
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="clickableCell" (click)="goToProduct(cartItem)">
-                  {{cartItem.amount}}
-                </div>
-                <!--input id="txtAmount" type="text" class="form-control" [(ngModel)]="cartItem.amount"/-->
-
-              </td>
-              <td id="rubric55" class="clickableCell" (click)="goToProduct(cartItem)">{{cartItem.total | currency}}
-              </td>
-              <td id="rubric53"><button type="button" class="btn btn-secondary btn-sm"
-                  (click)="onIncrementAmount(cartItem)">
-                  <fa name="plus"></fa>
-                </button>
-                <button type="button" class="btn btn-secondary btn-sm mx-1" (click)="onDecrementAmount(cartItem)">
-                  <fa name="minus"></fa>
-                </button>
-                <button id="rubric54" type="button" class="btn btn-secondary btn-sm" (click)="onRemoveEntry(cartItem)">
-                  <fa name="trash"></fa>
-                </button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- Alert Row -->
-  <div class="row">
-    <div id="rubric51" class="col">
-      <div id="checkoutAlert" hidden class="alert show fade alertLeftAligned"
-        [class.alert-success]="shippingDetail != null" [class.alert-danger]="shippingDetail == null">
-        <div class="row">
-          <div class="col">
-            <p>You just ordered with following conditions:</p>
-            <div>
-              <p>Subtotal: {{subTotal | currency}}</p>
-              <p>Shipping: {{shipping | currency}}</p>
-              <p>Tax ({{taxRate}}%): {{tax | currency}}</p>
-              <p>Total: {{cartTotal | currency}}</p>
-            </div>
+                    {{cartItem.name}}
+                  </td>
+                  <td id="cellDesc" class="d-none d-md-table-cell clickableCell" (click)="goToProduct(cartItem)">
+                    {{cartItem.description}}
+                  </td>
+                  <td id="cellPrice" class="clickableCell" (click)="goToProduct(cartItem)">
+                    {{cartItem.price | currency}}
+                  </td>
+                  <td id="cellAmount">
+                    <div id="outOfStockAlert" hidden
+                      class="alert alert-danger alert-dismissible show fade alertLeftAligned">
+                      Out of Stock
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div id="notAllowedAlert" hidden
+                      class="alert alert-danger alert-dismissible show fade alertLeftAligned">
+                      Not Allowed
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="clickableCell" (click)="goToProduct(cartItem)">
+                      {{cartItem.amount}}
+                    </div>
+                  </td>
+                  <td id="rubric55" class="clickableCell" (click)="goToProduct(cartItem)">{{cartItem.total | currency}}
+                  </td>
+                  <td id="rubric53"><button type="button" class="btn btn-secondary btn-sm"
+                      (click)="onIncrementAmount(cartItem)">
+                      <fa name="plus"></fa>
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm mx-1" (click)="onDecrementAmount(cartItem)">
+                      <fa name="minus"></fa>
+                    </button>
+                    <button id="rubric54" type="button" class="btn btn-secondary btn-sm"
+                      (click)="onRemoveEntry(cartItem)">
+                      <fa name="trash"></fa>
+                    </button></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="col">
-            <p>To your address:</p>
-            <div *ngIf="shippingDetail !== null" class="alertLeftAligned">
-              <p>{{shippingDetail.FirstName}} {{shippingDetail.LastName}}</p>
-              <p>{{shippingDetail.AdressOne}}</p>
-              <p *ngIf="shippingDetail">{{shippingDetail.AdressTwo}}</p>
-              <p>{{shippingDetail.City}}, {{shippingDetail.State}}, {{shippingDetail.Zip}}</p>
-              <p>Phone: {{shippingDetail.Phone}}</p>
+        </div>
+      </div>
+    </section>
+    <section id="secShippingDetails">
+      <h3 class="sr-only">Shipping Details & Subtotal</h3>
+      <div class="d-flex justify-content-center flex-row flex-wrap">
+        <!-- Column Shipping Details -->
+        <div class="px-2">
+          <!-- Shipping Details -->
+          <form id="rubric48rubric52" (ngSubmit)="onSubmit(shippingDetail, shippingForm)" #shippingForm="ngForm"
+            novalidate>
+            <div class="card shadow mb-4">
+              <div class="card-header bg-secondary text-white">
+                <div class="row">
+                  <div class="col">
+                    <div class="card-title mb-0">
+                      <span class="title5">Enter Shipping Details</span>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <a name="btnShopping" id="btnShopping" class="btn btn-outline-light" [routerLink]='["/shopping"]'
+                      role="button">Continue Shopping <fa name="tag"></fa></a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="txtFirstName" class="sr-only">Firstname</label>
+                    <input type="text" class="form-control" id="txtFirstName" placeholder="Firstname" required
+                      [(ngModel)]="shippingDetail.FirstName" name="FirstName" #FirstName="ngModel">
+                  </div>
+                  <div [hidden]="FirstName.valid || (FirstName.pristine && !shippingForm.submitted) "
+                    class="alert alert-danger px-1 py-0">
+                    Firstname is required
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="txtLastName" class="sr-only">Lastname</label>
+                    <input type="text" class="form-control" id="txtLastName" placeholder="Lastname" required
+                      [(ngModel)]="shippingDetail.LastName" name="LastName" #LastName="ngModel">
+                  </div>
+                  <div [hidden]="LastName.valid || (LastName.pristine && !shippingForm.submitted) "
+                    class="alert alert-danger px-1 py-0">
+                    Lastname is required
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAdressOne" class="sr-only">Address</label>
+                  <input type="text" class="form-control" id="txtAdressOne" placeholder="Address" required
+                    [(ngModel)]="shippingDetail.AdressOne" name="AdressOne" #AdressOne="ngModel">
+                </div>
+                <div [hidden]="AdressOne.valid || (AdressOne.pristine && !shippingForm.submitted) "
+                  class="alert alert-danger px-1 py-0">
+                  Address is required
+                </div>
+                <div class="form-group">
+                  <label for="txtAdressTwo" class="sr-only">Address Detail</label>
+                  <input type="text" class="form-control" id="txtAdressTwo" placeholder="Address Detail"
+                    [(ngModel)]="shippingDetail.AdressTwo" name="AdressTwo">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="txtCity" class="sr-only">City</label>
+                    <input type="text" class="form-control" id="txtCity" placeholder="City" required
+                      [(ngModel)]="shippingDetail.City" name="City" #City="ngModel">
+                  </div>
+                  <div [hidden]="City.valid || (City.pristine && !shippingForm.submitted) "
+                    class="alert alert-danger px-1 py-0">
+                    City is required
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="txtState" class="sr-only">State</label>
+                    <select id="txtState" class="form-control" required [(ngModel)]="shippingDetail.State" name="State"
+                      #State="ngModel">
+
+                      <div [hidden]="State.valid || (State.pristine && !shippingForm.submitted) "
+                        class="alert alert-danger px-1 py-0">
+                        State is required
+                      </div>
+                      <option selected>State ...</option>
+                      <option>LU</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="txtZip" class="sr-only">Zip</label>
+                    <input type="text" class="form-control" id="txtZip" placeholder="Zip" required
+                      [(ngModel)]="shippingDetail.Zip" name="Zip" #Zip="ngModel">
+                  </div>
+                  <div [hidden]="Zip.valid || (Zip.pristine && !shippingForm.submitted) "
+                    class="alert alert-danger px-1 py-0">
+                    Zip is required
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtPhone" class="sr-only">Phone</label>
+                  <input type="phone" class="form-control" id="txtPhone" placeholder="Phone" required
+                    [(ngModel)]="shippingDetail.Phone" name="Phone" #Phone="ngModel">
+                </div>
+                <div [hidden]="Phone.valid || (Phone.pristine && !shippingForm.submitted) "
+                  class="alert alert-danger px-1 py-0">
+                  Phone is required
+                </div>
+              </div>
+              <div class="card-footer bg-secondary text-white">
+                <div class="card-title mb-0 float-right">
+                  <button id="rubric50" Submitid="btnCheckout" type="submit" class="btn btn-outline-light">
+                    Checkout <fa name="credit-card"></fa>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- Column Subtotal -->
+        <div class="px-2">
+          <!-- Subtotals -->
+          <div id="rubric49" class="card shadow mb-4">
+            <div class="card-header bg-secondary text-white">
+              <div class="card-title mb-0 float-right">
+                <button type="button" class="btn btn-outline-light" (click)="onRecalculate()">Recalculate <fa
+                    name="calculator"></fa></button>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Subtotal</th>
+                    <td>{{subTotal | currency}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Shipping</th>
+                    <td>{{shipping | currency}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tax ({{taxRate}}%)</th>
+                    <td>{{tax | currency}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Total</th>
+                    <td>{{cartTotal | currency}}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <!-- Empty Space -->
-    </div>
-  </div>
-  <!-- row Shipping Details & Subtotal -->
-  <div class="row">
-    <!-- Column Shipping Details -->
-    <div class="col-sm-7 col-md tempBorder">
-      <!-- Shipping Details -->
-      <form id="rubric48rubric52" (ngSubmit)="onSubmit(shippingDetail, shippingForm)" #shippingForm="ngForm" novalidate>
-        <div class="card shadow mb-4">
-          <div class="card-header bg-secondary text-white">
-            <div class="row">
-              <div class="col">
-                <div class="card-title mb-0">
-                  <h4>Enter Shipping Details</h4>
-                </div>
-              </div>
-              <div class="col-auto">
-                <a name="btnShopping" id="btnShopping" class="btn btn-outline-light" [routerLink]='["/shopping"]'
-                  role="button">Continue Shopping <fa name="tag"></fa></a>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="txtFirstName" class="sr-only">Firstname</label>
-                <input type="text" class="form-control" id="txtFirstName" placeholder="Firstname" required
-                  [(ngModel)]="shippingDetail.FirstName" name="FirstName" #FirstName="ngModel">
-              </div>
-              <div [hidden]="FirstName.valid || (FirstName.pristine && !shippingForm.submitted) "
-                class="alert alert-danger px-1 py-0">
-                Firstname is required
-              </div>
-              <div class="form-group col-md-6">
-                <label for="txtLastName" class="sr-only">Lastname</label>
-                <input type="text" class="form-control" id="txtLastName" placeholder="Lastname" required
-                  [(ngModel)]="shippingDetail.LastName" name="LastName" #LastName="ngModel">
-              </div>
-              <div [hidden]="LastName.valid || (LastName.pristine && !shippingForm.submitted) "
-                class="alert alert-danger px-1 py-0">
-                Lastname is required
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="txtAdressOne" class="sr-only">Address</label>
-              <input type="text" class="form-control" id="txtAdressOne" placeholder="Address" required
-                [(ngModel)]="shippingDetail.AdressOne" name="AdressOne" #AdressOne="ngModel">
-            </div>
-            <div [hidden]="AdressOne.valid || (AdressOne.pristine && !shippingForm.submitted) "
-              class="alert alert-danger px-1 py-0">
-              Address is required
-            </div>
-            <div class="form-group">
-              <label for="txtAdressTwo" class="sr-only">Address Detail</label>
-              <input type="text" class="form-control" id="txtAdressTwo" placeholder="Address Detail"
-                [(ngModel)]="shippingDetail.AdressTwo" name="AdressTwo">
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="txtCity" class="sr-only">City</label>
-                <input type="text" class="form-control" id="txtCity" placeholder="City" required
-                  [(ngModel)]="shippingDetail.City" name="City" #City="ngModel">
-              </div>
-              <div [hidden]="City.valid || (City.pristine && !shippingForm.submitted) "
-                class="alert alert-danger px-1 py-0">
-                City is required
-              </div>
-              <div class="form-group col-md-4">
-                <label for="txtState" class="sr-only">State</label>
-                <select id="txtState" class="form-control" required [(ngModel)]="shippingDetail.State" name="State"
-                  #State="ngModel">
-
-                  <div [hidden]="State.valid || (State.pristine && !shippingForm.submitted) "
-                    class="alert alert-danger px-1 py-0">
-                    State is required
-                  </div>
-                  <option selected>State ...</option>
-                  <option>LU</option>
-                </select>
-              </div>
-              <div class="form-group col-md-2">
-                <label for="txtZip" class="sr-only">Zip</label>
-                <input type="text" class="form-control" id="txtZip" placeholder="Zip" required
-                  [(ngModel)]="shippingDetail.Zip" name="Zip" #Zip="ngModel">
-              </div>
-              <div [hidden]="Zip.valid || (Zip.pristine && !shippingForm.submitted) "
-                class="alert alert-danger px-1 py-0">
-                Zip is required
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="txtPhone" class="sr-only">Phone</label>
-              <input type="phone" class="form-control" id="txtPhone" placeholder="Phone" required
-                [(ngModel)]="shippingDetail.Phone" name="Phone" #Phone="ngModel">
-            </div>
-            <div [hidden]="Phone.valid || (Phone.pristine && !shippingForm.submitted) "
-              class="alert alert-danger px-1 py-0">
-              Phone is required
-            </div>
-          </div>
-          <div class="card-footer bg-secondary text-white">
-            <div class="card-title mb-0 float-right">
-              <button id="rubric50" Submitid="btnCheckout" type="submit" class="btn btn-outline-light">
-                Checkout <fa name="credit-card"></fa>
+    </section>
+    <section id="secModal">
+      <h3 class="sr-only">Modal with Order Info</h3>
+      <!-- rubric51 -->
+      <div class="modal fade" id="modSuccess" tabindex="-1" role="dialog" aria-labelledby="lblModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-gradient-success">
+              <span class="modal-title title5" id="lblModal">Congratulations!</span>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col text-left">
+                  <p>You just ordered with following conditions:</p>
+                  <div>
+                    <p>Subtotal: {{subTotal | currency}}</p>
+                    <p>Shipping: {{shipping | currency}}</p>
+                    <p>Tax ({{taxRate}}%): {{tax | currency}}</p>
+                    <p>Total: {{cartTotal | currency}}</p>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <p>To your address:</p>
+                  <div *ngIf="shippingDetail !== null" class="alertLeftAligned">
+                    <p>{{shippingDetail.FirstName}} {{shippingDetail.LastName}}</p>
+                    <p>{{shippingDetail.AdressOne}}</p>
+                    <p *ngIf="shippingDetail">{{shippingDetail.AdressTwo}}</p>
+                    <p>{{shippingDetail.City}}, {{shippingDetail.State}}, {{shippingDetail.Zip}}</p>
+                    <p>Phone: {{shippingDetail.Phone}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer bg-gradient-success">
+              <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+            </div>
           </div>
-        </div>
-      </form>
-    </div>
-    <!-- Column Subtotal -->
-    <div class="col-sm-5 col-md-auto tempBorder">
-      <!-- Subtotals -->
-      <div id="rubric49" class="card shadow mb-4">
-        <div class="card-header bg-secondary text-white">
-          <div class="card-title mb-0 float-right">
-            <button type="button" class="btn btn-outline-light" (click)="onRecalculate()">Recalculate <fa
-                name="calculator"></fa></button>
-          </div>
-        </div>
-        <div class="card-body">
-          <table class="table">
-            <thead>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Subtotal</th>
-                <td>{{subTotal | currency}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Shipping</th>
-                <td>{{shipping | currency}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Tax ({{taxRate}}%)</th>
-                <td>{{tax | currency}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Total</th>
-                <td>{{cartTotal | currency}}</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </section>
 </div>
