@@ -1,0 +1,180 @@
+
+1
+The user should see a button that resembles a left arrow key to the left of the product carousel
+1
+The user should see a button that resembles a right arrow key to the right of the product carousel
+1
+The user should see some text welcoming them to the website
+1
+The user should see a button labeled “Shop All”
+1
+The user should see a toggle switch labeled “Toggle Slide Show”
+1
+Clicking on the right arrow should move the product carousel one slide forward.
+1
+Clicking on the left arrow should move the product carousel one slide back
+
+1
+
+If the user clicks on a product image, they should be taken to a product page that is populated with the details of the clicked product
+1
+If the “Toggle Slide Show” switch is checked, the product carousel should automatically move forward one slide every 3 seconds
+
+1
+
+Whenever the product carousel changes it slide, it should do in an animated way
+1
+If the user clicks on the “Shop All” button, the user should be taken to the shopping page
+1
+
+The home page is accessible at http://localhost:8080/#
+1
+
+The user shall see a controls bar
+1
+ The user shall see a section in the controls bar that displays the selected category name
+1
+The user shall see a section in the controls bar that displays the number of items shown out of the total number of items in the selected category
+1
+ The user shall see a toggle switch labeled “In Stock Only” in the controls bar
+1
+The user shall see a dropdown list labeled “Sort By” that has the following options: (None, Price, Alphabetical, Rating) in the controls bar
+1
+The user shall see a category menu that displays all of the available shopping categories
+1
+The user shall see a grid that is populated with the products of the selected category
+1
+Each grid cell shall have the name of the product displayed
+1
+Each grid cell shall have the price of the product displayed
+1
+Each grid cell shall have an image of the product displayed
+1
+ Each grid cell shall have a button labeled “Add”
+1
+Clicking on a category name in the category menu should toggle a dropdown of the available subcategories within that category
+1
+ Clicking on a subcategory should repopulate the grid of products with items from the subcategory that was just clicked.
+1
+Clicking on a subcategory should change the name of the selected category in the controls bar
+1
+The section of the controls bar that displays the number of items shown out of the total number of items in the selected category should update whenever a new subcategory is selected or whenever the “In Stock Only” switch is toggled.
+1
+If the “In Stock Only” toggle is checked, only items that are in stock should be shown in the products grid.
+1
+Clicking on the “Add” button inside a grid cell should add 1 unit of the associated product to the shopping cart
+1
+If the user clicks on a product image within a grid cell, they should be taken to a product page that is populated with the details of the clicked product
+1
+If the user clicks on a product name within a grid cell, they should be taken to a product page that is populated with the details of the clicked product
+1
+Changing the selected sorting method should reorder the products in the grid
+1
+The shopping page is accessible at http://localhost:8080/#/shopping
+1
+
+The user should the name of the selected product
+1
+The user should an image of the selected product
+1
+ The user should see the rating of the selected product
+1
+ The user should see the number of items in stock of the selected product
+1
+ The user should see the price of the selected product
+1
+ The user should see a description of the selected product
+1
+ The user should see a button labeled “Add”
+1
+ The user should see an input field labeled “Qty”
+1
+ The user should see a button labeled “Back”
+1
+
+Clicking the “Add” button should add the number of units specified in the “Qty” input field of the selected product to the shopping cart
+1
+Clicking the “Back” button should take the user back to where they came from, whether it was the Shopping page or the Product Page.
+1
+The product page is accessible at http://localhost:8080/#/product?name=productname
+1
+
+The user should a table displaying the product image, name, unit price, quantity as an input field, total cost, and a remove button for each product in the shopping cart.
+1
+The user should see a form labeled “Enter Shipping Details” that has text input fields for the users name, address, city, and phone number. These input fields should have placeholders that show what they represent.
+1
+ The user should see a section showing the subtotal cost of all the items in the shopping cart, the shipping cost, the tax cost, and a total cost of all of the items in the shipping cost.
+1
+ The user should see a checkout button
+1
+
+The checkout button should create an alert based on the users shipping details and total cost.
+1
+ The form should show validation errors if the form isn’t filled out correctly and the checkout button is pressed
+1
+The cost details section should update if any items are removed from the shopping cart of if any of the item quantities are updated
+1
+ The remove button should remove an item from the shopping cart
+1
+ The cost column in the table should update if the quantity input field is changed
+1
+The cart page is accessible at http://localhost:8080/#/cart
+1
+
+The user should see a form with text input fields for name and email, a dropdown list for subject, and a text area for a message. These fields should have placeholders to show what they represent
+1
+The user should see description that shows an email and phone number for the contacting the business
+1
+ The user should see a button labeled “Send”
+1
+The send button should create an alert based on the message sent
+1
+ The form should show validation errors if the form isn’t filled out correctly and the send button is pressed
+1
+The contact page is accessible at http://localhost:8080/#/contact
+1
+
+About page is visually appealing (score 1-3)
+1
+The about page is accessible at http://localhost:8080/#/about
+1
+User shall see a link to the home page
+1
+User shall see a link to the shopping page
+1
+ User shall see a link to the cart page
+1
+ The header bar should always be at the top of the page
+1
+Clicking the home page link should take the user to the home page
+1
+ Clicking the shopping page link should take the user to the shopping page
+1
+Clicking the cart page link should take the user to the cart page
+1
+
+The footer bar should always be at the bottom of the page
+1
+User shall see a link to the home page
+1
+User shall see a link to the about page
+1
+
+User shall see a link to the contact page
+1
+Clicking on the home page link should take the user to the home page
+1
+Clicking on the about page link should take the user to the about page
+1
+
+Clicking on the contact page link should take the user to the contact page
+1
+
+CSS used for site styling. No inline CSS permitted and no styling of HTML elements directly.
+1
+Used jQuery or Angular for data binding
+
+1
+
+Data was accessed using the Azure Web API and not a local file
+1

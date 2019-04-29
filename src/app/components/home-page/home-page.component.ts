@@ -119,10 +119,10 @@ export class HomePageComponent implements OnInit {
         pause: false,
         interval: 1000
       });
-      $(btn).text('Stop Slide Show');
+      $(btn).text('Stop');
     } else {
       carousel.carousel('pause');
-      $(btn).text('Start Slide Show');
+      $(btn).text('Start');
     }
   }
 }
