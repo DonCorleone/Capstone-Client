@@ -2,8 +2,8 @@
   <section id="secShopping">
     <h2 class="sr-only">Shopping Page</h2>
     <div class="row tempBorder">
-      <!-- section id="secCategories"-->
-        <!-- h3class="sr-only">Categories & Subcategories</h3 -->
+      <section id="secCategories">
+        <h3 class="sr-only">Categories & Subcategories</h3>
         <div id="colCategories" class="col col-sm-auto tempBorder py-0">
           <div class="d-flex">
             <!-- Categories Collapse Button -->
@@ -53,12 +53,12 @@
             </div>
           </div>
         </div>
-      <!--/section-->
+      </section>
       <!-- section id="secFilterAndItems"-->
-        <!-- h3class="sr-only">Filter and Product-Items</h3 -->
+        <h3 class="sr-only">Filter and Product-Items</h3>
         <div class="col">
-          <!-- section id="secFilter"-->
-            <!-- h4 class="sr-only">Controls Bar</h4 -->
+          <section id="secFilter">
+            <h4 class="sr-only">Controls Bar</h4>
             <div class="row">
               <!-- Column Controls Bar-->
               <div class="col">
@@ -83,13 +83,13 @@
                         <div class="col-auto">
                           <!-- rubric15 rubric26 -->
                           <div id="filter" class="d-flex flex-row align-items-baseline flex-wrap">
-                            <h4>
+                            <div class="title5">
                               {{selectedCategory ? selectedCategory.category : '' }}
                               {{selectedSubcategory && selectedCategory ? ' >  ' : ''}}
-                            </h4>
-                            <h4>
+                            </div>
+                            <div class="title5">
                               {{selectedSubcategory ? selectedSubcategory.name : ''}}
-                            </h4>
+                            </div>
                             <span id="rubric18" class="flexChild">Sort By </span>
                             <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle flexChild"
                               (change)="setOrderBy($event.target.value)">
@@ -114,9 +114,9 @@
                 </div>
               </div>
             </div>
-          <!--/section-->
-          <!-- section id="secCategoryTitle"-->
-            <!-- h4 class="sr-only">Chosen Category</h4 -->
+          </section>
+          <section id="secCategoryTitle">
+            <h4 class="sr-only">Chosen Category</h4>
             <div class="row">
               <!-- Column Header -->
               <div class="col">
@@ -126,9 +126,9 @@
                 </div>
               </div>
             </div>
-          <!--/section-->
-          <!-- section id="secProductItems"-->
-            <!-- h4 class="sr-only">Product Items</h4 -->
+          </section>
+          <section id="secProductItems">
+            <h4 class="sr-only">Product Items</h4>
             <!-- Row Items -->
             <div class="row">
               <!-- Column Items -->
@@ -168,9 +168,9 @@
                 </div>
               </div>
             </div>
-          <!--/section-->
+          </section>
         </div>
-      <!--/section-->
+      <!-- </section> -->
     </div>
   </section>
 </div>

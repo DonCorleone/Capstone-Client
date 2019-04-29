@@ -33,6 +33,7 @@ $SizeTitle1: 90;
 $SizeTitle2: 50; 
 $SizeTitle3: 28; 
 $SizeTitle4: 18; 
+$SizeTitle5: 12; 
 
 $factorXs: 0.5;
 $factorMd: 0.75;
@@ -99,6 +100,21 @@ $factorXl: 2;
   }
   @include media-breakpoint-up(xl) {
     @include rfs($SizeTitle4 * $factorXl);
+  }
+}
+
+.title5 {
+  @include media-breakpoint-up(xs) {
+    @include rfs($SizeTitle5 * $factorXs);
+  }
+  @include media-breakpoint-up(md) {
+    @include rfs($SizeTitle5 * $factorMd);
+  }
+  @include media-breakpoint-up(lg) {
+    @include rfs($SizeTitle5 * $factorLg);
+  }
+  @include media-breakpoint-up(xl) {
+    @include rfs($SizeTitle5 * $factorXl);
   }
 }
 
