@@ -23,6 +23,8 @@
               <tbody>
                 <tr *ngFor="let cartItem of cart; index as i">
                   <td id="cellName" class="clickableCell" (click)="goToProduct(cartItem)">
+
+                    {{cartItem.name}}
                     <picture>
                       <source
                         srcset="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink.split(' ').join('%20') + '&h=40' : ''}}"
@@ -32,8 +34,6 @@
                         appImgFallback alt="{{cartItem ? cartItem.name : 'Product-Image'}}" class="img-fluid"
                         (click)="goToProduct(cartItem ? cartItem : null)">
                     </picture>
-
-                    {{cartItem.name}}
                   </td>
                   <td id="cellDesc" class="d-none d-md-table-cell clickableCell" (click)="goToProduct(cartItem)">
                     {{cartItem.description}}
