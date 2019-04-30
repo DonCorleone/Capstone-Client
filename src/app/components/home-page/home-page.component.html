@@ -45,29 +45,33 @@
             <div id="rubric10" *ngFor="let featuringItems of featuringItemGroup; index as j" class="carousel-item pt-3"
               [class.active]="j==0">
               <div class="d-flex justify-content-center align-items-end">
-                <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="col-sm">
-                  <div>
-                    <picture>
-                      <source
-                        srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=550' : ''}}"
-                        media="(min-height:1600px)">
-                      <source
-                        srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
-                        media="(min-height:1200px)">
-                      <source
-                        srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
-                        media="(min-height:900px)">
-                      <source
-                        srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=200' : ''}}"
-                        media="(min-height:600px)">
-                      <img
-                        src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=500' : ''}}"
-                        appImgFallback alt="{{item ? item.name : 'Product-Product'}}" class="clickableImage img-fluid"
-                        (click)="goToProduct(item ? item.name : '')">
-                    </picture>
+                <div *ngFor="let item of featuringItems[&quot;items&quot;]; index as k" class="d-flex justify-content-center ">
+                  <div class="flex-col">
+                      <div>
+                          <picture>
+                            <source
+                              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=550' : ''}}"
+                              media="(min-height:1600px)">
+                            <source
+                              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
+                              media="(min-height:1200px)">
+                            <source
+                              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
+                              media="(min-height:900px)">
+                            <source
+                              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=200' : ''}}"
+                              media="(min-height:600px)">
+                            <img
+                              src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=500' : ''}}"
+                              appImgFallback alt="{{item ? item.name : 'Product-Product'}}" class="clickableImage img-fluid"
+                              (click)="goToProduct(item ? item.name : '')">
+                          </picture>
+                        </div>
+                        <div>
+                          {{item ? item.name : ''}} {{item ? ': ' : ''}} {{item ? (item.price | currency) : ''}}
+                        </div>
                   </div>
 
-                  <div>{{item ? item.name : ''}} {{item ? ': ' : ''}} {{item ? (item.price | currency) : ''}}</div>
                 </div>
               </div>
             </div>
