@@ -1,10 +1,57 @@
 # Microsoft Professional Program MPP Web Frontend Developer Capstone :: Client
 
-## Link to Server
+A Microsoft Professional Program (MPP) capstone- project in Web Frontend- Development.
 
-[GitHub](https://github.com/DonCorleone/Capstone-Server)
+Specs: [/src/assets](src/assets/spec/Dev238rubric.pdf)  
+Grading rubric: [/src/assets](src/assets/spec/Functional_Specification_-_Front-End_Web_Capstone_-_Final_-_Dec2018.pdf)
 
-## Build-Status
+## Installation
+
+### Tested with following libraries
+
+```bash
+node -v`
+> v11.10.0
+```
+
+```bash
+npm -v`
+> 6.7.0
+```
+
+### Clone this repo
+
+```bash
+git clone https://github.com/DonCorleone/Capstone-Client.git
+```
+
+### Install libraries
+
+```bash
+Capstone-Client/npm install
+```
+
+### Run
+
+#### Run debug
+
+```bash
+ng serve
+```
+
+#### Build watch
+
+Terminal 1: `ng build --watch`
+Terminal 2: `lite-server --baseDir="dist"`
+
+#### Debug
+
+Using Angular in Visual Studio Code [code.visualstudio.com](https://code.visualstudio.com/docs/nodejs/angular-tutorial)
+
+Microsoft/vscode-recipes [GitHub](https://github.com/Microsoft/vscode-recipes/tree/master/Angular-CLI)
+
+
+## Current Build-Status
 
 ### Client Status
 
@@ -24,7 +71,7 @@
 
 [Capstone-Client](https://github.com/DonCorleone/Capstone-Client)
 
-### Setup
+### Links used in this project
 
 Angular 7 with Azure DevOps Build Pipeline [olivercoding](https://www.olivercoding.com/2019-01-19-angular-azure-devops/)
 
@@ -37,28 +84,11 @@ Icons [Angular Bootstrap Font Awesome](https://www.npmjs.com/package/angular-fon
 Responsible Font Sizes
 [RFS](https://github.com/twbs/rfs)
 
-### Run
-
-#### Build watch
-
-Terminal 1: `ng build --watch`
-Terminal 2: `lite-server --baseDir="dist"`
-
-#### Debug
-
-Using Angular in Visual Studio Code [code.visualstudio.com](https://code.visualstudio.com/docs/nodejs/angular-tutorial)
-
-Microsoft/vscode-recipes [GitHub](https://github.com/Microsoft/vscode-recipes/tree/master/Angular-CLI)
-
-### Implementation
-
 Global Header and Footer [scotch.io/courses/](https://scotch.io/courses/build-your-first-angular-website/creating-an-angular-header-and-footer)
 
 Angular and Bootstrap [medium.com/codingthesmartway-com-blog/](https://medium.com/codingthesmartway-com-blog/using-bootstrap-with-angular-c83c3cee3f4a)
 
 Angular Routing [Angular.io](https://angular.io/guide/router)
-
-> The :id in the second route is a token for a route parameter. In a URL such as /hero/42, "42" is the value of the id parameter. The corresponding HeroDetailComponent will use that value to find and present the hero whose id is 42.
 
 Dropdown [talkingdotnet.com](https://www.talkingdotnet.com/bind-select-dropdown-list-in-angular-4-and-5/)
 
