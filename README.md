@@ -10,12 +10,12 @@ Grading rubric: [/src/assets](src/assets/spec/Functional_Specification_-_Front-E
 ### Tested with following libraries
 
 ```bash
-node -v`
+node -v
 > v11.10.0
 ```
 
 ```bash
-npm -v`
+npm -v
 > 6.7.0
 ```
 
