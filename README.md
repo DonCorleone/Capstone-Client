@@ -11,12 +11,17 @@ Grading rubric: [/src/assets](src/assets/spec/Functional_Specification_-_Front-E
 
 ```bash
 node -v
-> v11.10.0
+> v14.15.1
 ```
 
 ```bash
 npm -v
-> 6.7.0
+> 6.14.8
+```
+
+```bash
+ng --version
+> 11.0.3
 ```
 
 ### Clone this repo
