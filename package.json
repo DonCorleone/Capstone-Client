@@ -27,7 +27,7 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "handlebars": "^4.1.2",
-    "jquery": ">=3.4.0",
+    "jquery": ">=3.5.0",
     "popper.js": "^1.14.7",
     "protractor": "~7.0.0",
     "rfs": "^8.0.4",
