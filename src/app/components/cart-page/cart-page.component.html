@@ -64,14 +64,14 @@
                   </td>
                   <td id="rubric53"><button type="button" class="btn btn-secondary btn-sm"
                       (click)="onIncrementAmount(cartItem)">
-                      <fa name="plus"></fa>
+                      <i class="fa fa-plus"></i>
                     </button>
                     <button type="button" class="btn btn-secondary btn-sm mx-1" (click)="onDecrementAmount(cartItem)">
-                      <fa name="minus"></fa>
+                      <i class="fa fa-minus"></i>
                     </button>
                     <button id="rubric54" type="button" class="btn btn-secondary btn-sm"
                       (click)="onRemoveEntry(cartItem)">
-                      <fa name="trash"></fa>
+                      <i class="fa fa-trash"></i>
                     </button></td>
                 </tr>
               </tbody>
@@ -98,7 +98,7 @@
                   </div>
                   <div class="col-auto">
                     <a name="btnShopping" id="btnShopping" class="btn btn-outline-light" [routerLink]='["/shopping"]'
-                      role="button">Continue Shopping <fa name="tag"></fa></a>
+                      role="button">Continue Shopping <i class="fa fa-tag"></i></a>
                   </div>
                 </div>
               </div>
@@ -183,7 +183,7 @@
               <div class="card-footer bg-secondary text-white">
                 <div class="card-title mb-0 float-right">
                   <button id="rubric50" Submitid="btnCheckout" type="submit" class="btn btn-outline-light">
-                    Checkout <fa name="credit-card"></fa>
+                    Checkout <i class="fa fa-credit-card"></i>
                   </button>
                 </div>
               </div>
@@ -196,8 +196,7 @@
           <div id="rubric49" class="card shadow mb-4">
             <div class="card-header bg-secondary text-white">
               <div class="card-title mb-0 float-right">
-                <button type="button" class="btn btn-outline-light" (click)="onRecalculate()">Recalculate <fa
-                    name="calculator"></fa></button>
+                <button type="button" class="btn btn-outline-light" (click)="onRecalculate()">Recalculate <i class="fa fa-calculator"></i></button>
               </div>
             </div>
             <div class="card-body">

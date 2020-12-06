@@ -28,34 +28,34 @@
               <p>Rating</p>
               <ul id="rubric37" class="list-inline">
                 <li class="list-inline-item" *ngIf="item.rating > 0">
-                  <fa name="star" inverse="true"></fa>
+                  <i class="fa fa-star" inverse="true"></i>
                 </li>
                 <li class="list-inline-item" *ngIf="item.rating < 1">
-                  <fa name="star"></fa>
+                  <i class="fa fa-star"></i>
                 </li>
                 <li class="list-inline-item" *ngIf="item.rating > 1">
-                  <fa name="star" inverse="true"></fa>
+                  <i class="fa fa-star" inverse="true"></i>
                 </li>
                 <li class="list-inline-item" *ngIf="item.rating < 2">
-                  <fa name="star"></fa>
+                  <i class="fa fa-star"></i>
                 </li>
                 <li class="list-inline-item" *ngIf="item.rating > 2">
-                  <fa name="star" inverse="true"></fa>
+                  <i class="fa fa-star" inverse="true"></i>
                 </li>
                 <li class="list-inline-item" *ngIf="item.rating < 3">
-                  <fa name="star"></fa>
+                  <i class="fa fa-star"></i>
                 </li>
                 <li class="list-inline-item" *ngIf="item.rating > 3">
-                  <fa name="star" inverse="true"></fa>
+                  <i class="fa fa-star" inverse="true"></i>
                 </li>
                 <li class="list-inline-item" *ngIf="item.rating < 4">
-                  <fa name="star"></fa>
+                  <i class="fa fa-star"></i>
                 </li>
                 <li class="list-inline-item" *ngIf="item.rating > 4">
-                  <fa name="star" inverse="true"></fa>
+                  <i class="fa fa-star" inverse="true"></i>
                 </li>
                 <li class="list-inline-item" *ngIf="item.rating < 5">
-                  <fa name="star"></fa>
+                  <i class="fa fa-star"></i>
                 </li>
               </ul>
             </div>
@@ -88,18 +88,18 @@
                   <div class="input-group-append pb-2">
                     <button class="btn btn-outline-secondary" type="button" id="btnPlus"
                       (click)="onIncrementAmount(item)">
-                      <fa name="plus"></fa>
+                      <i class="fa fa-plus"></i>
                     </button>
                   </div>
                   <div class="input-group-append pb-2">
                     <button class="btn btn-outline-secondary" type="button" id="btnMinus"
                       (click)="onDecrementAmount(item)">
-                      <fa name="minus"></fa>
+                      <i class="fa fa-minus"></i>
                     </button>
                   </div>
                   <div class="input-group-append pb-2">
                     <button id="rubric41rubric44" type="submit" class="btn btn-outline-primary"
-                      [disabled]="!stockForm.form.valid" Submitid="btnAdd">Add To Cart <fa name="cart-plus"></fa>
+                      [disabled]="!stockForm.form.valid" Submitid="btnAdd">Add To Cart <i class="fa fa-cart-plus"></i>
                     </button>
                   </div>
                 </div>
@@ -110,12 +110,12 @@
                 <div class="row">
                   <div class="col-auto mr-auto my-1">
                     <a id="rubric43rubric45" class="btn btn-outline-light" (click)="onBackClick()" role="button">Back
-                      <fa name="tag"></fa></a>
+                      <i class="fa fa-tag"></i></a>
                   </div>
                   <div class="col-auto my-1">
                     <a name="btnCart" id="btnCart" class="btn btn-outline-light" [routerLink]='["/cart"]'
                       role="button">Go
-                      to Cart <fa name="shopping-cart"></fa></a>
+                      to Cart <i class="fa fa-shopping-cart"></i></a>
                   </div>
                 </div>
               </div>
