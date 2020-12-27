@@ -150,10 +150,10 @@
                       media="(min-height:800px)">
                     <source
                       srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
-                      media="(min-height:500px)">
+                      media="(min-height:500px)"-->
                     <img id="rubric23rubric31" src="{{item ? 'assets/images' + item.imagelink : '' }}"
                       class="card-img-bottom img-thumbnail clickableImage img-fluid"
-                      (click)="goToProduct(item ? item.name : '')"> -->
+                      (click)="goToProduct(item ? item.name : '')">
                   </picture>
                   <div id="rubric22" class="card-text">{{item.price | currency}}</div>
                 </div>
