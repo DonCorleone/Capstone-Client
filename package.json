@@ -10,7 +10,9 @@
     "e2e": "ng e2e",
     "postinstall": "ngcc",
     "scully": "scully",
-    "scully:serve": "scully serve"
+    "scully:serve": "scully serve",
+    "jam-it": "ng build && npm run scully -- --scanRoutes",
+    "jam-it:serve": "npm run jam-it && npm run scully serve"
   },
   "private": true,
   "dependencies": {
