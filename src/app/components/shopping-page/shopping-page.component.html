@@ -57,106 +57,117 @@
         </div>
       </section>
       <!-- section id="secFilterAndItems" -->
-        <h3 class="sr-only">Filter and Product-Items</h3>
-        <div class="col">
-          <section id="secFilter">
-            <h4 class="sr-only">Controls Bar</h4>
-            <div class="row">
-              <!-- Column Controls Bar-->
-              <div class="col">
-                <!-- Filter Collapse Button -->
-                <button id="btnCollapseFilter" class="btn btn-secondary btn-block mt-1 mt-sm-0" type="button"
-                  data-toggle="collapse" data-target="#collapseFilter" aria-expanded="true"
-                  aria-controls="collapseFilter" (click)="collapseFilter()">
-                  Collapse Filter
-                </button>
-                <div id="collapseFilter" class="collapse show">
-                  <!-- Controls Bar-->
-                  <div id="rubric14" class="card shadow-sm px-0">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="align-items-end col-auto">
+      <h3 class="sr-only">Filter and Product-Items</h3>
+      <div class="col">
+        <section id="secFilter">
+          <h4 class="sr-only">Controls Bar</h4>
+          <div class="row">
+            <!-- Column Controls Bar-->
+            <div class="col">
+              <!-- Filter Collapse Button -->
+              <button id="btnCollapseFilter" class="btn btn-secondary btn-block mt-1 mt-sm-0" type="button"
+                data-toggle="collapse" data-target="#collapseFilter" aria-expanded="true" aria-controls="collapseFilter"
+                (click)="collapseFilter()">
+                Collapse Filter
+              </button>
+              <div id="collapseFilter" class="collapse show">
+                <!-- Controls Bar-->
+                <div id="rubric14" class="card shadow-sm px-0">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="align-items-end col-auto">
 
 
-                        </div>
-                        <div class="col">
+                      </div>
+                      <div class="col">
 
-                        </div>
-                        <div class="col-auto">
-                          <!-- rubric15 rubric26 -->
-                          <div id="filter" class="d-flex flex-row align-items-baseline flex-wrap">
-                            <div class="title4">
-                              {{selectedCategory ? selectedCategory.category : '' }}
-                              {{selectedSubcategory && selectedCategory ? ' >  ' : ''}}
-                            </div>
-                            <div class="title4">
-                              {{selectedSubcategory ? selectedSubcategory.name : ''}}
-                            </div>
-                            <span id="rubric18" class="flexChild">Sort By </span>
-                            <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle flexChild"
-                              (change)="setOrderBy($event.target.value)">
-                              <option value="0">--None--</option>
-                              <option *ngFor="let entry of oderByItems" value={{entry}}>
-                                {{entry}}
-                              </option>
-                            </select>
-                            <span class="flexChild"> (Column by Column)</span>
-                            <span class="custom-control custom-checkbox flexChild">
-                              <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
-                                (change)="changeStockOnly()" />
-                              <label id="rubric17" class="custom-control-label" for="rubric17">In Stock Only</label>
-                            </span>
+                      </div>
+                      <div class="col-auto">
+                        <!-- rubric15 rubric26 -->
+                        <div id="filter" class="d-flex flex-row align-items-baseline flex-wrap">
+                          <div class="title4">
+                            {{selectedCategory ? selectedCategory.category : '' }}
+                            {{selectedSubcategory && selectedCategory ? ' > ' : ''}}
                           </div>
+                          <div class="title4">
+                            {{selectedSubcategory ? selectedSubcategory.name : ''}}
+                          </div>
+                          <span id="rubric18" class="flexChild">Sort By </span>
+                          <select id="rubric29rubric33" class="btn btn-secondary dropdown-toggle flexChild"
+                            (change)="setOrderBy($event.target.value)">
+                            <option value="0">--None--</option>
+                            <option *ngFor="let entry of oderByItems" value={{entry}}>
+                              {{entry}}
+                            </option>
+                          </select>
+                          <span class="flexChild"> (Column by Column)</span>
+                          <span class="custom-control custom-checkbox flexChild">
+                            <input type="checkbox" class="custom-control-input" id="rubric17" [checked]="stockOnly"
+                              (change)="changeStockOnly()" />
+                            <label id="rubric17" class="custom-control-label" for="rubric17">In Stock Only</label>
+                          </span>
                         </div>
-                        <div class="col">
-                        </div>
+                      </div>
+                      <div class="col">
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-          <section id="secCategoryTitle">
-            <h4 class="sr-only">Chosen Category</h4>
-            <div class="row">
-              <!-- Column Header -->
-              <div class="col">
-                <div id="rubric16rubric28">
-                  Showing {{filteredItems? filteredItems.length : 0}} of {{itemsInCategory? itemsInCategory.length : 0}}
-                  Items
+          </div>
+        </section>
+        <section id="secCategoryTitle">
+          <h4 class="sr-only">Chosen Category</h4>
+          <div class="row">
+            <!-- Column Header -->
+            <div class="col">
+              <div id="rubric16rubric28">
+                Showing {{filteredItems? filteredItems.length : 0}} of {{itemsInCategory? itemsInCategory.length : 0}}
+                Items
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="secProductItems">
+          <h4 class="sr-only">Product Items</h4>
+          <div class="row">
+            <div class="card-columns pl-3 pr-3">
+              <div id="rubric20" *ngFor="let item of filteredItems; index as i" class="card shadow-sm">
+                <div class="card-header text-dark" (click)="goToProduct(item ? item.name : '')">
+                  <div id="rubric21rubric32" class="card-title">{{item.name}}</div>
+                </div>
+                <div class="card-body">
+                  <picture>
+                    <!-- <source
+                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=800' : ''}}"
+                      media="(min-height:1400px)">
+                    <source
+                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=600' : ''}}"
+                      media="(min-height:1000px)">
+                    <source
+                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=450' : ''}}"
+                      media="(min-height:800px)">
+                    <source
+                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
+                      media="(min-height:500px)">
+                    <img id="rubric23rubric31" src="{{item ? 'assets/images' + item.imagelink : '' }}"
+                      class="card-img-bottom img-thumbnail clickableImage img-fluid"
+                      (click)="goToProduct(item ? item.name : '')"> -->
+                  </picture>
+                  <div id="rubric22" class="card-text">{{item.price | currency}}</div>
+                </div>
+                <div class="card-footer">
+                  <button id="rubric24rubric30" class="btn btn-outline-dark" type="button"
+                    [class.selected]="item === selectedItem" (click)="addToCart(item)">Add
+                    <i class="fa fa-cart-plus"></i>
+                  </button>
                 </div>
               </div>
             </div>
-          </section>
-          <section id="secProductItems">
-            <h4 class="sr-only">Product Items</h4>
-            <div class="row">
-              <div class="card-columns pl-3 pr-3">
-                <div id="rubric20" *ngFor="let item of filteredItems; index as i" class="card shadow-sm">
-                  <div class="card-header text-dark" (click)="goToProduct(item ? item.name : '')">
-                    <div id="rubric21rubric32" class="card-title">{{item.name}}</div>
-                  </div>
-                  <div class="card-body">
-                    <picture>
-                      <img id="rubric23rubric31"
-                        src="{{item ? 'assets/images' + item.imagelink : '' }}"
-                        class="card-img-bottom img-thumbnail clickableImage img-fluid"
-                        (click)="goToProduct(item ? item.name : '')">
-                    </picture>
-                    <div id="rubric22" class="card-text">{{item.price | currency}}</div>
-                  </div>
-                  <div class="card-footer">
-                    <button id="rubric24rubric30" class="btn btn-outline-dark" type="button"
-                      [class.selected]="item === selectedItem" (click)="addToCart(item)">Add
-                      <i class="fa fa-cart-plus"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
+          </div>
+        </section>
+      </div>
       <!-- section -->
     </div>
   </section>

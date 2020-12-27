@@ -26,11 +26,11 @@
 
                     {{cartItem.name}}
                     <picture>
-                      <source
-                        srcset="{{cartItem ? 'assets/images' + cartItem.imagelink.split(' ').join('%20') + '&h=40' : ''}}"
-                        media="(min-height:600px)">
+                      <!-- <source id="pictureMediaMinHeight600"
+                        src="{{cartItem ? 'assets/images' + item.imagelink : '' }}"
+                        media="(min-height:600px)"> -->
                       <img id="rubric36"
-                        src="{{cartItem ? 'assets/images' + cartItem.imagelink.split(' ').join('%20') + '&h=30' : ''}}"
+                        src="{{cartItem ? 'assets/images' + cartItem.imagelink : '' }}"
                         appImgFallback alt="{{cartItem ? cartItem.name : 'Product-Image'}}" class="img-fluid"
                         (click)="goToProduct(cartItem ? cartItem : null)">
                     </picture>

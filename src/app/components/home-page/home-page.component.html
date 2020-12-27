@@ -49,21 +49,22 @@
                   <div class="flex-col">
                       <div>
                           <picture>
-                            <source
-                              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=550' : ''}}"
-                              media="(min-height:1600px)">
-                            <source
-                              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
-                              media="(min-height:1200px)">
-                            <source
-                              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
-                              media="(min-height:900px)">
-                            <source
-                              srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=200' : ''}}"
-                              media="(min-height:600px)">
+                            <!-- <source
+                            srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=550' : ''}}"
+                            media="(min-height:1600px)">
+                          <source
+                            srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
+                            media="(min-height:1200px)">
+                          <source
+                            srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
+                            media="(min-height:900px)">
+                          <source
+                            srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=200' : ''}}"
+                            media="(min-height:600px)"> -->
                             <img
-                              src="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=500' : ''}}"
-                              appImgFallback alt="{{item ? item.name : 'Product-Product'}}" class="clickableImage img-fluid"
+                            id = "rubric09ML"
+                            src="{{item ? 'assets/images' + item.imagelink : '' }}"
+                            appImgFallback alt="{{item ? item.name : 'Product-Product'}}" class="clickableImage img-fluid"
                               (click)="goToProduct(item ? item.name : '')">
                           </picture>
                         </div>
@@ -112,7 +113,7 @@
               [class.active]="j==0">
               <div class="row justify-content-center">
                 <img id="rubric09Xs"
-                  src="{{item ? '//images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&w=200&h=200&t=fitup' : ''}}"
+                  src="{{item ? 'assets/images' + item.imagelink : '' }}"
                   appImgFallback alt="{{item ? item.name : 'Product-Product'}}" class="img-fluid"
                   (click)="goToProduct(item ? item.name : '')">
               </div>
