@@ -16,6 +16,7 @@ import { AboutUsPageComponent } from './components/about-us-page/about-us-page.c
 import { ContactUsPageComponent } from './components/contact-us-page/contact-us-page.component';
 import { ImgFallbackDirective } from './directives/img-fallback.directive';
 import * as $ from 'jquery';
+import { ScullyLibModule } from '@scullyio/ng-lib';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import * as $ from 'jquery';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ScullyLibModule
   ],
   providers: [],
   bootstrap: [AppComponent]

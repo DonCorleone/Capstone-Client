@@ -29,16 +29,7 @@ export class ItemsService implements OnInit {
   getItems(subcategoryNameExternal: string): Observable<Array<ICategory>> {
 
     // rubric81 : Data was accessed using the Azure Web API and not a local file
-    let configUrl = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json'; // load online json with real imagelinks
-
-    // Disabled for submitting to Microsoft
-    if (!environment.production) { // dev?
-      configUrl = '../assets/itemsdata.json'; // load local file with non-existing imagelinks due to huge data volume
-    } else {
-
-    // rubric81 : Data was accessed using the Azure Web API and not a local file
-      configUrl = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json'; // load online json with real imagelinks
-    }
+    let configUrl = '../assets/itemsdata.json'; // load online json with real imagelinks
 
     // rubric80 : Used jQuery or Angular for data binding
     return this.http.get<ICategory[]>(configUrl).pipe(
