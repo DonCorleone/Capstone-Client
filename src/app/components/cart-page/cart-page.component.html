@@ -27,10 +27,10 @@
                     {{cartItem.name}}
                     <picture>
                       <source
-                        srcset="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink.split(' ').join('%20') + '&h=40' : ''}}"
+                        srcset="{{cartItem ? 'assets/images' + cartItem.imagelink.split(' ').join('%20') + '&h=40' : ''}}"
                         media="(min-height:600px)">
                       <img id="rubric36"
-                        src="{{cartItem ? 'https://images.weserv.nl/?url=' + cartItem.imagelink.split(' ').join('%20') + '&h=30' : ''}}"
+                        src="{{cartItem ? 'assets/images' + cartItem.imagelink.split(' ').join('%20') + '&h=30' : ''}}"
                         appImgFallback alt="{{cartItem ? cartItem.name : 'Product-Image'}}" class="img-fluid"
                         (click)="goToProduct(cartItem ? cartItem : null)">
                     </picture>
