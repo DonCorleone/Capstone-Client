@@ -63,6 +63,10 @@
   margin-top: 0.5rem;
 }
 
+.img-thumbnail{
+  border-width: 0px;
+}
+
 #btnCollapseCategories, #btnCollapseFilter {
   min-width: 285px; // Width on IPhone SE
 }
