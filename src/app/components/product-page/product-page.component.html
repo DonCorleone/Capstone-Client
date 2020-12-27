@@ -4,20 +4,20 @@
     <div class="row" *ngIf="item$ | async as item">
         <div class="col-sm-6 col-md">
           <picture>
-            <!-- <source
-              srcset="{{item ? '../assets/images' + item.imagelink.split(' ').join('%20') + '&h=1400' : ''}}"
+            <source
+              srcset="{{item ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + item.imagelink.split(' ').join('%20') + '&h=1400' : ''}}"
               media="(min-height:1600px)">
             <source
-              srcset="{{item ? '../assets/images' + item.imagelink.split(' ').join('%20') + '&h=1000' : ''}}"
+              srcset="{{item ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + item.imagelink.split(' ').join('%20') + '&h=1000' : ''}}"
               media="(min-height:1200px)">
             <source
-              srcset="{{item ? '../assets/images' + item.imagelink.split(' ').join('%20') + '&h=700' : ''}}"
+              srcset="{{item ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + item.imagelink.split(' ').join('%20') + '&h=700' : ''}}"
               media="(min-height:900px)">
             <source
-              srcset="{{item ? '../assets/images' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
-              media="(min-height:600px)"> -->
+              srcset="{{item ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + item.imagelink.split(' ').join('%20') + '&h=400' : ''}}"
+              media="(min-height:600px)">
             <img id="rubric36"
-              src="{{item ? 'assets/images' + item.imagelink : '' }}"
+              src="{{item ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + item.imagelink : '' }}"
               appImgFallback alt="{{item ? item.name : 'Product-Image'}}" class="img-fluid">
           </picture>
         </div>

@@ -139,19 +139,19 @@
                 </div>
                 <div class="card-body">
                   <picture>
-                    <!-- <source
-                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=800' : ''}}"
+                    <source
+                      srcset="{{item ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + item.imagelink.split(' ').join('%20') + '&h=800' : ''}}"
                       media="(min-height:1400px)">
                     <source
-                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=600' : ''}}"
+                      srcset="{{item ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + item.imagelink.split(' ').join('%20') + '&h=600' : ''}}"
                       media="(min-height:1000px)">
                     <source
-                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=450' : ''}}"
+                      srcset="{{item ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + item.imagelink.split(' ').join('%20') + '&h=450' : ''}}"
                       media="(min-height:800px)">
                     <source
-                      srcset="{{item ? 'https://images.weserv.nl/?url=' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
-                      media="(min-height:500px)"-->
-                    <img id="rubric23rubric31" src="{{item ? 'assets/images' + item.imagelink : '' }}"
+                      srcset="{{item ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
+                      media="(min-height:500px)">
+                    <img id="rubric23rubric31" src="{{item ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + item.imagelink.split(' ').join('%20') + '&h=300' : ''}}"
                       class="card-img-bottom img-thumbnail clickableImage img-fluid"
                       (click)="goToProduct(item ? item.name : '')">
                   </picture>

@@ -26,11 +26,11 @@
 
                     {{cartItem.name}}
                     <picture>
-                      <!-- <source id="pictureMediaMinHeight600"
-                        src="{{cartItem ? 'assets/images' + item.imagelink : '' }}"
-                        media="(min-height:600px)"> -->
+                      <source id="pictureMediaMinHeight600"
+                        src="{{cartItem ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + cartItem.imagelink : '' }}"
+                        media="(min-height:600px)">
                       <img id="rubric36"
-                        src="{{cartItem ? 'assets/images' + cartItem.imagelink : '' }}"
+                        src="{{cartItem ? 'https://images.weserv.nl/?url=https://grocerycloud.netlify.app/assets/images' + cartItem.imagelink : '' }}"
                         appImgFallback alt="{{cartItem ? cartItem.name : 'Product-Image'}}" class="img-fluid"
                         (click)="goToProduct(cartItem ? cartItem : null)">
                     </picture>
